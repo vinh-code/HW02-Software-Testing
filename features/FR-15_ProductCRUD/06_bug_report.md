@@ -2,14 +2,14 @@
 
 **Môi trường chung:** EShop `85af3ba`, Backend `localhost:3000`, Admin `localhost:5174`, Web `localhost:5173`, Chromium 131, DB seed mặc định. Thời điểm phát hiện: 2026-10-13.
 
-| Bug ID | Tiêu đề | Severity | Priority | TC phát hiện |
-|---|---|---|---|---|
-| BUG-FR15-01 | API Thêm/Sửa/Xóa sản phẩm không yêu cầu đăng nhập và quyền admin | **Critical** | P1 | EP-17, EP-18, EP-19, EP-20 |
-| BUG-FR15-02 | Sửa 1 sản phẩm thì bảng Admin đổi tên **mọi** sản phẩm, lần sửa tiếp theo ghi tên sai vào CSDL | **Critical** | P1 | EP-02, EP-22, BVA-12, BVA-13 |
-| BUG-FR15-03 | Không kiểm tra giá: chấp nhận 0, số âm, rỗng, chữ (API và UI) | Major | P1 | EP-09, EP-10, EP-11, EP-12, EP-22, BVA-08 |
-| BUG-FR15-04 | Không kiểm tra tên: chấp nhận tên dài hơn 255 ký tự, tên chỉ có khoảng trắng; API chấp nhận tên rỗng | Major | P2 | EP-06, EP-07, EP-08, EP-21, BVA-02, BVA-07, BVA-13 |
-| BUG-FR15-05 | API chấp nhận danh mục rỗng hoặc không tồn tại | Major | P2 | EP-13, EP-14 |
-| BUG-FR15-06 | Sửa/Xóa sản phẩm không tồn tại vẫn trả về thành công (HTTP 200) | Minor | P3 | EP-15, EP-16 |
+| Bug ID | Tiêu đề | Severity | Priority | TC phát hiện | Issue |
+|---|---|---|---|---|---|
+| BUG-FR15-01 | API Thêm/Sửa/Xóa sản phẩm không yêu cầu đăng nhập và quyền admin | **Critical** | P1 | EP-17, EP-18, EP-19, EP-20 | [#16](https://github.com/vinh-code/HW02-Software-Testing/issues/16) |
+| BUG-FR15-02 | Sửa 1 sản phẩm thì bảng Admin đổi tên **mọi** sản phẩm, lần sửa tiếp theo ghi tên sai vào CSDL | **Critical** | P1 | EP-02, EP-22, BVA-12, BVA-13 | [#17](https://github.com/vinh-code/HW02-Software-Testing/issues/17) |
+| BUG-FR15-03 | Không kiểm tra giá: chấp nhận 0, số âm, rỗng, chữ (API và UI) | Major | P1 | EP-09, EP-10, EP-11, EP-12, EP-22, BVA-08 | [#18](https://github.com/vinh-code/HW02-Software-Testing/issues/18) |
+| BUG-FR15-04 | Không kiểm tra tên: chấp nhận tên dài hơn 255 ký tự, tên chỉ có khoảng trắng; API chấp nhận tên rỗng | Major | P2 | EP-06, EP-07, EP-08, EP-21, BVA-02, BVA-07, BVA-13 | [#19](https://github.com/vinh-code/HW02-Software-Testing/issues/19) |
+| BUG-FR15-05 | API chấp nhận danh mục rỗng hoặc không tồn tại | Major | P2 | EP-13, EP-14 | [#20](https://github.com/vinh-code/HW02-Software-Testing/issues/20) |
+| BUG-FR15-06 | Sửa/Xóa sản phẩm không tồn tại vẫn trả về thành công (HTTP 200) | Minor | P3 | EP-15, EP-16 | [#21](https://github.com/vinh-code/HW02-Software-Testing/issues/21) |
 
 ---
 
