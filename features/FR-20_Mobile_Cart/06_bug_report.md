@@ -2,14 +2,14 @@
 
 **Môi trường chung:** `eshop-sut/frontend-mobile` `85af3ba` (Expo SDK 54), chạy bằng Expo Web, mô phỏng Pixel 5 (Playwright/Chromium 131). Backend `localhost:3000`, DB seed. Thời điểm phát hiện: 2026-10-13. Chi tiết môi trường ở [05_test_execution.md §5.1](05_test_execution.md).
 
-| Bug ID | Tiêu đề | Severity | Priority | TC phát hiện |
-|---|---|---|---|---|
-| BUG-FR20-01 | Sửa số lượng trong giỏ bị lưu thành **n + 1** (nhập 5 được 6, nhập 1 được 2) | **Critical** | P1 | EP-04, BVA-07, BVA-08, BVA-09, EP-16R |
-| BUG-FR20-02 | Dòng giỏ hàng không có nút **+ / −** để chỉnh số lượng | Major | P2 | EP-05, BVA-10, BVA-11, BVA-12 |
-| BUG-FR20-03 | Bấm **Xóa** sản phẩm trong giỏ xóa ngay, không có dialog xác nhận | Major | P2 | EP-06, EP-07 |
-| BUG-FR20-04 | Số lượng không hợp lệ (0, âm, thập phân, chữ, rỗng) bị âm thầm đổi thành 1, không có thông báo | Minor | P3 | EP-09…EP-15, EP-17, EP-18, BVA-02, BVA-06 |
-| BUG-FR20-05 | Nhãn tổng tiền là "Tổng tạm tính" thay vì "Tổng cộng" | Minor | P3 | EP-01 |
-| BUG-FR20-06 | Giỏ hàng trống không có hình minh họa | Minor | P4 | EP-08 |
+| Bug ID | Tiêu đề | Severity | Priority | TC phát hiện | Issue |
+|---|---|---|---|---|---|
+| BUG-FR20-01 | Sửa số lượng trong giỏ bị lưu thành **n + 1** (nhập 5 được 6, nhập 1 được 2) | **Critical** | P1 | EP-04, BVA-07, BVA-08, BVA-09, EP-16R | [#23](https://github.com/vinh-code/HW02-Software-Testing/issues/23) |
+| BUG-FR20-02 | Dòng giỏ hàng không có nút **+ / −** để chỉnh số lượng | Major | P2 | EP-05, BVA-10, BVA-11, BVA-12 | [#24](https://github.com/vinh-code/HW02-Software-Testing/issues/24) |
+| BUG-FR20-03 | Bấm **Xóa** sản phẩm trong giỏ xóa ngay, không có dialog xác nhận | Major | P2 | EP-06, EP-07 | [#25](https://github.com/vinh-code/HW02-Software-Testing/issues/25) |
+| BUG-FR20-04 | Số lượng không hợp lệ (0, âm, thập phân, chữ, rỗng) bị âm thầm đổi thành 1, không có thông báo | Minor | P3 | EP-09…EP-15, EP-17, EP-18, BVA-02, BVA-06 | [#26](https://github.com/vinh-code/HW02-Software-Testing/issues/26) |
+| BUG-FR20-05 | Nhãn tổng tiền là "Tổng tạm tính" thay vì "Tổng cộng" | Minor | P3 | EP-01 | [#27](https://github.com/vinh-code/HW02-Software-Testing/issues/27) |
+| BUG-FR20-06 | Giỏ hàng trống không có hình minh họa | Minor | P4 | EP-08 | [#28](https://github.com/vinh-code/HW02-Software-Testing/issues/28) |
 
 ---
 
