@@ -10,7 +10,7 @@
 | BUG-FR15-04 | Không kiểm tra tên: chấp nhận tên dài hơn 255 ký tự, tên chỉ có khoảng trắng; API chấp nhận tên rỗng | Major | P2 | EP-06, EP-07, EP-08, EP-21, BVA-02, BVA-07, BVA-13 | [#19](https://github.com/vinh-code/HW02-Software-Testing/issues/19) |
 | BUG-FR15-05 | API chấp nhận danh mục rỗng hoặc không tồn tại | Major | P2 | EP-13, EP-14 | [#20](https://github.com/vinh-code/HW02-Software-Testing/issues/20) |
 | BUG-FR15-06 | Sửa/Xóa sản phẩm không tồn tại vẫn trả về thành công (HTTP 200) | Minor | P3 | EP-15, EP-16 | [#21](https://github.com/vinh-code/HW02-Software-Testing/issues/21) |
-| BUG-FR15-07 | Sửa sản phẩm mà thiếu trường trong request thì xóa trắng tên, mô tả, ảnh, danh mục | Major | P2 | EP-23 (TC bổ sung sau gap analysis) |
+| BUG-FR15-07 | Sửa sản phẩm mà thiếu trường trong request thì xóa trắng tên, mô tả, ảnh, danh mục | Major | P2 | EP-23 (TC bổ sung sau gap analysis) | [#22](https://github.com/vinh-code/HW02-Software-Testing/issues/22) |
 
 ---
 
