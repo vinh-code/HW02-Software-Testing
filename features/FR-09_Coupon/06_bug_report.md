@@ -2,14 +2,14 @@
 
 **Môi trường chung:** EShop `85af3ba`, Backend `localhost:3000`, Web `localhost:5173`, Chromium 131, DB seed mặc định cộng dữ liệu chuẩn bị ở [Bước 5 §5.1](05_test_execution.md). Thời điểm phát hiện: 2026-10-13.
 
-| Bug ID | Tiêu đề | Severity | Priority | TC phát hiện |
-|---|---|---|---|---|
-| BUG-FR09-01 | Coupon `percent` tính sai: số tiền giảm âm, khách bị tính gấp 10 lần | **Critical** | P1 | EP-01, EP-03, BVA-01, BVA-04, BVA-09, BVA-10 |
-| BUG-FR09-02 | Tổng đơn **bằng đúng** `min_order_amount` bị từ chối (dùng `>` thay vì `>=`) | Major | P1 | BVA-03, BVA-06 |
-| BUG-FR09-03 | Áp mã giảm giá không cần đăng nhập/JWT (API và trang `/checkout`) | **Critical** | P1 | EP-11, EP-12 |
-| BUG-FR09-04 | Né giới hạn số lần dùng mã bằng cách bỏ `user_id` khỏi request | **Critical** | P1 | EP-14 |
-| BUG-FR09-05 | Ô "Tổng tiền thanh toán" sửa được, nên áp được mã khi giỏ chưa đủ ngưỡng | **Critical** | P1 | EP-15 |
-| BUG-FR09-06 | API phân biệt chữ hoa/thường và không bỏ khoảng trắng của mã, không nhất quán với UI | Minor | P3 | EP-03, EP-04 (kênh API) |
+| Bug ID | Tiêu đề | Severity | Priority | TC phát hiện | Issue |
+|---|---|---|---|---|---|
+| BUG-FR09-01 | Coupon `percent` tính sai: số tiền giảm âm, khách bị tính gấp 10 lần | **Critical** | P1 | EP-01, EP-03, BVA-01, BVA-04, BVA-09, BVA-10 | [#8](https://github.com/vinh-code/HW02-Software-Testing/issues/8) |
+| BUG-FR09-02 | Tổng đơn **bằng đúng** `min_order_amount` bị từ chối (dùng `>` thay vì `>=`) | Major | P1 | BVA-03, BVA-06 | [#9](https://github.com/vinh-code/HW02-Software-Testing/issues/9) |
+| BUG-FR09-03 | Áp mã giảm giá không cần đăng nhập/JWT (API và trang `/checkout`) | **Critical** | P1 | EP-11, EP-12 | [#10](https://github.com/vinh-code/HW02-Software-Testing/issues/10) |
+| BUG-FR09-04 | Né giới hạn số lần dùng mã bằng cách bỏ `user_id` khỏi request | **Critical** | P1 | EP-14 | [#11](https://github.com/vinh-code/HW02-Software-Testing/issues/11) |
+| BUG-FR09-05 | Ô "Tổng tiền thanh toán" sửa được, nên áp được mã khi giỏ chưa đủ ngưỡng | **Critical** | P1 | EP-15 | [#12](https://github.com/vinh-code/HW02-Software-Testing/issues/12) |
+| BUG-FR09-06 | API phân biệt chữ hoa/thường và không bỏ khoảng trắng của mã, không nhất quán với UI | Minor | P3 | EP-03, EP-04 (kênh API) | [#13](https://github.com/vinh-code/HW02-Software-Testing/issues/13) |
 
 ---
 
