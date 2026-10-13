@@ -38,7 +38,7 @@ Mỗi bước tương ứng 1 file trong thư mục tính năng và 1 git commit
 
 | Tính năng | TC thiết kế | Đã thực thi | Pass | Fail | Chưa thực thi | Bug |
 |---|---|---|---|---|---|---|
-| FR-01 | – | – | – | – | – | – |
+| FR-01 | 42 (19 EP + 21 BVA + 2 bổ sung) | 42 | 1 | 41 | 0 | 7 |
 | FR-09 | – | – | – | – | – | – |
 | FR-15 | – | – | – | – | – | – |
 | FR-20 Mobile | – | – | – | – | – | – |
