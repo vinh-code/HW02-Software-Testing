@@ -1,0 +1,8 @@
+{
+  "outDir": "screenshots",
+  "cards": [
+    { "file": "BUG-FR15-07_api_before.png", "title": "BUG-FR15-07: trước khi sửa, sản phẩm id 5", "method": "GET", "path": "/api/products/5" },
+    { "file": "BUG-FR15-07_api_partial_put.png", "title": "BUG-FR15-07 (EP-23): PUT chỉ gửi giá mới, không gửi tên/danh mục", "method": "PUT", "path": "/api/products/5", "auth": "admin", "body": { "price": 4200000 } },
+    { "file": "BUG-FR15-07_api_after.png", "title": "BUG-FR15-07: sau khi sửa, tên/mô tả/ảnh/danh mục bị xóa trắng (null)", "method": "GET", "path": "/api/products/5" }
+  ]
+}

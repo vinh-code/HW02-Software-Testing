@@ -10,6 +10,7 @@
 | BUG-FR15-04 | Không kiểm tra tên: chấp nhận tên dài hơn 255 ký tự, tên chỉ có khoảng trắng; API chấp nhận tên rỗng | Major | P2 | EP-06, EP-07, EP-08, EP-21, BVA-02, BVA-07, BVA-13 | [#19](https://github.com/vinh-code/HW02-Software-Testing/issues/19) |
 | BUG-FR15-05 | API chấp nhận danh mục rỗng hoặc không tồn tại | Major | P2 | EP-13, EP-14 | [#20](https://github.com/vinh-code/HW02-Software-Testing/issues/20) |
 | BUG-FR15-06 | Sửa/Xóa sản phẩm không tồn tại vẫn trả về thành công (HTTP 200) | Minor | P3 | EP-15, EP-16 | [#21](https://github.com/vinh-code/HW02-Software-Testing/issues/21) |
+| BUG-FR15-07 | Sửa sản phẩm mà thiếu trường trong request thì xóa trắng tên, mô tả, ảnh, danh mục | Major | P2 | EP-23 (TC bổ sung sau gap analysis) |
 
 ---
 
@@ -122,6 +123,24 @@
 **Kết quả thực tế:** HTTP 200 `{"message":"Product updated"}` / `{"message":"Product deleted"}`.
 
 **Minh chứng:** [BUG-FR15-06_api_update_missing.png](screenshots/BUG-FR15-06_api_update_missing.png)
+
+---
+
+## BUG-FR15-07: Sửa sản phẩm mà thiếu trường trong request thì xóa trắng tên, mô tả, ảnh, danh mục
+
+- **Tính năng & kỹ thuật:** FR-15 R2, R4, R5. EP với lớp bổ sung EC22 "thiếu trường khi Sửa" (xem [07_ai_gap_analysis.md](07_ai_gap_analysis.md)).
+- **Severity:** Major. Một client chỉ muốn đổi giá (ví dụ một công cụ cập nhật giá hàng loạt) sẽ **mất dữ liệu** tên và danh mục của sản phẩm. Kết quả là một sản phẩm vi phạm R2/R4 tồn tại trong CSDL.
+
+**Các bước tái hiện**
+1. `GET /api/products/5`: SP "Bàn phím cơ Keychron Q1", danh mục 3.
+2. `PUT /api/products/5` (token admin), body chỉ có `{"price": 4200000}`.
+3. `GET /api/products/5`.
+
+**Kết quả mong đợi:** Từ chối (HTTP 400, thiếu tên/danh mục bắt buộc), **hoặc** chỉ cập nhật giá và giữ nguyên các trường khác.
+
+**Kết quả thực tế:** HTTP 200 `"Product updated"`. SP id 5 còn `price = 4200000`, nhưng `name`, `description`, `imageUrl`, `category_id` đều thành **`null`**.
+
+**Minh chứng:** [BUG-FR15-07_api_before.png](screenshots/BUG-FR15-07_api_before.png), [BUG-FR15-07_api_partial_put.png](screenshots/BUG-FR15-07_api_partial_put.png), [BUG-FR15-07_api_after.png](screenshots/BUG-FR15-07_api_after.png)
 
 ---
 

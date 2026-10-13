@@ -1,0 +1,53 @@
+{
+  "executedAt": "2026-10-13T07:33:22.367Z",
+  "results": [
+    {
+      "id": "EP-23",
+      "request": {
+        "method": "PUT",
+        "body": {
+          "price": 1700000
+        }
+      },
+      "status": 200,
+      "response": {
+        "message": "Product updated"
+      },
+      "before": {
+        "id": 70,
+        "name": "F15 target EP-23",
+        "price": 1500000,
+        "description": "F15-EP-23-api-target",
+        "imageUrl": "https://placehold.co/300x300/png?text=F15",
+        "category_id": 2
+      },
+      "after": {
+        "id": 70,
+        "name": null,
+        "price": 1700000,
+        "description": null,
+        "imageUrl": null,
+        "category_id": null
+      },
+      "expected": "O2 (thiếu tên/danh mục bắt buộc) hoặc chỉ đổi giá, giữ nguyên các trường khác",
+      "pass": false
+    },
+    {
+      "id": "BVA-14",
+      "nameChars": 255,
+      "nameBytes": 329,
+      "ui": {
+        "created": 1,
+        "storedChars": 255,
+        "intact": true
+      },
+      "api": {
+        "status": 200,
+        "storedChars": 255,
+        "intact": true
+      },
+      "expected": "O1a, lưu đủ 255 ký tự",
+      "pass": true
+    }
+  ]
+}

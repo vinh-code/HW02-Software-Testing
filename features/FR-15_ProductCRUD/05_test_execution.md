@@ -83,13 +83,23 @@ EP-02 cho thấy CSDL đúng, chỉ bảng hiển thị sai. Để đánh giá m
 
 → Lỗi hiển thị dẫn tới **hỏng dữ liệu thật** trong một thao tác rất bình thường của admin.
 
+## 5.5b TC bổ sung sau AI gap analysis (chạy 2026-10-13, script [`scripts/fr15_supplementary.js`](../../scripts/fr15_supplementary.js))
+
+Hai lớp/điểm mới được thêm ở [Bước 7](07_ai_gap_analysis.md). Dữ liệu thô: [`results_fr15_supplementary.json`](results_fr15_supplementary.json).
+
+| TC | Lớp / điểm mới | Dữ liệu | Mong đợi | Thực tế | KQ |
+|---|---|---|---|---|---|
+| EP-23 | EC22: Sửa **thiếu trường** (trường vắng mặt, khác với chuỗi rỗng) | `PUT /api/products/<id>` body `{"price":1700000}` | O2 (thiếu tên/danh mục bắt buộc), hoặc chỉ đổi giá và giữ nguyên các trường khác | HTTP 200. Giá đổi, nhưng **tên, mô tả, ảnh, danh mục đều thành `null`** | ❌ [ảnh](screenshots/BUG-FR15-07_api_after.png) |
+| BVA-14 | V1 UB với **ký tự tiếng Việt có dấu** (kiểm tra giả định A2) | Tên 255 ký tự `Tai nghe chống ồn – …` (329 byte UTF-8), UI + API | O1a, lưu đủ 255 ký tự | Lưu đủ 255 ký tự trên cả hai kênh | ✅ [ảnh](screenshots/BVA-14_ui.png) |
+
 ## 5.6 Tổng hợp
 
 | Nhóm | Số TC | Pass | Fail | Không thực thi |
 |---|---|---|---|---|
 | EP | 22 | 4 (EP-01, 03, 04, 05) | 18 | 0 |
 | BVA | 13 | 8 (BVA-01, 03, 04, 05, 06, 09, 10, 11) | 5 (BVA-02, 07, 08, 12, 13) | 0 |
-| **Tổng** | **35** | **12** | **23** | **0** |
+| Bổ sung (gap) | 2 | 1 (BVA-14) | 1 (EP-23) | 0 |
+| **Tổng** | **37** | **13** | **24** | **0** |
 
 Theo kênh: API 35 lượt (14 Pass, 21 Fail), UI 27 lượt (15 Pass, 12 Fail). Có 27 ảnh UI, 2 ảnh trang web (EP-04) và 3 ảnh thăm dò.
 
