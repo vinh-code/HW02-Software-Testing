@@ -10,6 +10,8 @@
 | BUG-FR09-04 | Né giới hạn số lần dùng mã bằng cách bỏ `user_id` khỏi request | **Critical** | P1 | EP-14 | [#11](https://github.com/vinh-code/HW02-Software-Testing/issues/11) |
 | BUG-FR09-05 | Ô "Tổng tiền thanh toán" sửa được, nên áp được mã khi giỏ chưa đủ ngưỡng | **Critical** | P1 | EP-15 | [#12](https://github.com/vinh-code/HW02-Software-Testing/issues/12) |
 | BUG-FR09-06 | API phân biệt chữ hoa/thường và không bỏ khoảng trắng của mã, không nhất quán với UI | Minor | P3 | EP-03, EP-04 (kênh API) | [#13](https://github.com/vinh-code/HW02-Software-Testing/issues/13) |
+| BUG-FR09-07 | Mã hết hạn "hôm nay" vẫn dùng được nếu `expired_at` có kèm giờ (so sánh theo thời điểm, không theo ngày) | Minor | P3 | EP-16 (TC bổ sung sau gap analysis) |
+| BUG-FR09-08 | Thành tiền âm và đơn hàng có tổng âm khi mức giảm `fixed` lớn hơn tổng đơn | Major | P2 | EP-17 (TC bổ sung sau gap analysis) |
 
 ---
 
@@ -121,6 +123,42 @@
 **Kết quả thực tế:** HTTP **404** *"Mã giảm giá không tồn tại hoặc đã bị vô hiệu hóa"*. Cùng dữ liệu nhập qua UI thì thành công ([EP-04_ui.png](screenshots/EP-04_ui.png)). Việc chuẩn hóa mã chỉ nằm ở phía client.
 
 **Minh chứng:** [BUG-FR09-06_api_lowercase.png](screenshots/BUG-FR09-06_api_lowercase.png), [BUG-FR09-06_api_whitespace.png](screenshots/BUG-FR09-06_api_whitespace.png)
+
+---
+
+## BUG-FR09-07: Mã hết hạn "hôm nay" vẫn dùng được nếu `expired_at` có kèm giờ
+
+- **Tính năng & kỹ thuật:** FR-09 C2, EP với lớp bổ sung EC22 (xem [07_ai_gap_analysis.md](07_ai_gap_analysis.md)), giả định A2
+- **Severity:** Minor. Phụ thuộc vào cách hiểu "ngày hiện tại phải trước `expired_at`" (A2). Dù hiểu theo cách nào thì hành vi hiện tại vẫn **không nhất quán**: cùng hết hạn hôm nay, mã lưu `2026-10-13` bị từ chối, còn mã lưu `2026-10-13 23:59:00` lại được chấp nhận.
+
+**Các bước tái hiện**
+1. Admin tạo coupon: `POST /api/admin/coupons` với `{"code":"EXPLATE","type":"percent","discount_value":10,"min_order_amount":300000,"expired_at":"<hôm nay> 23:59:00","max_uses_per_user":1}`.
+2. Đăng nhập user, giỏ 1.000.000 ₫, áp mã `EXPLATE` trước 23:59.
+3. So sánh với mã `EXP0D` có `expired_at = "<hôm nay>"`.
+
+**Kết quả mong đợi:** Cả hai mã đều bị từ chối "Mã giảm giá đã hết hạn", vì ngày hiện tại không trước ngày hết hạn.
+
+**Kết quả thực tế:** `EXPLATE` được áp dụng thành công, còn `EXP0D` bị từ chối. Hệ thống so sánh **thời điểm** hiện tại với `expired_at` thay vì so sánh **ngày**. Ngoài ra, chuỗi chỉ có ngày được hiểu là 00:00 **UTC** (07:00 giờ Việt Nam), nên kết quả của mã hết hạn hôm nay còn phụ thuộc giờ chạy test (rủi ro, chưa kiểm chứng trong khung 00:00–07:00).
+
+**Minh chứng:** [EP-16_ui.png](screenshots/EP-16_ui.png), [EP-09_ui.png](screenshots/EP-09_ui.png)
+
+---
+
+## BUG-FR09-08: Thành tiền âm và đơn hàng có tổng âm khi mức giảm `fixed` lớn hơn tổng đơn
+
+- **Tính năng & kỹ thuật:** FR-09 công thức R8, EP với lớp đầu ra bổ sung EC23 (xem [07_ai_gap_analysis.md](07_ai_gap_analysis.md))
+- **Severity:** Major. Hệ thống tạo đơn hàng với tổng tiền **âm**. FR-17 cho phép `min_order_amount = 0`, nên Admin tạo được coupon kiểu này một cách hợp lệ.
+
+**Các bước tái hiện**
+1. Admin tạo coupon `{"code":"BIG200K","type":"fixed","discount_value":200000,"min_order_amount":0,"expired_at":"2099-12-31","max_uses_per_user":1}`.
+2. User đăng nhập, thêm sản phẩm giá 100.000 ₫ vào giỏ, vào trang thanh toán, áp `BIG200K`.
+3. Bấm **Xác Nhận Thanh Toán**, rồi mở Admin → **Đơn hàng**.
+
+**Kết quả mong đợi:** Mức giảm tối đa bằng tổng đơn (thành tiền 0 ₫), hoặc mã bị từ chối. Không bao giờ có thành tiền âm.
+
+**Kết quả thực tế:** "Thành tiền: **-100,000 ₫**", "Tổng thanh toán: -100,000 ₫". Thanh toán thành công và tạo đơn #3 có `total_amount = -100000`.
+
+**Minh chứng:** [EP-17_ui.png](screenshots/EP-17_ui.png), [BUG-FR09-08_admin_negative_order.png](screenshots/BUG-FR09-08_admin_negative_order.png)
 
 ---
 

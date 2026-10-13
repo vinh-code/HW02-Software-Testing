@@ -221,7 +221,9 @@ async function runUi(browser, tc, prep) {
   return res;
 }
 
-(async () => {
+module.exports = { call, login, freshUser, uiLogin, uiAddToCart, uiGoCheckout, uiApply, day, API, WEB, SHOT_DIR, OUT_DIR };
+
+if (require.main === module) (async () => {
   fs.mkdirSync(SHOT_DIR, { recursive: true });
   const admin = (await login("admin@eshop.com", "Admin123!")).token;
   const prep = await prepare(admin);

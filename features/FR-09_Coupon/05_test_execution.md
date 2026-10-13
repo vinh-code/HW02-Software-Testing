@@ -79,13 +79,25 @@ Ký hiệu: "−a → b" nghĩa là giảm a, thành tiền b. ✅ đúng, ❌ s
 - **V4 (số lần dùng):** đúng tại cả 3 điểm khi client gửi đúng `user_id` (nhưng xem EP-14).
 - **Công thức `percent`:** sai ở mọi điểm. Từ các cặp (total, discount) đo được (1.000.000 → −9.000.000; 300.001 → −2.700.009), suy ra hệ thống tính `discount = total × (1 − 10)` thay vì `total × 10 / 100`.
 
+## 5.4b TC bổ sung sau AI gap analysis (chạy 2026-10-13 14:22, script [`scripts/fr09_supplementary.js`](../../scripts/fr09_supplementary.js))
+
+Hai lớp mới được thêm ở [Bước 7](07_ai_gap_analysis.md). Dữ liệu thô: [`results_fr09_supplementary.json`](results_fr09_supplementary.json).
+
+| TC | Lớp mới | Dữ liệu | Mong đợi | Thực tế (API = UI) | KQ |
+|---|---|---|---|---|---|
+| EP-16 | EC22: `expired_at` là hôm nay **kèm giờ** muộn hơn hiện tại | Coupon `EXPLATE` (như SAVE10), `expired_at = 2026-10-13 23:59:00`, giỏ 1.000.000 | O2: hết hạn (A2: so sánh theo ngày) | HTTP 200, **áp dụng thành công**. Trong khi `EXP0D` (`2026-10-13`, không có giờ) bị từ chối ở EP-09 | ❌ [ảnh](screenshots/EP-16_ui.png) |
+| EP-17 | EC23: mức giảm `fixed` **lớn hơn** tổng đơn | Coupon `BIG200K` (fixed 200.000, min 0), giỏ 100.000 | O1 với thành tiền ≥ 0 | Thành tiền **−100.000 ₫**; bấm thanh toán thì tạo **đơn #3 có `total_amount = −100000`** | ❌ [ảnh](screenshots/EP-17_ui.png), [đơn hàng](screenshots/BUG-FR09-08_admin_negative_order.png) |
+
+Ghi chú: EP-17 được chạy lại với user mới (hậu tố `r`). Ở lần chạy đầu, email của TC trùng với lần thử trước. Vì FR-01 cho phép email trùng (BUG-FR01-03), lệnh đăng nhập lấy về tài khoản cũ đã dùng hết lượt mã.
+
 ## 5.5 Tổng hợp
 
 | Nhóm | Số TC | Pass | Fail | Không thực thi |
 |---|---|---|---|---|
 | EP | 15 | 8 (EP-02, 05, 06, 07, 08, 09, 10, 13) | 7 (EP-01, 03, 04, 11, 12, 14, 15) | 0 |
 | BVA | 13 | 7 (BVA-02, 05, 07, 08, 11, 12, 13) | 6 (BVA-01, 03, 04, 06, 09, 10) | 0 |
-| **Tổng** | **28** | **15** | **13** | **0** |
+| Bổ sung (gap) | 2 | 0 | 2 (EP-16, EP-17) | 0 |
+| **Tổng** | **30** | **15** | **15** | **0** |
 
 Theo kênh: API 27 lượt chạy (15 Pass, 12 Fail), UI 26 lượt chạy (16 Pass, 10 Fail) + 1 ảnh phụ (EP-13 lần 1). Tổng cộng 27 screenshot.
 
@@ -96,3 +108,5 @@ Theo kênh: API 27 lượt chạy (15 Pass, 12 Fail), UI 26 lượt chạy (16 P
 4. Né giới hạn số lần dùng bằng cách bỏ `user_id`: EP-14.
 5. Tổng tiền trên Checkout sửa được, nên né được ngưỡng tối thiểu: EP-15.
 6. API phân biệt hoa/thường và không bỏ khoảng trắng, không nhất quán với UI: EP-03, EP-04 (API).
+7. Hết hạn được so theo thời điểm, không theo ngày: EP-16 (bổ sung).
+8. Thành tiền âm khi mức giảm lớn hơn tổng đơn: EP-17 (bổ sung).

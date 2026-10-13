@@ -1,0 +1,73 @@
+{
+  "executedAt": "2026-10-13T07:22:27.493Z",
+  "localTime": "2026-10-13 14:22",
+  "results": [
+    {
+      "id": "EP-16",
+      "coupon": {
+        "code": "EXPLATE",
+        "type": "percent",
+        "discount_value": 10,
+        "min_order_amount": 300000,
+        "expired_at": "2026-10-13 23:59:00",
+        "max_uses_per_user": 1
+      },
+      "cart": 1000000,
+      "expected": "O2: hết hạn (expired_at là hôm nay, A2)",
+      "api": {
+        "status": 200,
+        "response": {
+          "success": true,
+          "coupon_id": 9,
+          "discount_amount": -9000000,
+          "final_amount": 10000000,
+          "message": "Áp dụng thành công! Giảm 10%"
+        }
+      },
+      "ui": {
+        "success": true,
+        "msg": "✅ Áp dụng thành công! Giảm 10%",
+        "discount": -9000000,
+        "final": 10000000
+      },
+      "order": null
+    },
+    {
+      "id": "EP-17",
+      "coupon": {
+        "code": "BIG200K",
+        "type": "fixed",
+        "discount_value": 200000,
+        "min_order_amount": 0,
+        "expired_at": "2099-12-31",
+        "max_uses_per_user": 1
+      },
+      "cart": 100000,
+      "expected": "O1 với final_amount ≥ 0 (không thể thanh toán số âm)",
+      "api": {
+        "status": 200,
+        "response": {
+          "success": true,
+          "coupon_id": 10,
+          "discount_amount": 200000,
+          "final_amount": -100000,
+          "message": "Áp dụng thành công! Giảm 200,000 ₫"
+        }
+      },
+      "ui": {
+        "success": true,
+        "msg": "✅ Áp dụng thành công! Giảm 200,000 ₫",
+        "discount": 200000,
+        "final": -100000
+      },
+      "order": {
+        "id": 3,
+        "user_id": 65,
+        "total_amount": -100000,
+        "status": "pending",
+        "shipping_address": null,
+        "created_at": "2026-10-13 07:22:31"
+      }
+    }
+  ]
+}
