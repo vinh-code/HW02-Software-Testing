@@ -1,0 +1,15 @@
+{
+  "outDir": "screenshots",
+  "cards": [
+    { "file": "BUG-FR09-01_api_percent_formula.png", "title": "BUG-FR09-01 (EP-01): SAVE10 (10%) trên đơn 1.000.000 ₫ trả discount âm, final gấp 10 lần", "method": "POST", "path": "/api/apply-coupon", "auth": "user", "body": { "code": "SAVE10", "total_amount": 1000000, "user_id": 2 } },
+    { "file": "BUG-FR09-02_api_save10_equal_min.png", "title": "BUG-FR09-02 (BVA-03): SAVE10, total_amount = min_order_amount = 300.000 bị từ chối", "method": "POST", "path": "/api/apply-coupon", "auth": "user", "body": { "code": "SAVE10", "total_amount": 300000, "user_id": 2 } },
+    { "file": "BUG-FR09-02_api_bigbuy_equal_min.png", "title": "BUG-FR09-02 (BVA-06): BIGBUY, total_amount = min_order_amount = 500.000 bị từ chối", "method": "POST", "path": "/api/apply-coupon", "auth": "user", "body": { "code": "BIGBUY", "total_amount": 500000, "user_id": 2 } },
+    { "file": "BUG-FR09-03_api_no_token.png", "title": "BUG-FR09-03 (EP-11): Áp mã thành công khi KHÔNG có token", "method": "POST", "path": "/api/apply-coupon", "body": { "code": "VIP100", "total_amount": 1000000, "user_id": null } },
+    { "file": "BUG-FR09-03_api_fake_token.png", "title": "BUG-FR09-03 (EP-12): Áp mã thành công với token giả", "method": "POST", "path": "/api/apply-coupon", "token": "abc.def.ghi", "body": { "code": "VIP100", "total_amount": 1000000 } },
+    { "title": "Chuẩn bị: test@eshop.com dùng SAVE10 1 lần (giống UI gọi sau khi thanh toán)", "method": "POST", "path": "/api/coupon-usage", "auth": "user", "body": { "coupon_id": 1 } },
+    { "file": "BUG-FR09-04_api_with_user_id.png", "title": "BUG-FR09-04 (EP-13): test@eshop.com đã dùng SAVE10 1/1 lần, gửi user_id thì bị chặn (đúng)", "method": "POST", "path": "/api/apply-coupon", "auth": "user", "body": { "code": "SAVE10", "total_amount": 1000000, "user_id": 2 } },
+    { "file": "BUG-FR09-04_api_without_user_id.png", "title": "BUG-FR09-04 (EP-14): cùng token đó, bỏ user_id khỏi body thì lại áp dụng được", "method": "POST", "path": "/api/apply-coupon", "auth": "user", "body": { "code": "SAVE10", "total_amount": 1000000 } },
+    { "file": "BUG-FR09-06_api_lowercase.png", "title": "BUG-FR09-06 (EP-03): API từ chối mã chữ thường save10 (UI thì chấp nhận)", "method": "POST", "path": "/api/apply-coupon", "auth": "user", "body": { "code": "save10", "total_amount": 1000000, "user_id": 2 } },
+    { "file": "BUG-FR09-06_api_whitespace.png", "title": "BUG-FR09-06 (EP-04): API từ chối mã có khoảng trắng 2 đầu \" VIP100 \"", "method": "POST", "path": "/api/apply-coupon", "auth": "user", "body": { "code": " VIP100 ", "total_amount": 1000000, "user_id": 2 } }
+  ]
+}

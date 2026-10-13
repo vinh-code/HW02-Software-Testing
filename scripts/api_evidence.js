@@ -1,6 +1,7 @@
 // Tạo ảnh minh chứng cho bug ở tầng API: gửi request thật tới backend rồi render request/response thành ảnh PNG.
 // Dùng: node api_evidence.js <spec.json>
-//   spec.json: { "outDir": "...", "cards": [ { "file": "x.png", "title": "...", "method": "POST", "path": "/api/...", "body": {...}, "auth": "admin"|"user"|null } ] }
+//   spec.json: { "outDir": "...", "cards": [ { "file": "x.png", "title": "...", "method": "POST", "path": "/api/...", "body": {...}, "auth": "admin"|"user"|null, "token": "<token tùy ý>" } ] }
+//   Card không có "file" là bước chuẩn bị dữ liệu: vẫn gửi request nhưng không chụp ảnh.
 const fs = require("fs");
 const path = require("path");
 const { chromium } = require("playwright");
@@ -21,14 +22,16 @@ async function login(email, password) {
   for (const c of spec.cards) {
     const headers = { "Content-Type": "application/json" };
     if (c.auth) headers.Authorization = `Bearer ${tokens[c.auth]}`;
+    if (c.token) headers.Authorization = `Bearer ${c.token}`;
     const r = await fetch(`${API}${c.path}`, { method: c.method, headers, body: c.body ? JSON.stringify(c.body) : undefined });
     let text = await r.text();
     try { text = JSON.stringify(JSON.parse(text), null, 2); } catch (_) {}
+    if (!c.file) { console.log(`(chuẩn bị) ${c.method} ${c.path}: HTTP ${r.status}`); continue; }
     if (text.length > 1800) text = text.slice(0, 1800) + "\n…";
     const html = `<html><body style="margin:0;font-family:ui-monospace,Menlo,monospace;background:#0f172a;color:#e2e8f0">
       <div style="padding:16px 20px">
         <div style="font:600 15px system-ui;color:#fbbf24;margin-bottom:10px">${esc(c.title)}</div>
-        <div style="color:#93c5fd">${esc(c.method)} ${esc(API + c.path)}${c.auth ? ` <span style="color:#94a3b8">(Bearer token: ${c.auth})</span>` : ""}</div>
+        <div style="color:#93c5fd">${esc(c.method)} ${esc(API + c.path)}${c.auth ? ` <span style="color:#94a3b8">(Bearer token: ${c.auth})</span>` : c.token ? ` <span style="color:#94a3b8">(Bearer ${esc(c.token)})</span>` : ` <span style="color:#94a3b8">(không có Authorization header)</span>`}</div>
         ${c.body ? `<pre style="background:#1e293b;padding:10px;border-radius:6px;white-space:pre-wrap">${esc(JSON.stringify(c.body, null, 2))}</pre>` : ""}
         <div style="color:${r.ok ? "#4ade80" : "#f87171"};margin-top:8px">HTTP ${r.status}</div>
         <pre style="background:#1e293b;padding:10px;border-radius:6px;white-space:pre-wrap">${esc(text)}</pre>
