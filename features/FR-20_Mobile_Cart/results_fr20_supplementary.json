@@ -1,0 +1,35 @@
+{
+  "executedAt": "2026-10-13T07:43:26.646Z",
+  "device": "Pixel 5 (Playwright emulation), Expo Web",
+  "results": [
+    {
+      "id": "EP-19",
+      "pass": true,
+      "observed": "1 dòng, SL 2, thành tiền 12000000, tổng 12000000",
+      "notes": [
+        "ô SL chi tiết sau khi nhập \"1\" = \"1\"",
+        "phản hồi sau khi thêm: nút đổi thành \"Đã thêm\""
+      ],
+      "cart": {
+        "lines": [
+          {
+            "name": "Tai nghe AirPods Pro 2",
+            "price": 6000000,
+            "lineTotal": 12000000,
+            "qty": "2"
+          }
+        ],
+        "totalLabel": "Tổng tạm tính",
+        "total": 12000000,
+        "headerCount": 1,
+        "empty": false,
+        "hasContinue": false,
+        "hasPlusMinus": false,
+        "images": 0
+      },
+      "notExecutable": false,
+      "inferred": false,
+      "shot": "EP-19_mobile.png"
+    }
+  ]
+}

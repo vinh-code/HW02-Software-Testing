@@ -83,13 +83,22 @@ Script [`fr20_typing_probe.js`](../../scripts/fr20_typing_probe.js) mô phỏng 
 
 → Trên điện thoại, người dùng **không thể** nhập số lượng mong muốn bằng bàn phím: muốn 5 thì nhận 16. [Ảnh](screenshots/PROBE_typing_mobile.png)
 
+## 5.5b TC bổ sung sau AI gap analysis
+
+Lớp mới được thêm ở [Bước 7](07_ai_gap_analysis.md). Dữ liệu thô: [`results_fr20_supplementary.json`](results_fr20_supplementary.json).
+
+| TC | Lớp mới | Bước chính | Mong đợi | Thực tế | KQ |
+|---|---|---|---|---|---|
+| EP-19 | EC20: SP mà API chi tiết trả `price` **kiểu chuỗi** (`GET /api/products/4` → `"6000000"`, còn API danh sách trả số) | Chi tiết B (AirPods, id 4), SL 1 → Thêm; danh sách → Thêm B | 1 dòng, SL 2, Thành tiền 12.000.000 | 1 dòng, SL 2, 12,000,000 ₫ | ✅ [ảnh](screenshots/EP-19_mobile.png) |
+
 ## 5.6 Tổng hợp
 
 | Nhóm | Số TC | Pass | Fail | Không thực thi |
 |---|---|---|---|---|
 | EP | 18 | 2 (EP-02, EP-03) | 16 (EP-16 tính theo EP-16R) | 0 |
 | BVA | 12 | 4 (BVA-01, 03, 04, 05) | 8 | 0 |
-| **Tổng** | **30** | **6** | **24** | **0** |
+| Bổ sung (gap) | 1 | 1 (EP-19) | 0 | 0 |
+| **Tổng** | **31** | **7** | **24** | **0** |
 
 Có 31 lượt chạy (30 TC và EP-16R), 31 ảnh TC và 1 ảnh thăm dò. EP-05 và BVA-10 → BVA-12 được tính là **Fail** (không phải "chưa thực thi"), vì việc thiếu nút +/− chính là lỗi so với R3.
 

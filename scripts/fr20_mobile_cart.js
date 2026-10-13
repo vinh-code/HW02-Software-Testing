@@ -185,6 +185,17 @@ const TCS = {
   "EP-17": cartEdit(2, "abc", null, false),
   "EP-18": cartEdit(2, "", null, false),
 
+  // EP-19 (bổ sung sau gap analysis): SP có giá trả về KIỂU CHUỖI ở API chi tiết (id chẵn) — thêm từ chi tiết rồi từ danh sách
+  "EP-19": async ({ page, notes }) => {
+    await addFromDetail(page, B_ID, "1", notes);
+    await goHome(page);
+    await addFromList(page, B_ID);
+    await openCart(page);
+    const c = await readCart(page);
+    const l = c.lines[0] || {};
+    return { c, pass: c.lines.length === 1 && Number(l.qty) === 2 && l.lineTotal === 12000000 && c.total === 12000000, why: `${c.lines.length} dòng, SL ${c.lines.map((x) => x.qty).join("+")}, thành tiền ${l.lineTotal}, tổng ${c.total}` };
+  },
+
   "BVA-01": detailValid("3", 3),
   "BVA-02": detailInvalid("0"),
   "BVA-03": detailValid("1", 1),

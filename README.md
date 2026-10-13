@@ -41,7 +41,7 @@ Mỗi bước tương ứng 1 file trong thư mục tính năng và 1 git commit
 | FR-01 | 42 (19 EP + 21 BVA + 2 bổ sung) | 42 | 1 | 41 | 0 | 7 |
 | FR-09 | 30 (15 EP + 13 BVA + 2 bổ sung) | 30 | 15 | 15 | 0 | 8 |
 | FR-15 | 37 (22 EP + 13 BVA + 2 bổ sung) | 37 | 13 | 24 | 0 | 7 |
-| FR-20 Mobile | – | – | – | – | – | – |
+| FR-20 Mobile | 31 (18 EP + 12 BVA + 1 bổ sung) | 31 | 7 | 24 | 0 | 6 |
 | **Tổng** | – | – | – | – | – | – |
 
 - **Video demo Agent Skills:** *(link YouTube)*
