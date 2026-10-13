@@ -10,8 +10,8 @@
 | BUG-FR09-04 | Né giới hạn số lần dùng mã bằng cách bỏ `user_id` khỏi request | **Critical** | P1 | EP-14 | [#11](https://github.com/vinh-code/HW02-Software-Testing/issues/11) |
 | BUG-FR09-05 | Ô "Tổng tiền thanh toán" sửa được, nên áp được mã khi giỏ chưa đủ ngưỡng | **Critical** | P1 | EP-15 | [#12](https://github.com/vinh-code/HW02-Software-Testing/issues/12) |
 | BUG-FR09-06 | API phân biệt chữ hoa/thường và không bỏ khoảng trắng của mã, không nhất quán với UI | Minor | P3 | EP-03, EP-04 (kênh API) | [#13](https://github.com/vinh-code/HW02-Software-Testing/issues/13) |
-| BUG-FR09-07 | Mã hết hạn "hôm nay" vẫn dùng được nếu `expired_at` có kèm giờ (so sánh theo thời điểm, không theo ngày) | Minor | P3 | EP-16 (TC bổ sung sau gap analysis) |
-| BUG-FR09-08 | Thành tiền âm và đơn hàng có tổng âm khi mức giảm `fixed` lớn hơn tổng đơn | Major | P2 | EP-17 (TC bổ sung sau gap analysis) |
+| BUG-FR09-07 | Mã hết hạn "hôm nay" vẫn dùng được nếu `expired_at` có kèm giờ (so sánh theo thời điểm, không theo ngày) | Minor | P3 | EP-16 (TC bổ sung sau gap analysis) | [#14](https://github.com/vinh-code/HW02-Software-Testing/issues/14) |
+| BUG-FR09-08 | Thành tiền âm và đơn hàng có tổng âm khi mức giảm `fixed` lớn hơn tổng đơn | Major | P2 | EP-17 (TC bổ sung sau gap analysis) | [#15](https://github.com/vinh-code/HW02-Software-Testing/issues/15) |
 
 ---
 
