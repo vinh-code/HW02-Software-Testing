@@ -1,0 +1,8 @@
+{
+  "name": "domain-testing-skill-scripts",
+  "private": true,
+  "description": "Script hỗ trợ skill domain-testing (Playwright + gh CLI)",
+  "dependencies": {
+    "playwright": "1.49.1"
+  }
+}

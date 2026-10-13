@@ -44,6 +44,7 @@ Mỗi bước tương ứng 1 file trong thư mục tính năng và 1 git commit
 | FR-20 Mobile | 31 (18 EP + 12 BVA + 1 bổ sung) | 31 | 7 | 24 | 0 | 6 |
 | **Tổng** | – | – | – | – | – | – |
 
+- **Agent Skill:** [`skills/domain-testing/`](skills/domain-testing/) — dùng bằng `/domain-testing FR-xx` (xem README của skill)
 - **Video demo Agent Skills:** *(link YouTube)*
 
 ## 5. Bảng tự đánh giá (Self-Assessment)

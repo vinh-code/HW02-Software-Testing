@@ -6,7 +6,8 @@ const fs = require("fs");
 const path = require("path");
 const { chromium } = require("playwright");
 
-const API = "http://localhost:3000";
+// Cấu hình qua biến môi trường (mặc định cho EShop): API_BASE, ADMIN_EMAIL/ADMIN_PASSWORD, USER_EMAIL/USER_PASSWORD
+const API = process.env.API_BASE || "http://localhost:3000";
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
 async function login(email, password) {
@@ -16,7 +17,10 @@ async function login(email, password) {
 
 (async () => {
   const spec = JSON.parse(fs.readFileSync(process.argv[2], "utf8"));
-  const tokens = { admin: await login("admin@eshop.com", "Admin123!"), user: await login("test@eshop.com", "Test1234!") };
+  const tokens = {
+    admin: await login(process.env.ADMIN_EMAIL || "admin@eshop.com", process.env.ADMIN_PASSWORD || "Admin123!"),
+    user: await login(process.env.USER_EMAIL || "test@eshop.com", process.env.USER_PASSWORD || "Test1234!"),
+  };
   const browser = await chromium.launch();
   const page = await browser.newPage({ viewport: { width: 900, height: 400 } });
   for (const c of spec.cards) {
