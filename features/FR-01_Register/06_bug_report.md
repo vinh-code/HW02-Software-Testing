@@ -2,15 +2,15 @@
 
 **Môi trường chung:** EShop `85af3ba`, Backend `localhost:3000`, Web `localhost:5173`, Chromium 131, DB seed mặc định. Thời điểm phát hiện: 2026-10-13.
 
-| Bug ID | Tiêu đề | Severity | Priority | TC phát hiện |
-|---|---|---|---|---|
-| BUG-FR01-01 | UI từ chối mọi mật khẩu hợp lệ theo spec, chỉ chấp nhận mật khẩu có khoảng trắng | **Critical** | P1 | EP-01, EP-02, BVA-01/03/04/06/07/09/10/12/13/15/16/18/19/20/21 |
-| BUG-FR01-02 | API `/api/register` không kiểm tra độ mạnh mật khẩu | **Critical** | P1 | EP-11, EP-13…EP-17, BVA-05/08/11/14/17 |
-| BUG-FR01-03 | Không kiểm tra email trùng, cho tạo nhiều tài khoản cùng email | **Critical** | P1 | EP-09, EP-10, EP-09R, EP-10R |
-| BUG-FR01-04 | Không kiểm tra định dạng email (API và UI) | Major | P2 | EP-05…EP-07, EP-05R…EP-07R |
-| BUG-FR01-05 | Thiếu trường "Xác nhận mật khẩu" (UI và API) | Major | P2 | EP-18, EP-19 |
-| BUG-FR01-06 | API chấp nhận trường bắt buộc rỗng; họ tên chỉ có khoảng trắng được chấp nhận ở cả UI | Major | P2 | EP-03, EP-04, EP-04R, EP-08, EP-12, BVA-02 |
-| BUG-FR01-07 | Stored XSS: Họ tên chứa HTML được thực thi trên header sau khi đăng nhập | **Critical** | P1 | EP-21 (TC bổ sung sau gap analysis) |
+| Bug ID | Tiêu đề | Severity | Priority | TC phát hiện | Issue |
+|---|---|---|---|---|---|
+| BUG-FR01-01 | UI từ chối mọi mật khẩu hợp lệ theo spec, chỉ chấp nhận mật khẩu có khoảng trắng | **Critical** | P1 | EP-01, EP-02, BVA-01/03/04/06/07/09/10/12/13/15/16/18/19/20/21 | [#1](https://github.com/vinh-code/HW02-Software-Testing/issues/1) |
+| BUG-FR01-02 | API `/api/register` không kiểm tra độ mạnh mật khẩu | **Critical** | P1 | EP-11, EP-13…EP-17, BVA-05/08/11/14/17 | [#2](https://github.com/vinh-code/HW02-Software-Testing/issues/2) |
+| BUG-FR01-03 | Không kiểm tra email trùng, cho tạo nhiều tài khoản cùng email | **Critical** | P1 | EP-09, EP-10, EP-09R, EP-10R | [#3](https://github.com/vinh-code/HW02-Software-Testing/issues/3) |
+| BUG-FR01-04 | Không kiểm tra định dạng email (API và UI) | Major | P2 | EP-05…EP-07, EP-05R…EP-07R | [#4](https://github.com/vinh-code/HW02-Software-Testing/issues/4) |
+| BUG-FR01-05 | Thiếu trường "Xác nhận mật khẩu" (UI và API) | Major | P2 | EP-18, EP-19 | [#5](https://github.com/vinh-code/HW02-Software-Testing/issues/5) |
+| BUG-FR01-06 | API chấp nhận trường bắt buộc rỗng; họ tên chỉ có khoảng trắng được chấp nhận ở cả UI | Major | P2 | EP-03, EP-04, EP-04R, EP-08, EP-12, BVA-02 | [#6](https://github.com/vinh-code/HW02-Software-Testing/issues/6) |
+| BUG-FR01-07 | Stored XSS: Họ tên chứa HTML được thực thi trên header sau khi đăng nhập | **Critical** | P1 | EP-21 (TC bổ sung sau gap analysis) | [#7](https://github.com/vinh-code/HW02-Software-Testing/issues/7) |
 
 ---
 
