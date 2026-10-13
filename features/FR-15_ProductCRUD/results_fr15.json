@@ -1,0 +1,1383 @@
+{
+  "executedAt": "2026-10-13T07:29:53.348Z",
+  "results": [
+    {
+      "id": "EP-01",
+      "op": "create",
+      "set": {},
+      "auth": "admin",
+      "target": "own",
+      "expected": "O1a",
+      "api": {
+        "status": 200,
+        "response": {
+          "message": "Product created",
+          "id": 6
+        },
+        "targetId": null,
+        "created": [
+          {
+            "id": 6,
+            "name": "Tai nghe Sony WH-1000XM5",
+            "nameLen": 24,
+            "price": 1500000,
+            "category_id": 2
+          }
+        ],
+        "ok": true,
+        "pass": true
+      },
+      "ui": {
+        "created": [
+          {
+            "id": 7,
+            "name": "Tai nghe Sony WH-1000XM5",
+            "nameLen": 24,
+            "price": 1500000,
+            "category_id": 2
+          }
+        ],
+        "ok": true,
+        "notes": [],
+        "uiOthersChanged": null,
+        "shot": "EP-01_ui.png",
+        "pass": true
+      }
+    },
+    {
+      "id": "EP-02",
+      "op": "update",
+      "set": {
+        "name": "Tai nghe Sony WH-1000XM5 (đã sửa)",
+        "price": 1600000
+      },
+      "auth": "admin",
+      "target": "own",
+      "expected": "O1b",
+      "api": {
+        "status": 200,
+        "response": {
+          "message": "Product updated"
+        },
+        "targetId": 8,
+        "target": {
+          "id": 8,
+          "nameLen": 33,
+          "name": "Tai nghe Sony WH-1000XM5 (đã sửa)",
+          "price": 1600000
+        },
+        "othersChanged": [],
+        "ok": true,
+        "pass": true
+      },
+      "ui": {
+        "target": {
+          "id": 9,
+          "nameLen": 33,
+          "name": "Tai nghe Sony WH-1000XM5 (đã sửa)",
+          "price": 1600000
+        },
+        "othersChanged": [],
+        "ok": true,
+        "notes": [
+          "alert: \"Cập nhật thành công!\"",
+          "bảng UI: 7 SP khác bị đổi tên, ví dụ \"iPhone 15 Pro Max\" → \"Tai nghe Sony WH-1000XM5 (đã sửa)\""
+        ],
+        "uiOthersChanged": 7,
+        "shot": "EP-02_ui.png",
+        "pass": false
+      }
+    },
+    {
+      "id": "EP-03",
+      "op": "delete",
+      "set": {},
+      "auth": "admin",
+      "target": "own",
+      "expected": "O1c",
+      "api": {
+        "status": 200,
+        "response": {
+          "message": "Product deleted"
+        },
+        "targetId": 10,
+        "target": null,
+        "othersChanged": [],
+        "ok": true,
+        "pass": true
+      },
+      "ui": {
+        "target": null,
+        "othersChanged": [],
+        "ok": true,
+        "notes": [
+          "không có hộp thoại xác nhận xóa"
+        ],
+        "uiOthersChanged": 0,
+        "shot": "EP-03_ui.png",
+        "pass": true
+      }
+    },
+    {
+      "id": "EP-04",
+      "op": "create",
+      "set": {
+        "name": "(chuỗi 71 ký tự)"
+      },
+      "auth": "admin",
+      "target": "own",
+      "expected": "O1a",
+      "api": {
+        "status": 200,
+        "response": {
+          "message": "Product created",
+          "id": 12
+        },
+        "targetId": null,
+        "created": [
+          {
+            "id": 12,
+            "name": "Loa <img src=x onerror=\"window.__xss15=1… (len 71)",
+            "nameLen": 71,
+            "price": 1500000,
+            "category_id": 2
+          }
+        ],
+        "ok": true,
+        "pass": true
+      },
+      "ui": {
+        "created": [
+          {
+            "id": 13,
+            "name": "Loa <img src=x onerror=\"window.__xss15=1… (len 71)",
+            "nameLen": 71,
+            "price": 1500000,
+            "category_id": 2
+          }
+        ],
+        "ok": true,
+        "notes": [
+          "script chạy? admin=false, web home=false, web detail=false"
+        ],
+        "adminXss": false,
+        "webHomeText": "Loa <img src=x onerror=\"window.__xss15=1\"> JBL \"Pro\" & 'Bass' – Âm trầm",
+        "webHomeXss": false,
+        "webDetailText": "Loa <img src=x onerror=\"window.__xss15=1\"> JBL \"Pro\" & 'Bass' – Âm trầm",
+        "webDetailXss": false,
+        "uiOthersChanged": null,
+        "shot": "EP-04_ui.png",
+        "pass": true
+      }
+    },
+    {
+      "id": "EP-05",
+      "op": "create",
+      "set": {
+        "price": 1500.5
+      },
+      "auth": "admin",
+      "target": "own",
+      "expected": "O1a",
+      "api": {
+        "status": 200,
+        "response": {
+          "message": "Product created",
+          "id": 14
+        },
+        "targetId": null,
+        "created": [
+          {
+            "id": 14,
+            "name": "Tai nghe Sony WH-1000XM5",
+            "nameLen": 24,
+            "price": 1500.5,
+            "category_id": 2
+          }
+        ],
+        "ok": true,
+        "pass": true
+      },
+      "ui": {
+        "created": [
+          {
+            "id": 15,
+            "name": "Tai nghe Sony WH-1000XM5",
+            "nameLen": 24,
+            "price": 1500.5,
+            "category_id": 2
+          }
+        ],
+        "ok": true,
+        "notes": [],
+        "uiOthersChanged": null,
+        "shot": "EP-05_ui.png",
+        "pass": true
+      }
+    },
+    {
+      "id": "EP-06",
+      "op": "create",
+      "set": {
+        "name": ""
+      },
+      "auth": "admin",
+      "target": "own",
+      "expected": "O2",
+      "api": {
+        "status": 200,
+        "response": {
+          "message": "Product created",
+          "id": 16
+        },
+        "targetId": null,
+        "created": [
+          {
+            "id": 16,
+            "name": "",
+            "nameLen": 0,
+            "price": 1500000,
+            "category_id": 2
+          }
+        ],
+        "ok": false,
+        "pass": false
+      },
+      "ui": {
+        "created": [],
+        "ok": true,
+        "notes": [
+          "HTML5 chặn: \"Please fill out this field.\""
+        ],
+        "uiOthersChanged": null,
+        "shot": "EP-06_ui.png",
+        "pass": true
+      }
+    },
+    {
+      "id": "EP-07",
+      "op": "create",
+      "set": {
+        "name": "   "
+      },
+      "auth": "admin",
+      "target": "own",
+      "expected": "O2",
+      "api": {
+        "status": 200,
+        "response": {
+          "message": "Product created",
+          "id": 17
+        },
+        "targetId": null,
+        "created": [
+          {
+            "id": 17,
+            "name": "   ",
+            "nameLen": 3,
+            "price": 1500000,
+            "category_id": 2
+          }
+        ],
+        "ok": false,
+        "pass": false
+      },
+      "ui": {
+        "created": [
+          {
+            "id": 18,
+            "name": "   ",
+            "nameLen": 3,
+            "price": 1500000,
+            "category_id": 2
+          }
+        ],
+        "ok": false,
+        "notes": [],
+        "uiOthersChanged": null,
+        "shot": "EP-07_ui.png",
+        "pass": false
+      }
+    },
+    {
+      "id": "EP-08",
+      "op": "create",
+      "set": {
+        "name": "(chuỗi 300 ký tự)"
+      },
+      "auth": "admin",
+      "target": "own",
+      "expected": "O2",
+      "api": {
+        "status": 200,
+        "response": {
+          "message": "Product created",
+          "id": 19
+        },
+        "targetId": null,
+        "created": [
+          {
+            "id": 19,
+            "name": "BVA15-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx… (len 300)",
+            "nameLen": 300,
+            "price": 1500000,
+            "category_id": 2
+          }
+        ],
+        "ok": false,
+        "pass": false
+      },
+      "ui": {
+        "created": [
+          {
+            "id": 20,
+            "name": "BVA15-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx… (len 300)",
+            "nameLen": 300,
+            "price": 1500000,
+            "category_id": 2
+          }
+        ],
+        "ok": false,
+        "notes": [],
+        "uiOthersChanged": null,
+        "shot": "EP-08_ui.png",
+        "pass": false
+      }
+    },
+    {
+      "id": "EP-09",
+      "op": "create",
+      "set": {
+        "price": ""
+      },
+      "auth": "admin",
+      "target": "own",
+      "expected": "O2",
+      "api": {
+        "status": 200,
+        "response": {
+          "message": "Product created",
+          "id": 21
+        },
+        "targetId": null,
+        "created": [
+          {
+            "id": 21,
+            "name": "Tai nghe Sony WH-1000XM5",
+            "nameLen": 24,
+            "price": "",
+            "category_id": 2
+          }
+        ],
+        "ok": false,
+        "pass": false
+      },
+      "ui": {
+        "created": [
+          {
+            "id": 22,
+            "name": "Tai nghe Sony WH-1000XM5",
+            "nameLen": 24,
+            "price": "",
+            "category_id": 2
+          }
+        ],
+        "ok": false,
+        "notes": [],
+        "uiOthersChanged": null,
+        "shot": "EP-09_ui.png",
+        "pass": false
+      }
+    },
+    {
+      "id": "EP-10",
+      "op": "create",
+      "set": {
+        "price": 0
+      },
+      "auth": "admin",
+      "target": "own",
+      "expected": "O2",
+      "api": {
+        "status": 200,
+        "response": {
+          "message": "Product created",
+          "id": 23
+        },
+        "targetId": null,
+        "created": [
+          {
+            "id": 23,
+            "name": "Tai nghe Sony WH-1000XM5",
+            "nameLen": 24,
+            "price": 0,
+            "category_id": 2
+          }
+        ],
+        "ok": false,
+        "pass": false
+      },
+      "ui": {
+        "created": [
+          {
+            "id": 24,
+            "name": "Tai nghe Sony WH-1000XM5",
+            "nameLen": 24,
+            "price": 0,
+            "category_id": 2
+          }
+        ],
+        "ok": false,
+        "notes": [],
+        "uiOthersChanged": null,
+        "shot": "EP-10_ui.png",
+        "pass": false
+      }
+    },
+    {
+      "id": "EP-11",
+      "op": "create",
+      "set": {
+        "price": -1000
+      },
+      "auth": "admin",
+      "target": "own",
+      "expected": "O2",
+      "api": {
+        "status": 200,
+        "response": {
+          "message": "Product created",
+          "id": 25
+        },
+        "targetId": null,
+        "created": [
+          {
+            "id": 25,
+            "name": "Tai nghe Sony WH-1000XM5",
+            "nameLen": 24,
+            "price": -1000,
+            "category_id": 2
+          }
+        ],
+        "ok": false,
+        "pass": false
+      },
+      "ui": {
+        "created": [
+          {
+            "id": 26,
+            "name": "Tai nghe Sony WH-1000XM5",
+            "nameLen": 24,
+            "price": -1000,
+            "category_id": 2
+          }
+        ],
+        "ok": false,
+        "notes": [],
+        "uiOthersChanged": null,
+        "shot": "EP-11_ui.png",
+        "pass": false
+      }
+    },
+    {
+      "id": "EP-12",
+      "op": "create",
+      "set": {
+        "price": "abc"
+      },
+      "auth": "admin",
+      "target": "own",
+      "expected": "O2",
+      "api": {
+        "status": 200,
+        "response": {
+          "message": "Product created",
+          "id": 27
+        },
+        "targetId": null,
+        "created": [
+          {
+            "id": 27,
+            "name": "Tai nghe Sony WH-1000XM5",
+            "nameLen": 24,
+            "price": "abc",
+            "category_id": 2
+          }
+        ],
+        "ok": false,
+        "pass": false
+      },
+      "ui": {
+        "created": [
+          {
+            "id": 28,
+            "name": "Tai nghe Sony WH-1000XM5",
+            "nameLen": 24,
+            "price": "",
+            "category_id": 2
+          }
+        ],
+        "ok": false,
+        "notes": [
+          "gõ \"abc\" vào ô Giá → giá trị ô = \"\""
+        ],
+        "uiOthersChanged": null,
+        "shot": "EP-12_ui.png",
+        "pass": false
+      }
+    },
+    {
+      "id": "EP-13",
+      "op": "create",
+      "set": {
+        "category_id": null
+      },
+      "auth": "admin",
+      "target": "own",
+      "expected": "O2",
+      "api": {
+        "status": 200,
+        "response": {
+          "message": "Product created",
+          "id": 29
+        },
+        "targetId": null,
+        "created": [
+          {
+            "id": 29,
+            "name": "Tai nghe Sony WH-1000XM5",
+            "nameLen": 24,
+            "price": 1500000,
+            "category_id": null
+          }
+        ],
+        "ok": false,
+        "pass": false
+      }
+    },
+    {
+      "id": "EP-14",
+      "op": "create",
+      "set": {
+        "category_id": 999
+      },
+      "auth": "admin",
+      "target": "own",
+      "expected": "O2",
+      "api": {
+        "status": 200,
+        "response": {
+          "message": "Product created",
+          "id": 30
+        },
+        "targetId": null,
+        "created": [
+          {
+            "id": 30,
+            "name": "Tai nghe Sony WH-1000XM5",
+            "nameLen": 24,
+            "price": 1500000,
+            "category_id": 999
+          }
+        ],
+        "ok": false,
+        "pass": false
+      }
+    },
+    {
+      "id": "EP-15",
+      "op": "update",
+      "set": {},
+      "auth": "admin",
+      "target": 99999,
+      "expected": "O2",
+      "api": {
+        "status": 200,
+        "response": {
+          "message": "Product updated"
+        },
+        "targetId": 99999,
+        "target": null,
+        "othersChanged": [],
+        "ok": true,
+        "pass": false
+      }
+    },
+    {
+      "id": "EP-16",
+      "op": "delete",
+      "set": {},
+      "auth": "admin",
+      "target": 99999,
+      "expected": "O2",
+      "api": {
+        "status": 200,
+        "response": {
+          "message": "Product deleted"
+        },
+        "targetId": 99999,
+        "target": null,
+        "othersChanged": [],
+        "ok": true,
+        "pass": false
+      }
+    },
+    {
+      "id": "EP-17",
+      "op": "create",
+      "set": {},
+      "auth": "none",
+      "target": "own",
+      "expected": "O2",
+      "api": {
+        "status": 200,
+        "response": {
+          "message": "Product created",
+          "id": 31
+        },
+        "targetId": null,
+        "created": [
+          {
+            "id": 31,
+            "name": "Tai nghe Sony WH-1000XM5",
+            "nameLen": 24,
+            "price": 1500000,
+            "category_id": 2
+          }
+        ],
+        "ok": false,
+        "pass": false
+      }
+    },
+    {
+      "id": "EP-18",
+      "op": "create",
+      "set": {},
+      "auth": "user",
+      "target": "own",
+      "expected": "O2",
+      "api": {
+        "status": 200,
+        "response": {
+          "message": "Product created",
+          "id": 32
+        },
+        "targetId": null,
+        "created": [
+          {
+            "id": 32,
+            "name": "Tai nghe Sony WH-1000XM5",
+            "nameLen": 24,
+            "price": 1500000,
+            "category_id": 2
+          }
+        ],
+        "ok": false,
+        "pass": false
+      }
+    },
+    {
+      "id": "EP-19",
+      "op": "update",
+      "set": {
+        "name": "Bị sửa khi không có token"
+      },
+      "auth": "none",
+      "target": "own",
+      "expected": "O2",
+      "api": {
+        "status": 200,
+        "response": {
+          "message": "Product updated"
+        },
+        "targetId": 33,
+        "target": {
+          "id": 33,
+          "nameLen": 25,
+          "name": "Bị sửa khi không có token",
+          "price": 1500000
+        },
+        "othersChanged": [],
+        "ok": false,
+        "pass": false
+      }
+    },
+    {
+      "id": "EP-20",
+      "op": "delete",
+      "set": {},
+      "auth": "none",
+      "target": "own",
+      "expected": "O2",
+      "api": {
+        "status": 200,
+        "response": {
+          "message": "Product deleted"
+        },
+        "targetId": 34,
+        "target": null,
+        "othersChanged": [],
+        "ok": false,
+        "pass": false
+      }
+    },
+    {
+      "id": "EP-21",
+      "op": "update",
+      "set": {
+        "name": ""
+      },
+      "auth": "admin",
+      "target": "own",
+      "expected": "O2",
+      "api": {
+        "status": 200,
+        "response": {
+          "message": "Product updated"
+        },
+        "targetId": 35,
+        "target": {
+          "id": 35,
+          "nameLen": 0,
+          "name": "",
+          "price": 1500000
+        },
+        "othersChanged": [],
+        "ok": false,
+        "pass": false
+      },
+      "ui": {
+        "target": {
+          "id": 36,
+          "nameLen": 23,
+          "name": "F15 target F15-EP-21-ui",
+          "price": 1500000
+        },
+        "othersChanged": [],
+        "ok": true,
+        "notes": [
+          "HTML5 chặn: \"Please fill out this field.\""
+        ],
+        "uiOthersChanged": 0,
+        "shot": "EP-21_ui.png",
+        "pass": true
+      }
+    },
+    {
+      "id": "EP-22",
+      "op": "update",
+      "set": {
+        "price": 0
+      },
+      "auth": "admin",
+      "target": "own",
+      "expected": "O2",
+      "api": {
+        "status": 200,
+        "response": {
+          "message": "Product updated"
+        },
+        "targetId": 37,
+        "target": {
+          "id": 37,
+          "nameLen": 24,
+          "name": "Tai nghe Sony WH-1000XM5",
+          "price": 0
+        },
+        "othersChanged": [],
+        "ok": false,
+        "pass": false
+      },
+      "ui": {
+        "target": {
+          "id": 38,
+          "nameLen": 24,
+          "name": "Tai nghe Sony WH-1000XM5",
+          "price": 0
+        },
+        "othersChanged": [],
+        "ok": false,
+        "notes": [
+          "alert: \"Cập nhật thành công!\"",
+          "bảng UI: 17 SP khác bị đổi tên, ví dụ \"iPhone 15 Pro Max\" → \"Tai nghe Sony WH-1000XM5\""
+        ],
+        "uiOthersChanged": 17,
+        "shot": "EP-22_ui.png",
+        "pass": false
+      }
+    },
+    {
+      "id": "BVA-01",
+      "op": "create",
+      "set": {},
+      "auth": "admin",
+      "target": "own",
+      "expected": "O1a",
+      "api": {
+        "status": 200,
+        "response": {
+          "message": "Product created",
+          "id": 39
+        },
+        "targetId": null,
+        "created": [
+          {
+            "id": 39,
+            "name": "Tai nghe Sony WH-1000XM5",
+            "nameLen": 24,
+            "price": 1500000,
+            "category_id": 2
+          }
+        ],
+        "ok": true,
+        "pass": true
+      },
+      "ui": {
+        "created": [
+          {
+            "id": 40,
+            "name": "Tai nghe Sony WH-1000XM5",
+            "nameLen": 24,
+            "price": 1500000,
+            "category_id": 2
+          }
+        ],
+        "ok": true,
+        "notes": [],
+        "uiOthersChanged": null,
+        "shot": "BVA-01_ui.png",
+        "pass": true
+      }
+    },
+    {
+      "id": "BVA-02",
+      "op": "create",
+      "set": {
+        "name": ""
+      },
+      "auth": "admin",
+      "target": "own",
+      "expected": "O2",
+      "api": {
+        "status": 200,
+        "response": {
+          "message": "Product created",
+          "id": 41
+        },
+        "targetId": null,
+        "created": [
+          {
+            "id": 41,
+            "name": "",
+            "nameLen": 0,
+            "price": 1500000,
+            "category_id": 2
+          }
+        ],
+        "ok": false,
+        "pass": false
+      },
+      "ui": {
+        "created": [],
+        "ok": true,
+        "notes": [
+          "HTML5 chặn: \"Please fill out this field.\""
+        ],
+        "uiOthersChanged": null,
+        "shot": "BVA-02_ui.png",
+        "pass": true
+      }
+    },
+    {
+      "id": "BVA-03",
+      "op": "create",
+      "set": {
+        "name": "B"
+      },
+      "auth": "admin",
+      "target": "own",
+      "expected": "O1a",
+      "api": {
+        "status": 200,
+        "response": {
+          "message": "Product created",
+          "id": 42
+        },
+        "targetId": null,
+        "created": [
+          {
+            "id": 42,
+            "name": "B",
+            "nameLen": 1,
+            "price": 1500000,
+            "category_id": 2
+          }
+        ],
+        "ok": true,
+        "pass": true
+      },
+      "ui": {
+        "created": [
+          {
+            "id": 43,
+            "name": "B",
+            "nameLen": 1,
+            "price": 1500000,
+            "category_id": 2
+          }
+        ],
+        "ok": true,
+        "notes": [],
+        "uiOthersChanged": null,
+        "shot": "BVA-03_ui.png",
+        "pass": true
+      }
+    },
+    {
+      "id": "BVA-04",
+      "op": "create",
+      "set": {
+        "name": "BV"
+      },
+      "auth": "admin",
+      "target": "own",
+      "expected": "O1a",
+      "api": {
+        "status": 200,
+        "response": {
+          "message": "Product created",
+          "id": 44
+        },
+        "targetId": null,
+        "created": [
+          {
+            "id": 44,
+            "name": "BV",
+            "nameLen": 2,
+            "price": 1500000,
+            "category_id": 2
+          }
+        ],
+        "ok": true,
+        "pass": true
+      },
+      "ui": {
+        "created": [
+          {
+            "id": 45,
+            "name": "BV",
+            "nameLen": 2,
+            "price": 1500000,
+            "category_id": 2
+          }
+        ],
+        "ok": true,
+        "notes": [],
+        "uiOthersChanged": null,
+        "shot": "BVA-04_ui.png",
+        "pass": true
+      }
+    },
+    {
+      "id": "BVA-05",
+      "op": "create",
+      "set": {
+        "name": "(chuỗi 254 ký tự)"
+      },
+      "auth": "admin",
+      "target": "own",
+      "expected": "O1a",
+      "api": {
+        "status": 200,
+        "response": {
+          "message": "Product created",
+          "id": 46
+        },
+        "targetId": null,
+        "created": [
+          {
+            "id": 46,
+            "name": "BVA15-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx… (len 254)",
+            "nameLen": 254,
+            "price": 1500000,
+            "category_id": 2
+          }
+        ],
+        "ok": true,
+        "pass": true
+      },
+      "ui": {
+        "created": [
+          {
+            "id": 47,
+            "name": "BVA15-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx… (len 254)",
+            "nameLen": 254,
+            "price": 1500000,
+            "category_id": 2
+          }
+        ],
+        "ok": true,
+        "notes": [],
+        "uiOthersChanged": null,
+        "shot": "BVA-05_ui.png",
+        "pass": true
+      }
+    },
+    {
+      "id": "BVA-06",
+      "op": "create",
+      "set": {
+        "name": "(chuỗi 255 ký tự)"
+      },
+      "auth": "admin",
+      "target": "own",
+      "expected": "O1a",
+      "api": {
+        "status": 200,
+        "response": {
+          "message": "Product created",
+          "id": 48
+        },
+        "targetId": null,
+        "created": [
+          {
+            "id": 48,
+            "name": "BVA15-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx… (len 255)",
+            "nameLen": 255,
+            "price": 1500000,
+            "category_id": 2
+          }
+        ],
+        "ok": true,
+        "pass": true
+      },
+      "ui": {
+        "created": [
+          {
+            "id": 49,
+            "name": "BVA15-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx… (len 255)",
+            "nameLen": 255,
+            "price": 1500000,
+            "category_id": 2
+          }
+        ],
+        "ok": true,
+        "notes": [],
+        "uiOthersChanged": null,
+        "shot": "BVA-06_ui.png",
+        "pass": true
+      }
+    },
+    {
+      "id": "BVA-07",
+      "op": "create",
+      "set": {
+        "name": "(chuỗi 256 ký tự)"
+      },
+      "auth": "admin",
+      "target": "own",
+      "expected": "O2",
+      "api": {
+        "status": 200,
+        "response": {
+          "message": "Product created",
+          "id": 50
+        },
+        "targetId": null,
+        "created": [
+          {
+            "id": 50,
+            "name": "BVA15-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx… (len 256)",
+            "nameLen": 256,
+            "price": 1500000,
+            "category_id": 2
+          }
+        ],
+        "ok": false,
+        "pass": false
+      },
+      "ui": {
+        "created": [
+          {
+            "id": 51,
+            "name": "BVA15-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx… (len 256)",
+            "nameLen": 256,
+            "price": 1500000,
+            "category_id": 2
+          }
+        ],
+        "ok": false,
+        "notes": [],
+        "uiOthersChanged": null,
+        "shot": "BVA-07_ui.png",
+        "pass": false
+      }
+    },
+    {
+      "id": "BVA-08",
+      "op": "create",
+      "set": {
+        "price": 0
+      },
+      "auth": "admin",
+      "target": "own",
+      "expected": "O2",
+      "api": {
+        "status": 200,
+        "response": {
+          "message": "Product created",
+          "id": 52
+        },
+        "targetId": null,
+        "created": [
+          {
+            "id": 52,
+            "name": "Tai nghe Sony WH-1000XM5",
+            "nameLen": 24,
+            "price": 0,
+            "category_id": 2
+          }
+        ],
+        "ok": false,
+        "pass": false
+      },
+      "ui": {
+        "created": [
+          {
+            "id": 53,
+            "name": "Tai nghe Sony WH-1000XM5",
+            "nameLen": 24,
+            "price": 0,
+            "category_id": 2
+          }
+        ],
+        "ok": false,
+        "notes": [],
+        "uiOthersChanged": null,
+        "shot": "BVA-08_ui.png",
+        "pass": false
+      }
+    },
+    {
+      "id": "BVA-09",
+      "op": "create",
+      "set": {
+        "price": 1
+      },
+      "auth": "admin",
+      "target": "own",
+      "expected": "O1a",
+      "api": {
+        "status": 200,
+        "response": {
+          "message": "Product created",
+          "id": 54
+        },
+        "targetId": null,
+        "created": [
+          {
+            "id": 54,
+            "name": "Tai nghe Sony WH-1000XM5",
+            "nameLen": 24,
+            "price": 1,
+            "category_id": 2
+          }
+        ],
+        "ok": true,
+        "pass": true
+      },
+      "ui": {
+        "created": [
+          {
+            "id": 55,
+            "name": "Tai nghe Sony WH-1000XM5",
+            "nameLen": 24,
+            "price": 1,
+            "category_id": 2
+          }
+        ],
+        "ok": true,
+        "notes": [],
+        "uiOthersChanged": null,
+        "shot": "BVA-09_ui.png",
+        "pass": true
+      }
+    },
+    {
+      "id": "BVA-10",
+      "op": "create",
+      "set": {
+        "price": 2
+      },
+      "auth": "admin",
+      "target": "own",
+      "expected": "O1a",
+      "api": {
+        "status": 200,
+        "response": {
+          "message": "Product created",
+          "id": 56
+        },
+        "targetId": null,
+        "created": [
+          {
+            "id": 56,
+            "name": "Tai nghe Sony WH-1000XM5",
+            "nameLen": 24,
+            "price": 2,
+            "category_id": 2
+          }
+        ],
+        "ok": true,
+        "pass": true
+      },
+      "ui": {
+        "created": [
+          {
+            "id": 57,
+            "name": "Tai nghe Sony WH-1000XM5",
+            "nameLen": 24,
+            "price": 2,
+            "category_id": 2
+          }
+        ],
+        "ok": true,
+        "notes": [],
+        "uiOthersChanged": null,
+        "shot": "BVA-10_ui.png",
+        "pass": true
+      }
+    },
+    {
+      "id": "BVA-11",
+      "op": "create",
+      "set": {
+        "price": 2147483648
+      },
+      "auth": "admin",
+      "target": "own",
+      "expected": "O1a",
+      "api": {
+        "status": 200,
+        "response": {
+          "message": "Product created",
+          "id": 58
+        },
+        "targetId": null,
+        "created": [
+          {
+            "id": 58,
+            "name": "Tai nghe Sony WH-1000XM5",
+            "nameLen": 24,
+            "price": 2147483648,
+            "category_id": 2
+          }
+        ],
+        "ok": true,
+        "pass": true
+      },
+      "ui": {
+        "created": [
+          {
+            "id": 59,
+            "name": "Tai nghe Sony WH-1000XM5",
+            "nameLen": 24,
+            "price": 2147483648,
+            "category_id": 2
+          }
+        ],
+        "ok": true,
+        "notes": [],
+        "uiOthersChanged": null,
+        "shot": "BVA-11_ui.png",
+        "pass": true
+      }
+    },
+    {
+      "id": "BVA-12",
+      "op": "update",
+      "set": {
+        "name": "(chuỗi 255 ký tự)"
+      },
+      "auth": "admin",
+      "target": "own",
+      "expected": "O1b",
+      "api": {
+        "status": 200,
+        "response": {
+          "message": "Product updated"
+        },
+        "targetId": 60,
+        "target": {
+          "id": 60,
+          "nameLen": 255,
+          "name": "BVA15-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "price": 1500000
+        },
+        "othersChanged": [],
+        "ok": true,
+        "pass": true
+      },
+      "ui": {
+        "target": {
+          "id": 61,
+          "nameLen": 255,
+          "name": "BVA15-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "price": 1500000
+        },
+        "othersChanged": [],
+        "ok": true,
+        "notes": [
+          "alert: \"Cập nhật thành công!\"",
+          "bảng UI: 54 SP khác bị đổi tên, ví dụ \"iPhone 15 Pro Max\" → \"BVA15-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\""
+        ],
+        "uiOthersChanged": 54,
+        "shot": "BVA-12_ui.png",
+        "pass": false
+      }
+    },
+    {
+      "id": "BVA-13",
+      "op": "update",
+      "set": {
+        "name": "(chuỗi 256 ký tự)"
+      },
+      "auth": "admin",
+      "target": "own",
+      "expected": "O2",
+      "api": {
+        "status": 200,
+        "response": {
+          "message": "Product updated"
+        },
+        "targetId": 62,
+        "target": {
+          "id": 62,
+          "nameLen": 256,
+          "name": "BVA15-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "price": 1500000
+        },
+        "othersChanged": [],
+        "ok": false,
+        "pass": false
+      },
+      "ui": {
+        "target": {
+          "id": 63,
+          "nameLen": 256,
+          "name": "BVA15-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "price": 1500000
+        },
+        "othersChanged": [],
+        "ok": false,
+        "notes": [
+          "alert: \"Cập nhật thành công!\"",
+          "bảng UI: 56 SP khác bị đổi tên, ví dụ \"iPhone 15 Pro Max\" → \"BVA15-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\""
+        ],
+        "uiOthersChanged": 56,
+        "shot": "BVA-13_ui.png",
+        "pass": false
+      }
+    }
+  ]
+}
