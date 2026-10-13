@@ -1,0 +1,875 @@
+{
+  "executedAt": "2026-10-13T07:40:31.617Z",
+  "device": "Pixel 5 (Playwright emulation), Expo Web",
+  "results": [
+    {
+      "id": "EP-01",
+      "pass": false,
+      "observed": "A×3, thành tiền 12000000, Tổng tạm tính 12000000",
+      "notes": [
+        "ô SL chi tiết sau khi nhập \"3\" = \"3\"",
+        "phản hồi sau khi thêm: nút đổi thành \"Đã thêm\""
+      ],
+      "cart": {
+        "lines": [
+          {
+            "name": "Bàn phím cơ Keychron Q1",
+            "price": 4000000,
+            "lineTotal": 12000000,
+            "qty": "3"
+          }
+        ],
+        "totalLabel": "Tổng tạm tính",
+        "total": 12000000,
+        "headerCount": 1,
+        "empty": false,
+        "hasContinue": false,
+        "hasPlusMinus": false,
+        "images": 0
+      },
+      "notExecutable": false,
+      "inferred": false,
+      "shot": "EP-01_mobile.png"
+    },
+    {
+      "id": "EP-02",
+      "pass": true,
+      "observed": "1 dòng, SL 3",
+      "notes": [
+        "ô SL chi tiết sau khi nhập \"2\" = \"2\"",
+        "phản hồi sau khi thêm: nút đổi thành \"Đã thêm\""
+      ],
+      "cart": {
+        "lines": [
+          {
+            "name": "Bàn phím cơ Keychron Q1",
+            "price": 4000000,
+            "lineTotal": 12000000,
+            "qty": "3"
+          }
+        ],
+        "totalLabel": "Tổng tạm tính",
+        "total": 12000000,
+        "headerCount": 1,
+        "empty": false,
+        "hasContinue": false,
+        "hasPlusMinus": false,
+        "images": 0
+      },
+      "notExecutable": false,
+      "inferred": false,
+      "shot": "EP-02_mobile.png"
+    },
+    {
+      "id": "EP-03",
+      "pass": true,
+      "observed": "2 dòng, tổng 10000000",
+      "notes": [],
+      "cart": {
+        "lines": [
+          {
+            "name": "Bàn phím cơ Keychron Q1",
+            "price": 4000000,
+            "lineTotal": 4000000,
+            "qty": "1"
+          },
+          {
+            "name": "Tai nghe AirPods Pro 2",
+            "price": 6000000,
+            "lineTotal": 6000000,
+            "qty": "1"
+          }
+        ],
+        "totalLabel": "Tổng tạm tính",
+        "total": 10000000,
+        "headerCount": 2,
+        "empty": false,
+        "hasContinue": false,
+        "hasPlusMinus": false,
+        "images": 0
+      },
+      "notExecutable": false,
+      "inferred": false,
+      "shot": "EP-03_mobile.png"
+    },
+    {
+      "id": "EP-04",
+      "pass": false,
+      "observed": "SL trong giỏ = 6, thành tiền 24000000, tổng 24000000",
+      "notes": [
+        "ô SL trong giỏ sau khi nhập \"5\" = \"6\""
+      ],
+      "cart": {
+        "lines": [
+          {
+            "name": "Bàn phím cơ Keychron Q1",
+            "price": 4000000,
+            "lineTotal": 24000000,
+            "qty": "6"
+          }
+        ],
+        "totalLabel": "Tổng tạm tính",
+        "total": 24000000,
+        "headerCount": 1,
+        "empty": false,
+        "hasContinue": false,
+        "hasPlusMinus": false,
+        "images": 0
+      },
+      "notExecutable": false,
+      "inferred": false,
+      "shot": "EP-04_mobile.png"
+    },
+    {
+      "id": "EP-05",
+      "pass": false,
+      "observed": "không có nút +/− trên dòng giỏ hàng",
+      "notes": [],
+      "cart": {
+        "lines": [
+          {
+            "name": "Bàn phím cơ Keychron Q1",
+            "price": 4000000,
+            "lineTotal": 4000000,
+            "qty": "1"
+          }
+        ],
+        "totalLabel": "Tổng tạm tính",
+        "total": 4000000,
+        "headerCount": 1,
+        "empty": false,
+        "hasContinue": false,
+        "hasPlusMinus": false,
+        "images": 0
+      },
+      "notExecutable": true,
+      "inferred": false,
+      "shot": "EP-05_mobile.png"
+    },
+    {
+      "id": "EP-06",
+      "pass": false,
+      "observed": "dòng bị xóa NGAY khi bấm Xóa, không qua xác nhận (dialog web: 0)",
+      "notes": [],
+      "cart": {
+        "lines": [],
+        "totalLabel": null,
+        "total": null,
+        "headerCount": 0,
+        "empty": true,
+        "hasContinue": true,
+        "hasPlusMinus": false,
+        "images": 0
+      },
+      "notExecutable": false,
+      "inferred": true,
+      "shot": "EP-06_mobile.png"
+    },
+    {
+      "id": "EP-07",
+      "pass": false,
+      "observed": "không có cơ hội Hủy: dòng đã bị xóa ngay",
+      "notes": [],
+      "cart": {
+        "lines": [],
+        "totalLabel": null,
+        "total": null,
+        "headerCount": 0,
+        "empty": true,
+        "hasContinue": true,
+        "hasPlusMinus": false,
+        "images": 0
+      },
+      "notExecutable": false,
+      "inferred": false,
+      "shot": "EP-07_mobile.png"
+    },
+    {
+      "id": "EP-08",
+      "pass": false,
+      "observed": "thông báo: true, nút Tiếp tục mua sắm: true, số hình: 0",
+      "notes": [],
+      "cart": {
+        "lines": [],
+        "totalLabel": null,
+        "total": null,
+        "headerCount": 0,
+        "empty": true,
+        "hasContinue": true,
+        "hasPlusMinus": false,
+        "images": 0
+      },
+      "notExecutable": false,
+      "inferred": false,
+      "shot": "EP-08_mobile.png"
+    },
+    {
+      "id": "EP-09",
+      "pass": false,
+      "observed": "đã thêm A×1",
+      "notes": [
+        "ô SL chi tiết sau khi nhập \"0\" = \"0\"",
+        "phản hồi sau khi thêm: nút đổi thành \"Đã thêm\""
+      ],
+      "cart": {
+        "lines": [
+          {
+            "name": "Bàn phím cơ Keychron Q1",
+            "price": 4000000,
+            "lineTotal": 4000000,
+            "qty": "1"
+          }
+        ],
+        "totalLabel": "Tổng tạm tính",
+        "total": 4000000,
+        "headerCount": 1,
+        "empty": false,
+        "hasContinue": false,
+        "hasPlusMinus": false,
+        "images": 0
+      },
+      "notExecutable": false,
+      "inferred": false,
+      "shot": "EP-09_mobile.png"
+    },
+    {
+      "id": "EP-10",
+      "pass": false,
+      "observed": "đã thêm A×1",
+      "notes": [
+        "ô SL chi tiết sau khi nhập \"-2\" = \"-2\"",
+        "phản hồi sau khi thêm: nút đổi thành \"Đã thêm\""
+      ],
+      "cart": {
+        "lines": [
+          {
+            "name": "Bàn phím cơ Keychron Q1",
+            "price": 4000000,
+            "lineTotal": 4000000,
+            "qty": "1"
+          }
+        ],
+        "totalLabel": "Tổng tạm tính",
+        "total": 4000000,
+        "headerCount": 1,
+        "empty": false,
+        "hasContinue": false,
+        "hasPlusMinus": false,
+        "images": 0
+      },
+      "notExecutable": false,
+      "inferred": false,
+      "shot": "EP-10_mobile.png"
+    },
+    {
+      "id": "EP-11",
+      "pass": false,
+      "observed": "đã thêm A×1",
+      "notes": [
+        "ô SL chi tiết sau khi nhập \"1.5\" = \"1.5\"",
+        "phản hồi sau khi thêm: nút đổi thành \"Đã thêm\""
+      ],
+      "cart": {
+        "lines": [
+          {
+            "name": "Bàn phím cơ Keychron Q1",
+            "price": 4000000,
+            "lineTotal": 4000000,
+            "qty": "1"
+          }
+        ],
+        "totalLabel": "Tổng tạm tính",
+        "total": 4000000,
+        "headerCount": 1,
+        "empty": false,
+        "hasContinue": false,
+        "hasPlusMinus": false,
+        "images": 0
+      },
+      "notExecutable": false,
+      "inferred": false,
+      "shot": "EP-11_mobile.png"
+    },
+    {
+      "id": "EP-12",
+      "pass": false,
+      "observed": "đã thêm A×1",
+      "notes": [
+        "ô SL chi tiết sau khi nhập \"abc\" = \"abc\"",
+        "phản hồi sau khi thêm: nút đổi thành \"Đã thêm\""
+      ],
+      "cart": {
+        "lines": [
+          {
+            "name": "Bàn phím cơ Keychron Q1",
+            "price": 4000000,
+            "lineTotal": 4000000,
+            "qty": "1"
+          }
+        ],
+        "totalLabel": "Tổng tạm tính",
+        "total": 4000000,
+        "headerCount": 1,
+        "empty": false,
+        "hasContinue": false,
+        "hasPlusMinus": false,
+        "images": 0
+      },
+      "notExecutable": false,
+      "inferred": false,
+      "shot": "EP-12_mobile.png"
+    },
+    {
+      "id": "EP-13",
+      "pass": false,
+      "observed": "đã thêm A×1",
+      "notes": [
+        "ô SL chi tiết sau khi nhập \"\" = \"\"",
+        "phản hồi sau khi thêm: nút đổi thành \"Đã thêm\""
+      ],
+      "cart": {
+        "lines": [
+          {
+            "name": "Bàn phím cơ Keychron Q1",
+            "price": 4000000,
+            "lineTotal": 4000000,
+            "qty": "1"
+          }
+        ],
+        "totalLabel": "Tổng tạm tính",
+        "total": 4000000,
+        "headerCount": 1,
+        "empty": false,
+        "hasContinue": false,
+        "hasPlusMinus": false,
+        "images": 0
+      },
+      "notExecutable": false,
+      "inferred": false,
+      "shot": "EP-13_mobile.png"
+    },
+    {
+      "id": "EP-14",
+      "pass": false,
+      "observed": "SL trong giỏ = 1, thành tiền 4000000, tổng 4000000",
+      "notes": [
+        "ô SL chi tiết sau khi nhập \"2\" = \"2\"",
+        "phản hồi sau khi thêm: nút đổi thành \"Đã thêm\"",
+        "ô SL trong giỏ sau khi nhập \"0\" = \"1\""
+      ],
+      "cart": {
+        "lines": [
+          {
+            "name": "Bàn phím cơ Keychron Q1",
+            "price": 4000000,
+            "lineTotal": 4000000,
+            "qty": "1"
+          }
+        ],
+        "totalLabel": "Tổng tạm tính",
+        "total": 4000000,
+        "headerCount": 1,
+        "empty": false,
+        "hasContinue": false,
+        "hasPlusMinus": false,
+        "images": 0
+      },
+      "notExecutable": false,
+      "inferred": false,
+      "shot": "EP-14_mobile.png"
+    },
+    {
+      "id": "EP-15",
+      "pass": false,
+      "observed": "SL trong giỏ = 1, thành tiền 4000000, tổng 4000000",
+      "notes": [
+        "ô SL chi tiết sau khi nhập \"2\" = \"2\"",
+        "phản hồi sau khi thêm: nút đổi thành \"Đã thêm\"",
+        "ô SL trong giỏ sau khi nhập \"-2\" = \"1\""
+      ],
+      "cart": {
+        "lines": [
+          {
+            "name": "Bàn phím cơ Keychron Q1",
+            "price": 4000000,
+            "lineTotal": 4000000,
+            "qty": "1"
+          }
+        ],
+        "totalLabel": "Tổng tạm tính",
+        "total": 4000000,
+        "headerCount": 1,
+        "empty": false,
+        "hasContinue": false,
+        "hasPlusMinus": false,
+        "images": 0
+      },
+      "notExecutable": false,
+      "inferred": false,
+      "shot": "EP-15_mobile.png"
+    },
+    {
+      "id": "EP-16",
+      "pass": true,
+      "observed": "SL trong giỏ = 2, thành tiền 8000000, tổng 8000000",
+      "notes": [
+        "ô SL chi tiết sau khi nhập \"2\" = \"2\"",
+        "phản hồi sau khi thêm: nút đổi thành \"Đã thêm\"",
+        "ô SL trong giỏ sau khi nhập \"1.5\" = \"2\""
+      ],
+      "cart": {
+        "lines": [
+          {
+            "name": "Bàn phím cơ Keychron Q1",
+            "price": 4000000,
+            "lineTotal": 8000000,
+            "qty": "2"
+          }
+        ],
+        "totalLabel": "Tổng tạm tính",
+        "total": 8000000,
+        "headerCount": 1,
+        "empty": false,
+        "hasContinue": false,
+        "hasPlusMinus": false,
+        "images": 0
+      },
+      "notExecutable": false,
+      "inferred": false,
+      "shot": "EP-16_mobile.png"
+    },
+    {
+      "id": "EP-16R",
+      "pass": false,
+      "observed": "SL trong giỏ = 2, thành tiền 8000000, tổng 8000000",
+      "notes": [
+        "ô SL chi tiết sau khi nhập \"3\" = \"3\"",
+        "phản hồi sau khi thêm: nút đổi thành \"Đã thêm\"",
+        "ô SL trong giỏ sau khi nhập \"1.5\" = \"2\""
+      ],
+      "cart": {
+        "lines": [
+          {
+            "name": "Bàn phím cơ Keychron Q1",
+            "price": 4000000,
+            "lineTotal": 8000000,
+            "qty": "2"
+          }
+        ],
+        "totalLabel": "Tổng tạm tính",
+        "total": 8000000,
+        "headerCount": 1,
+        "empty": false,
+        "hasContinue": false,
+        "hasPlusMinus": false,
+        "images": 0
+      },
+      "notExecutable": false,
+      "inferred": false,
+      "shot": "EP-16R_mobile.png"
+    },
+    {
+      "id": "EP-17",
+      "pass": false,
+      "observed": "SL trong giỏ = 1, thành tiền 4000000, tổng 4000000",
+      "notes": [
+        "ô SL chi tiết sau khi nhập \"2\" = \"2\"",
+        "phản hồi sau khi thêm: nút đổi thành \"Đã thêm\"",
+        "ô SL trong giỏ sau khi nhập \"abc\" = \"1\""
+      ],
+      "cart": {
+        "lines": [
+          {
+            "name": "Bàn phím cơ Keychron Q1",
+            "price": 4000000,
+            "lineTotal": 4000000,
+            "qty": "1"
+          }
+        ],
+        "totalLabel": "Tổng tạm tính",
+        "total": 4000000,
+        "headerCount": 1,
+        "empty": false,
+        "hasContinue": false,
+        "hasPlusMinus": false,
+        "images": 0
+      },
+      "notExecutable": false,
+      "inferred": false,
+      "shot": "EP-17_mobile.png"
+    },
+    {
+      "id": "EP-18",
+      "pass": false,
+      "observed": "SL trong giỏ = 1, thành tiền 4000000, tổng 4000000",
+      "notes": [
+        "ô SL chi tiết sau khi nhập \"2\" = \"2\"",
+        "phản hồi sau khi thêm: nút đổi thành \"Đã thêm\"",
+        "ô SL trong giỏ sau khi nhập \"\" = \"1\""
+      ],
+      "cart": {
+        "lines": [
+          {
+            "name": "Bàn phím cơ Keychron Q1",
+            "price": 4000000,
+            "lineTotal": 4000000,
+            "qty": "1"
+          }
+        ],
+        "totalLabel": "Tổng tạm tính",
+        "total": 4000000,
+        "headerCount": 1,
+        "empty": false,
+        "hasContinue": false,
+        "hasPlusMinus": false,
+        "images": 0
+      },
+      "notExecutable": false,
+      "inferred": false,
+      "shot": "EP-18_mobile.png"
+    },
+    {
+      "id": "BVA-01",
+      "pass": true,
+      "observed": "A×3, thành tiền 12000000, Tổng tạm tính 12000000",
+      "notes": [
+        "ô SL chi tiết sau khi nhập \"3\" = \"3\"",
+        "phản hồi sau khi thêm: nút đổi thành \"Đã thêm\""
+      ],
+      "cart": {
+        "lines": [
+          {
+            "name": "Bàn phím cơ Keychron Q1",
+            "price": 4000000,
+            "lineTotal": 12000000,
+            "qty": "3"
+          }
+        ],
+        "totalLabel": "Tổng tạm tính",
+        "total": 12000000,
+        "headerCount": 1,
+        "empty": false,
+        "hasContinue": false,
+        "hasPlusMinus": false,
+        "images": 0
+      },
+      "notExecutable": false,
+      "inferred": false,
+      "shot": "BVA-01_mobile.png"
+    },
+    {
+      "id": "BVA-02",
+      "pass": false,
+      "observed": "đã thêm A×1",
+      "notes": [
+        "ô SL chi tiết sau khi nhập \"0\" = \"0\"",
+        "phản hồi sau khi thêm: nút đổi thành \"Đã thêm\""
+      ],
+      "cart": {
+        "lines": [
+          {
+            "name": "Bàn phím cơ Keychron Q1",
+            "price": 4000000,
+            "lineTotal": 4000000,
+            "qty": "1"
+          }
+        ],
+        "totalLabel": "Tổng tạm tính",
+        "total": 4000000,
+        "headerCount": 1,
+        "empty": false,
+        "hasContinue": false,
+        "hasPlusMinus": false,
+        "images": 0
+      },
+      "notExecutable": false,
+      "inferred": false,
+      "shot": "BVA-02_mobile.png"
+    },
+    {
+      "id": "BVA-03",
+      "pass": true,
+      "observed": "A×1, thành tiền 4000000, Tổng tạm tính 4000000",
+      "notes": [
+        "ô SL chi tiết sau khi nhập \"1\" = \"1\"",
+        "phản hồi sau khi thêm: nút đổi thành \"Đã thêm\""
+      ],
+      "cart": {
+        "lines": [
+          {
+            "name": "Bàn phím cơ Keychron Q1",
+            "price": 4000000,
+            "lineTotal": 4000000,
+            "qty": "1"
+          }
+        ],
+        "totalLabel": "Tổng tạm tính",
+        "total": 4000000,
+        "headerCount": 1,
+        "empty": false,
+        "hasContinue": false,
+        "hasPlusMinus": false,
+        "images": 0
+      },
+      "notExecutable": false,
+      "inferred": false,
+      "shot": "BVA-03_mobile.png"
+    },
+    {
+      "id": "BVA-04",
+      "pass": true,
+      "observed": "A×2, thành tiền 8000000, Tổng tạm tính 8000000",
+      "notes": [
+        "ô SL chi tiết sau khi nhập \"2\" = \"2\"",
+        "phản hồi sau khi thêm: nút đổi thành \"Đã thêm\""
+      ],
+      "cart": {
+        "lines": [
+          {
+            "name": "Bàn phím cơ Keychron Q1",
+            "price": 4000000,
+            "lineTotal": 8000000,
+            "qty": "2"
+          }
+        ],
+        "totalLabel": "Tổng tạm tính",
+        "total": 8000000,
+        "headerCount": 1,
+        "empty": false,
+        "hasContinue": false,
+        "hasPlusMinus": false,
+        "images": 0
+      },
+      "notExecutable": false,
+      "inferred": false,
+      "shot": "BVA-04_mobile.png"
+    },
+    {
+      "id": "BVA-05",
+      "pass": true,
+      "observed": "A×999, thành tiền 3996000000, Tổng tạm tính 3996000000",
+      "notes": [
+        "ô SL chi tiết sau khi nhập \"999\" = \"999\"",
+        "phản hồi sau khi thêm: nút đổi thành \"Đã thêm\""
+      ],
+      "cart": {
+        "lines": [
+          {
+            "name": "Bàn phím cơ Keychron Q1",
+            "price": 4000000,
+            "lineTotal": 3996000000,
+            "qty": "999"
+          }
+        ],
+        "totalLabel": "Tổng tạm tính",
+        "total": 3996000000,
+        "headerCount": 1,
+        "empty": false,
+        "hasContinue": false,
+        "hasPlusMinus": false,
+        "images": 0
+      },
+      "notExecutable": false,
+      "inferred": false,
+      "shot": "BVA-05_mobile.png"
+    },
+    {
+      "id": "BVA-06",
+      "pass": false,
+      "observed": "SL trong giỏ = 1, thành tiền 4000000, tổng 4000000",
+      "notes": [
+        "ô SL chi tiết sau khi nhập \"2\" = \"2\"",
+        "phản hồi sau khi thêm: nút đổi thành \"Đã thêm\"",
+        "ô SL trong giỏ sau khi nhập \"0\" = \"1\""
+      ],
+      "cart": {
+        "lines": [
+          {
+            "name": "Bàn phím cơ Keychron Q1",
+            "price": 4000000,
+            "lineTotal": 4000000,
+            "qty": "1"
+          }
+        ],
+        "totalLabel": "Tổng tạm tính",
+        "total": 4000000,
+        "headerCount": 1,
+        "empty": false,
+        "hasContinue": false,
+        "hasPlusMinus": false,
+        "images": 0
+      },
+      "notExecutable": false,
+      "inferred": false,
+      "shot": "BVA-06_mobile.png"
+    },
+    {
+      "id": "BVA-07",
+      "pass": false,
+      "observed": "SL trong giỏ = 2, thành tiền 8000000, tổng 8000000",
+      "notes": [
+        "ô SL chi tiết sau khi nhập \"2\" = \"2\"",
+        "phản hồi sau khi thêm: nút đổi thành \"Đã thêm\"",
+        "ô SL trong giỏ sau khi nhập \"1\" = \"2\""
+      ],
+      "cart": {
+        "lines": [
+          {
+            "name": "Bàn phím cơ Keychron Q1",
+            "price": 4000000,
+            "lineTotal": 8000000,
+            "qty": "2"
+          }
+        ],
+        "totalLabel": "Tổng tạm tính",
+        "total": 8000000,
+        "headerCount": 1,
+        "empty": false,
+        "hasContinue": false,
+        "hasPlusMinus": false,
+        "images": 0
+      },
+      "notExecutable": false,
+      "inferred": false,
+      "shot": "BVA-07_mobile.png"
+    },
+    {
+      "id": "BVA-08",
+      "pass": false,
+      "observed": "SL trong giỏ = 3, thành tiền 12000000, tổng 12000000",
+      "notes": [
+        "ô SL trong giỏ sau khi nhập \"2\" = \"3\""
+      ],
+      "cart": {
+        "lines": [
+          {
+            "name": "Bàn phím cơ Keychron Q1",
+            "price": 4000000,
+            "lineTotal": 12000000,
+            "qty": "3"
+          }
+        ],
+        "totalLabel": "Tổng tạm tính",
+        "total": 12000000,
+        "headerCount": 1,
+        "empty": false,
+        "hasContinue": false,
+        "hasPlusMinus": false,
+        "images": 0
+      },
+      "notExecutable": false,
+      "inferred": false,
+      "shot": "BVA-08_mobile.png"
+    },
+    {
+      "id": "BVA-09",
+      "pass": false,
+      "observed": "SL trong giỏ = 1000, thành tiền 4000000000, tổng 4000000000",
+      "notes": [
+        "ô SL trong giỏ sau khi nhập \"999\" = \"1000\""
+      ],
+      "cart": {
+        "lines": [
+          {
+            "name": "Bàn phím cơ Keychron Q1",
+            "price": 4000000,
+            "lineTotal": 4000000000,
+            "qty": "1000"
+          }
+        ],
+        "totalLabel": "Tổng tạm tính",
+        "total": 4000000000,
+        "headerCount": 1,
+        "empty": false,
+        "hasContinue": false,
+        "hasPlusMinus": false,
+        "images": 0
+      },
+      "notExecutable": false,
+      "inferred": false,
+      "shot": "BVA-09_mobile.png"
+    },
+    {
+      "id": "BVA-10",
+      "pass": false,
+      "observed": "không có nút +/− trên dòng giỏ hàng",
+      "notes": [],
+      "cart": {
+        "lines": [
+          {
+            "name": "Bàn phím cơ Keychron Q1",
+            "price": 4000000,
+            "lineTotal": 4000000,
+            "qty": "1"
+          }
+        ],
+        "totalLabel": "Tổng tạm tính",
+        "total": 4000000,
+        "headerCount": 1,
+        "empty": false,
+        "hasContinue": false,
+        "hasPlusMinus": false,
+        "images": 0
+      },
+      "notExecutable": true,
+      "inferred": false,
+      "shot": "BVA-10_mobile.png"
+    },
+    {
+      "id": "BVA-11",
+      "pass": false,
+      "observed": "không có nút +/− trên dòng giỏ hàng",
+      "notes": [
+        "ô SL chi tiết sau khi nhập \"2\" = \"2\"",
+        "phản hồi sau khi thêm: nút đổi thành \"Đã thêm\""
+      ],
+      "cart": {
+        "lines": [
+          {
+            "name": "Bàn phím cơ Keychron Q1",
+            "price": 4000000,
+            "lineTotal": 8000000,
+            "qty": "2"
+          }
+        ],
+        "totalLabel": "Tổng tạm tính",
+        "total": 8000000,
+        "headerCount": 1,
+        "empty": false,
+        "hasContinue": false,
+        "hasPlusMinus": false,
+        "images": 0
+      },
+      "notExecutable": true,
+      "inferred": false,
+      "shot": "BVA-11_mobile.png"
+    },
+    {
+      "id": "BVA-12",
+      "pass": false,
+      "observed": "không có nút +/− trên dòng giỏ hàng",
+      "notes": [],
+      "cart": {
+        "lines": [
+          {
+            "name": "Bàn phím cơ Keychron Q1",
+            "price": 4000000,
+            "lineTotal": 4000000,
+            "qty": "1"
+          }
+        ],
+        "totalLabel": "Tổng tạm tính",
+        "total": 4000000,
+        "headerCount": 1,
+        "empty": false,
+        "hasContinue": false,
+        "hasPlusMinus": false,
+        "images": 0
+      },
+      "notExecutable": true,
+      "inferred": false,
+      "shot": "BVA-12_mobile.png"
+    }
+  ],
+  "rerunAt": "2026-10-13T07:40:47.539Z"
+}
