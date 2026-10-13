@@ -1,57 +1,58 @@
 # HW02 – Domain Testing on EShop
 
-Môn Kiểm thử phần mềm (CS423 / CSC15003) – FIT@HCMUS, 2026.
+Môn Kiểm thử phần mềm – FIT@HCMUS, 2026.
 
-## 1. Thành viên & Phân công tính năng (Feature Assignment)
+- **Sinh viên:** Phạm Quang Vinh – **MSSV:** 23120202
+- **SUT:** EShop (`https://github.com/ttbhanh/eshop-sut`)
+- **Kỹ thuật:** Phân hoạch tương đương (Equivalence Partitioning – EP) & Phân tích giá trị biên (Boundary Value Analysis – BVA)
+- **Công cụ AI:** Claude Code (Claude Opus 5.5) – xem `ai-audit/`
 
-Nhóm thực hiện kiểm thử hệ thống **EShop** (`https://github.com/ttbhanh/eshop-sut`). Mỗi thành viên phụ trách 4 tính năng độc lập (1 tính năng từ mỗi Pool), cam kết không trùng lặp:
+## 1. Tính năng được chọn
 
-| STT | Họ và tên | MSSV | Pool A (Auth/Catalog) | Pool B (Cart/Checkout) | Pool C (Web Admin) | Pool D (Mobile App) |
-|:---:|---|:---:|---|---|---|---|
-| 1 | **Phạm Quang Vinh** | 23120202 | **FR-01**: Đăng ký tài khoản | **FR-09**: Mã giảm giá | **FR-15**: CRUD Sản phẩm | **FR-20**: Mobile - Giỏ hàng & Số lượng |
-| 2 | *(Thành viên 2)* | | **FR-02**: Đăng nhập & Khóa TK | **FR-07**: Giỏ hàng Web | **FR-14**: CRUD Danh mục | **Mobile FR-01**: Đăng ký Mobile |
-| 3 | *(Thành viên 3)* | | **FR-04**: Quản lý hồ sơ | **FR-08**: Thanh toán Web | **FR-17**: CRUD Coupon Admin | **Mobile FR-02/04**: Đăng nhập & Hồ sơ |
-| 4 | *(Thành viên 4)* | | **FR-03**: Quên/Đặt lại MK | **FR-10**: Máy trạng thái đơn | **FR-16**: Import CSV | **Mobile FR-08/09**: Checkout & Coupon |
-| 5 | *(Thành viên 5)* | | **FR-06**: Chi tiết sản phẩm | **FR-11**: Lịch sử đơn hàng | **FR-19**: Quản lý user Admin | **Mobile FR-10**: Hủy đơn hàng Mobile |
+| Pool | Mã | Tính năng | Kênh kiểm thử | Thư mục |
+|---|---|---|---|---|
+| A – Auth/Catalog | **FR-01** | Đăng ký tài khoản | Web `/register` + API `POST /api/register` | [`features/FR-01_Register/`](features/FR-01_Register/) |
+| B – Cart/Checkout | **FR-09** | Mã giảm giá (Coupon) | Web `/checkout` + API `POST /api/apply-coupon` | [`features/FR-09_Coupon/`](features/FR-09_Coupon/) |
+| C – Web Admin | **FR-15** | Quản lý sản phẩm (CRUD) | Admin `:5174` + API `/api/products` | [`features/FR-15_ProductCRUD/`](features/FR-15_ProductCRUD/) |
+| D – Mobile | **FR-20** | Mobile – Giỏ hàng & Số lượng | App Expo (`frontend-mobile`) | [`features/FR-20_Mobile_Cart/`](features/FR-20_Mobile_Cart/) |
 
-*Chi tiết phạm vi và ràng buộc kiểm thử từng tính năng xem tại:* [`docs/group_feature_assignment.md`](docs/group_feature_assignment.md)
+## 2. Quy trình áp dụng cho mỗi tính năng
 
----
+Mỗi bước tương ứng 1 file trong thư mục tính năng và 1 git commit (xem `git_commit_log.txt`):
 
-## 2. Quy ước báo cáo lỗi (Bug Reporting on GitHub Issues)
+1. `01_input_output.md` – Xác định Input & Output (EP – Bước 1)
+2. `02_equivalence_classes.md` – Xác định lớp tương đương (EP – Bước 2)
+3. `03_ep_test_cases.md` – Xác định ca kiểm thử + bảng rút gọn (EP – Bước 3)
+4. `04_bva_test_cases.md` – Phân tích giá trị biên
+5. `05_test_execution.md` – Thực thi, kết quả thực tế, screenshots
+6. `06_bug_report.md` – Báo cáo lỗi (đồng bộ lên GitHub Issues)
+7. `07_ai_gap_analysis.md` – Phân tích những gì AI bỏ sót
 
-Toàn bộ lỗi phát hiện được báo cáo tập trung tại tab **Issues** của repository này:
+## 3. Quy ước báo cáo lỗi (GitHub Issues)
 
-* **Định dạng tiêu đề:** `[Mã_FR] [Mã_TC] Tóm tắt ngắn gọn lỗi`
-  * *Ví dụ:* `[FR-09] [TC_BVA_03] Không áp dụng được coupon khi tổng tiền bằng đúng min_order_amount`
-* **Nội dung Issue gồm 5 mục:**
-  1. **Tính năng & Kỹ thuật áp dụng**: (Domain Testing / BVA)
-  2. **Các bước tái hiện (Steps to Reproduce)**
-  3. **Kết quả mong đợi (Expected Result)** (theo tài liệu SRS EShop)
-  4. **Kết quả thực tế (Actual Result)** (kèm ảnh chụp màn hình minh chứng)
-  5. **Mức độ nghiêm trọng (Severity)**: Critical / Major / Minor
+- **Tiêu đề:** `[Mã_FR] [Mã_TC] Tóm tắt ngắn gọn lỗi`
+  - Ví dụ: `[FR-09] [BVA-03] Không áp dụng được coupon khi tổng tiền bằng đúng min_order_amount`
+- **Nội dung:** Tính năng & kỹ thuật · Bước tái hiện · Kết quả mong đợi (theo SRS) · Kết quả thực tế (kèm screenshot) · Mức độ nghiêm trọng (Critical / Major / Minor)
 
----
+## 4. Báo cáo tóm tắt kiểm thử (Test Summary Report)
 
-## 3. Báo cáo tóm tắt kiểm thử (Test Summary Report)
+| Tính năng | TC thiết kế | Đã thực thi | Pass | Fail | Chưa thực thi | Bug |
+|---|---|---|---|---|---|---|
+| FR-01 | – | – | – | – | – | – |
+| FR-09 | – | – | – | – | – | – |
+| FR-15 | – | – | – | – | – | – |
+| FR-20 Mobile | – | – | – | – | – | – |
+| **Tổng** | – | – | – | – | – | – |
 
-* **Số lượng tính năng kiểm thử:** 4 (FR-01, FR-09, FR-15, FR-20 Mobile)
-* **Số test case thiết kế:** 0 *(sẽ cập nhật sau khi hoàn thiện)*
-* **Số test case thực thi:** 0
-* **Số test case Pass:** 0
-* **Số test case Fail:** 0
-* **Tổng số Bug phát hiện:** 0
-* **Video Demo Agent Skills:** *(Đính kèm link YouTube)*
+- **Video demo Agent Skills:** *(link YouTube)*
 
----
+## 5. Bảng tự đánh giá (Self-Assessment)
 
-## 4. Bảng tự đánh giá (Self-Assessment Table)
-
-| STT | Tiêu chí đánh giá | Điểm tối đa | Điểm tự đánh giá | Minh chứng hoàn thành |
+| STT | Tiêu chí | Điểm tối đa | Tự đánh giá | Minh chứng |
 |:---:|---|:---:|:---:|---|
-| 1 | Feature A - FR-01 (Domain + Boundary) | 25 | | `features/FR-01_Register/` |
-| 2 | Feature B - FR-09 (Domain + Boundary) | 25 | | `features/FR-09_Coupon/` |
-| 3 | Feature C - FR-15 (Domain + Boundary) | 25 | | `features/FR-15_ProductCRUD/` |
-| 4 | Feature D - Mobile FR-20 (Domain + Boundary) | 15 | | `features/FR-20_Mobile_Cart/` |
-| 5 | Agent Skills (kèm video demo) | 10 | | `skills/`, link YouTube |
-| **Tổng cộng** | | **100** | | |
+| 1 | Feature A – FR-01 (Domain + Boundary) | 25 | | `features/FR-01_Register/` |
+| 2 | Feature B – FR-09 (Domain + Boundary) | 25 | | `features/FR-09_Coupon/` |
+| 3 | Feature C – FR-15 (Domain + Boundary) | 25 | | `features/FR-15_ProductCRUD/` |
+| 4 | Feature D – FR-20 Mobile (Domain + Boundary) | 15 | | `features/FR-20_Mobile_Cart/` |
+| 5 | Agent Skills (kèm video demo) | 10 | | `skills/` |
+| | **Tổng cộng** | **100** | | |
