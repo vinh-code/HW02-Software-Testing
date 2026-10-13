@@ -1,0 +1,14 @@
+{
+  "outDir": "screenshots",
+  "cards": [
+    { "file": "BUG-FR15-01_api_create_no_token.png", "title": "BUG-FR15-01 (EP-17): POST /api/products KHÔNG có token vẫn tạo được sản phẩm", "method": "POST", "path": "/api/products", "body": { "name": "SP tạo bởi người lạ", "price": 1000, "description": "evidence", "imageUrl": "", "category_id": 1 } },
+    { "file": "BUG-FR15-01_api_create_user_token.png", "title": "BUG-FR15-01 (EP-18): token của user thường (role=user) vẫn tạo được sản phẩm", "method": "POST", "path": "/api/products", "auth": "user", "body": { "name": "SP tạo bởi user thường", "price": 1000, "description": "evidence", "imageUrl": "", "category_id": 1 } },
+    { "file": "BUG-FR15-01_api_delete_no_token.png", "title": "BUG-FR15-01 (EP-20): DELETE /api/products/6 KHÔNG có token xóa được sản phẩm", "method": "DELETE", "path": "/api/products/6" },
+    { "file": "BUG-FR15-01_api_after_delete.png", "title": "BUG-FR15-01: kiểm tra lại, sản phẩm id 6 đã bị xóa (trả về {})", "method": "GET", "path": "/api/products/6" },
+    { "file": "BUG-FR15-03_api_negative_price.png", "title": "BUG-FR15-03 (EP-11): API chấp nhận giá âm -1000", "method": "POST", "path": "/api/products", "auth": "admin", "body": { "name": "Tai nghe Sony WH-1000XM5", "price": -1000, "description": "evidence", "imageUrl": "", "category_id": 2 } },
+    { "file": "BUG-FR15-03_api_text_price.png", "title": "BUG-FR15-03 (EP-12): API chấp nhận giá là chữ \"abc\"", "method": "POST", "path": "/api/products", "auth": "admin", "body": { "name": "Tai nghe Sony WH-1000XM5", "price": "abc", "description": "evidence", "imageUrl": "", "category_id": 2 } },
+    { "file": "BUG-FR15-04_api_empty_name.png", "title": "BUG-FR15-04 (EP-06): API chấp nhận tên sản phẩm rỗng", "method": "POST", "path": "/api/products", "auth": "admin", "body": { "name": "", "price": 1500000, "description": "evidence", "imageUrl": "", "category_id": 2 } },
+    { "file": "BUG-FR15-05_api_category_999.png", "title": "BUG-FR15-05 (EP-14): API chấp nhận category_id = 999 (không tồn tại)", "method": "POST", "path": "/api/products", "auth": "admin", "body": { "name": "Tai nghe Sony WH-1000XM5", "price": 1500000, "description": "evidence", "imageUrl": "", "category_id": 999 } },
+    { "file": "BUG-FR15-06_api_update_missing.png", "title": "BUG-FR15-06 (EP-15): PUT sản phẩm không tồn tại (id 99999) vẫn trả 200 \"Product updated\"", "method": "PUT", "path": "/api/products/99999", "auth": "admin", "body": { "name": "Không tồn tại", "price": 1000, "description": "", "imageUrl": "", "category_id": 1 } }
+  ]
+}
