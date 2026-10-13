@@ -1,0 +1,1103 @@
+{
+  "executedAt": "2026-10-13T07:17:58.568Z",
+  "today": "2026-10-13",
+  "prep": {
+    "products": {
+      "200000": 6,
+      "299999": 7,
+      "300000": 8,
+      "300001": 9,
+      "499999": 10,
+      "500000": 11,
+      "500001": 12,
+      "1000000": 13
+    },
+    "coupons": [
+      {
+        "id": 1,
+        "code": "SAVE10",
+        "type": "percent",
+        "discount_value": 10,
+        "min_order_amount": 300000,
+        "expired_at": "2099-12-31",
+        "is_active": 1,
+        "max_uses_per_user": 1
+      },
+      {
+        "id": 2,
+        "code": "BIGBUY",
+        "type": "fixed",
+        "discount_value": 50000,
+        "min_order_amount": 500000,
+        "expired_at": "2099-12-31",
+        "is_active": 1,
+        "max_uses_per_user": 1
+      },
+      {
+        "id": 3,
+        "code": "VIP100",
+        "type": "fixed",
+        "discount_value": 100000,
+        "min_order_amount": 300000,
+        "expired_at": "2099-12-31",
+        "is_active": 1,
+        "max_uses_per_user": 2
+      },
+      {
+        "id": 4,
+        "code": "EXPIRED",
+        "type": "percent",
+        "discount_value": 20,
+        "min_order_amount": 100000,
+        "expired_at": "2020-01-01",
+        "is_active": 1,
+        "max_uses_per_user": 1
+      },
+      {
+        "id": 5,
+        "code": "OFF10",
+        "type": "percent",
+        "discount_value": 10,
+        "min_order_amount": 300000,
+        "expired_at": "2099-12-31",
+        "is_active": 0,
+        "max_uses_per_user": 1
+      },
+      {
+        "id": 6,
+        "code": "EXP0D",
+        "type": "percent",
+        "discount_value": 10,
+        "min_order_amount": 300000,
+        "expired_at": "2026-10-13",
+        "is_active": 1,
+        "max_uses_per_user": 1
+      },
+      {
+        "id": 7,
+        "code": "EXP1D",
+        "type": "percent",
+        "discount_value": 10,
+        "min_order_amount": 300000,
+        "expired_at": "2026-10-14",
+        "is_active": 1,
+        "max_uses_per_user": 1
+      },
+      {
+        "id": 8,
+        "code": "EXP2D",
+        "type": "percent",
+        "discount_value": 10,
+        "min_order_amount": 300000,
+        "expired_at": "2026-10-15",
+        "is_active": 1,
+        "max_uses_per_user": 1
+      }
+    ]
+  },
+  "results": [
+    {
+      "id": "EP-01",
+      "code": "SAVE10",
+      "total": 1000000,
+      "login": "yes",
+      "used": null,
+      "expected": {
+        "ok": true,
+        "discount": 100000,
+        "final": 900000
+      },
+      "api": {
+        "request": {
+          "code": "SAVE10",
+          "total_amount": 1000000,
+          "user_id": 3
+        },
+        "auth": "yes",
+        "status": 200,
+        "response": {
+          "success": true,
+          "coupon_id": 1,
+          "discount_amount": -9000000,
+          "final_amount": 10000000,
+          "message": "Áp dụng thành công! Giảm 10%"
+        },
+        "pass": false
+      },
+      "ui": {
+        "success": true,
+        "msg": "✅ Áp dụng thành công! Giảm 10%",
+        "discount": -9000000,
+        "final": 10000000,
+        "notes": [
+          "ô tổng tiền = 1000000"
+        ],
+        "shot": "EP-01_ui.png",
+        "pass": false
+      }
+    },
+    {
+      "id": "EP-02",
+      "code": "BIGBUY",
+      "total": 1000000,
+      "login": "yes",
+      "used": null,
+      "expected": {
+        "ok": true,
+        "discount": 50000,
+        "final": 950000
+      },
+      "api": {
+        "request": {
+          "code": "BIGBUY",
+          "total_amount": 1000000,
+          "user_id": 5
+        },
+        "auth": "yes",
+        "status": 200,
+        "response": {
+          "success": true,
+          "coupon_id": 2,
+          "discount_amount": 50000,
+          "final_amount": 950000,
+          "message": "Áp dụng thành công! Giảm 50,000 ₫"
+        },
+        "pass": true
+      },
+      "ui": {
+        "success": true,
+        "msg": "✅ Áp dụng thành công! Giảm 50,000 ₫",
+        "discount": 50000,
+        "final": 950000,
+        "notes": [
+          "ô tổng tiền = 1000000"
+        ],
+        "shot": "EP-02_ui.png",
+        "pass": true
+      }
+    },
+    {
+      "id": "EP-03",
+      "code": "save10",
+      "total": 1000000,
+      "login": "yes",
+      "used": null,
+      "expected": {
+        "ok": true,
+        "discount": 100000,
+        "final": 900000
+      },
+      "api": {
+        "request": {
+          "code": "save10",
+          "total_amount": 1000000,
+          "user_id": 7
+        },
+        "auth": "yes",
+        "status": 404,
+        "response": {
+          "error": "Mã giảm giá không tồn tại hoặc đã bị vô hiệu hóa"
+        },
+        "pass": false
+      },
+      "ui": {
+        "success": true,
+        "msg": "✅ Áp dụng thành công! Giảm 10%",
+        "discount": -9000000,
+        "final": 10000000,
+        "notes": [
+          "ô tổng tiền = 1000000"
+        ],
+        "shot": "EP-03_ui.png",
+        "pass": false
+      }
+    },
+    {
+      "id": "EP-04",
+      "code": " VIP100 ",
+      "total": 1000000,
+      "login": "yes",
+      "used": null,
+      "expected": {
+        "ok": true,
+        "discount": 100000,
+        "final": 900000
+      },
+      "api": {
+        "request": {
+          "code": " VIP100 ",
+          "total_amount": 1000000,
+          "user_id": 9
+        },
+        "auth": "yes",
+        "status": 404,
+        "response": {
+          "error": "Mã giảm giá không tồn tại hoặc đã bị vô hiệu hóa"
+        },
+        "pass": false
+      },
+      "ui": {
+        "success": true,
+        "msg": "✅ Áp dụng thành công! Giảm 100,000 ₫",
+        "discount": 100000,
+        "final": 900000,
+        "notes": [
+          "ô tổng tiền = 1000000"
+        ],
+        "shot": "EP-04_ui.png",
+        "pass": true
+      }
+    },
+    {
+      "id": "EP-05",
+      "code": "ABC123",
+      "total": 1000000,
+      "login": "yes",
+      "used": null,
+      "expected": {
+        "ok": false,
+        "kind": "notfound"
+      },
+      "api": {
+        "request": {
+          "code": "ABC123",
+          "total_amount": 1000000,
+          "user_id": 11
+        },
+        "auth": "yes",
+        "status": 404,
+        "response": {
+          "error": "Mã giảm giá không tồn tại hoặc đã bị vô hiệu hóa"
+        },
+        "pass": true
+      },
+      "ui": {
+        "success": false,
+        "msg": "Mã giảm giá không tồn tại hoặc đã bị vô hiệu hóa",
+        "notes": [
+          "ô tổng tiền = 1000000"
+        ],
+        "shot": "EP-05_ui.png",
+        "pass": true
+      }
+    },
+    {
+      "id": "EP-06",
+      "code": "",
+      "total": 1000000,
+      "login": "yes",
+      "used": null,
+      "expected": {
+        "ok": false,
+        "kind": "empty"
+      },
+      "api": {
+        "request": {
+          "code": "",
+          "total_amount": 1000000,
+          "user_id": 13
+        },
+        "auth": "yes",
+        "status": 400,
+        "response": {
+          "error": "Vui lòng nhập mã giảm giá"
+        },
+        "pass": true
+      },
+      "ui": {
+        "disabled": true,
+        "success": false,
+        "msg": "(nút Áp dụng bị vô hiệu hóa)",
+        "notes": [
+          "ô tổng tiền = 1000000"
+        ],
+        "shot": "EP-06_ui.png",
+        "pass": true
+      }
+    },
+    {
+      "id": "EP-07",
+      "code": "OFF10",
+      "total": 1000000,
+      "login": "yes",
+      "used": null,
+      "expected": {
+        "ok": false,
+        "kind": "inactive"
+      },
+      "api": {
+        "request": {
+          "code": "OFF10",
+          "total_amount": 1000000,
+          "user_id": 15
+        },
+        "auth": "yes",
+        "status": 404,
+        "response": {
+          "error": "Mã giảm giá không tồn tại hoặc đã bị vô hiệu hóa"
+        },
+        "pass": true
+      },
+      "ui": {
+        "success": false,
+        "msg": "Mã giảm giá không tồn tại hoặc đã bị vô hiệu hóa",
+        "notes": [
+          "ô tổng tiền = 1000000"
+        ],
+        "shot": "EP-07_ui.png",
+        "pass": true
+      }
+    },
+    {
+      "id": "EP-08",
+      "code": "EXPIRED",
+      "total": 1000000,
+      "login": "yes",
+      "used": null,
+      "expected": {
+        "ok": false,
+        "kind": "expired"
+      },
+      "api": {
+        "request": {
+          "code": "EXPIRED",
+          "total_amount": 1000000,
+          "user_id": 17
+        },
+        "auth": "yes",
+        "status": 400,
+        "response": {
+          "error": "Mã giảm giá đã hết hạn"
+        },
+        "pass": true
+      },
+      "ui": {
+        "success": false,
+        "msg": "Mã giảm giá đã hết hạn",
+        "notes": [
+          "ô tổng tiền = 1000000"
+        ],
+        "shot": "EP-08_ui.png",
+        "pass": true
+      }
+    },
+    {
+      "id": "EP-09",
+      "code": "EXP0D",
+      "total": 1000000,
+      "login": "yes",
+      "used": null,
+      "expected": {
+        "ok": false,
+        "kind": "expired"
+      },
+      "api": {
+        "request": {
+          "code": "EXP0D",
+          "total_amount": 1000000,
+          "user_id": 19
+        },
+        "auth": "yes",
+        "status": 400,
+        "response": {
+          "error": "Mã giảm giá đã hết hạn"
+        },
+        "pass": true
+      },
+      "ui": {
+        "success": false,
+        "msg": "Mã giảm giá đã hết hạn",
+        "notes": [
+          "ô tổng tiền = 1000000"
+        ],
+        "shot": "EP-09_ui.png",
+        "pass": true
+      }
+    },
+    {
+      "id": "EP-10",
+      "code": "SAVE10",
+      "total": 200000,
+      "login": "yes",
+      "used": null,
+      "expected": {
+        "ok": false,
+        "kind": "min"
+      },
+      "api": {
+        "request": {
+          "code": "SAVE10",
+          "total_amount": 200000,
+          "user_id": 21
+        },
+        "auth": "yes",
+        "status": 400,
+        "response": {
+          "error": "Đơn hàng chưa đủ giá trị tối thiểu 300,000 ₫ để áp dụng mã này"
+        },
+        "pass": true
+      },
+      "ui": {
+        "success": false,
+        "msg": "Đơn hàng chưa đủ giá trị tối thiểu 300,000 ₫ để áp dụng mã này",
+        "notes": [
+          "ô tổng tiền = 200000"
+        ],
+        "shot": "EP-10_ui.png",
+        "pass": true
+      }
+    },
+    {
+      "id": "EP-11",
+      "code": "SAVE10",
+      "total": 1000000,
+      "login": "no",
+      "used": null,
+      "expected": {
+        "ok": false,
+        "kind": "auth"
+      },
+      "api": {
+        "request": {
+          "code": "SAVE10",
+          "total_amount": 1000000,
+          "user_id": null
+        },
+        "auth": "no",
+        "status": 200,
+        "response": {
+          "success": true,
+          "coupon_id": 1,
+          "discount_amount": -9000000,
+          "final_amount": 10000000,
+          "message": "Áp dụng thành công! Giảm 10%"
+        },
+        "pass": false
+      },
+      "ui": {
+        "success": true,
+        "msg": "✅ Áp dụng thành công! Giảm 10%",
+        "discount": -9000000,
+        "final": 10000000,
+        "notes": [
+          "dialog: \"Bạn cần đăng nhập để thanh toán!\"",
+          "sau khi bấm thanh toán: URL = /login",
+          "mở /checkout khi chưa đăng nhập: trang Checkout hiển thị",
+          "ô tổng tiền = 1000000"
+        ],
+        "shot": "EP-11_ui.png",
+        "pass": false
+      }
+    },
+    {
+      "id": "EP-12",
+      "code": "SAVE10",
+      "total": 1000000,
+      "login": "fake",
+      "used": null,
+      "expected": {
+        "ok": false,
+        "kind": "auth"
+      },
+      "api": {
+        "request": {
+          "code": "SAVE10",
+          "total_amount": 1000000,
+          "user_id": null
+        },
+        "auth": "fake",
+        "status": 200,
+        "response": {
+          "success": true,
+          "coupon_id": 1,
+          "discount_amount": -9000000,
+          "final_amount": 10000000,
+          "message": "Áp dụng thành công! Giảm 10%"
+        },
+        "pass": false
+      }
+    },
+    {
+      "id": "EP-13",
+      "code": "SAVE10",
+      "total": 1000000,
+      "login": "yes",
+      "used": [
+        "SAVE10",
+        1
+      ],
+      "expected": {
+        "ok": false,
+        "kind": "used"
+      },
+      "api": {
+        "request": {
+          "code": "SAVE10",
+          "total_amount": 1000000,
+          "user_id": 26
+        },
+        "auth": "yes",
+        "status": 400,
+        "response": {
+          "error": "Bạn đã sử dụng mã này 1 lần (đã đạt giới hạn)"
+        },
+        "pass": true
+      },
+      "ui": {
+        "success": false,
+        "msg": "Bạn đã sử dụng mã này 1 lần (đã đạt giới hạn)",
+        "notes": [
+          "lần 1: áp SAVE10 → \"✅ Áp dụng thành công! Giảm 10%\", thanh toán thành công",
+          "ô tổng tiền = 1000000"
+        ],
+        "shot": "EP-13_ui.png",
+        "pass": true
+      }
+    },
+    {
+      "id": "EP-14",
+      "code": "SAVE10",
+      "total": 1000000,
+      "login": "yes",
+      "used": [
+        "SAVE10",
+        1
+      ],
+      "expected": {
+        "ok": false,
+        "kind": "used"
+      },
+      "api": {
+        "request": {
+          "code": "SAVE10",
+          "total_amount": 1000000
+        },
+        "auth": "yes",
+        "status": 200,
+        "response": {
+          "success": true,
+          "coupon_id": 1,
+          "discount_amount": -9000000,
+          "final_amount": 10000000,
+          "message": "Áp dụng thành công! Giảm 10%"
+        },
+        "pass": false
+      }
+    },
+    {
+      "id": "EP-15",
+      "code": "SAVE10",
+      "total": 200000,
+      "login": "yes",
+      "used": null,
+      "expected": {
+        "ok": false,
+        "kind": "min"
+      },
+      "ui": {
+        "success": true,
+        "msg": "✅ Áp dụng thành công! Giảm 10%",
+        "discount": -9000000,
+        "final": 10000000,
+        "notes": [
+          "sửa ô \"Tổng tiền thanh toán\" từ 200000 thành 1000000: thành công",
+          "ô tổng tiền = 1000000"
+        ],
+        "shot": "EP-15_ui.png",
+        "pass": false
+      }
+    },
+    {
+      "id": "BVA-01",
+      "code": "SAVE10",
+      "total": 1000000,
+      "login": "yes",
+      "used": null,
+      "expected": {
+        "ok": true,
+        "discount": 100000,
+        "final": 900000
+      },
+      "api": {
+        "request": {
+          "code": "SAVE10",
+          "total_amount": 1000000,
+          "user_id": 30
+        },
+        "auth": "yes",
+        "status": 200,
+        "response": {
+          "success": true,
+          "coupon_id": 1,
+          "discount_amount": -9000000,
+          "final_amount": 10000000,
+          "message": "Áp dụng thành công! Giảm 10%"
+        },
+        "pass": false
+      },
+      "ui": {
+        "success": true,
+        "msg": "✅ Áp dụng thành công! Giảm 10%",
+        "discount": -9000000,
+        "final": 10000000,
+        "notes": [
+          "ô tổng tiền = 1000000"
+        ],
+        "shot": "BVA-01_ui.png",
+        "pass": false
+      }
+    },
+    {
+      "id": "BVA-02",
+      "code": "SAVE10",
+      "total": 299999,
+      "login": "yes",
+      "used": null,
+      "expected": {
+        "ok": false,
+        "kind": "min"
+      },
+      "api": {
+        "request": {
+          "code": "SAVE10",
+          "total_amount": 299999,
+          "user_id": 32
+        },
+        "auth": "yes",
+        "status": 400,
+        "response": {
+          "error": "Đơn hàng chưa đủ giá trị tối thiểu 300,000 ₫ để áp dụng mã này"
+        },
+        "pass": true
+      },
+      "ui": {
+        "success": false,
+        "msg": "Đơn hàng chưa đủ giá trị tối thiểu 300,000 ₫ để áp dụng mã này",
+        "notes": [
+          "ô tổng tiền = 299999"
+        ],
+        "shot": "BVA-02_ui.png",
+        "pass": true
+      }
+    },
+    {
+      "id": "BVA-03",
+      "code": "SAVE10",
+      "total": 300000,
+      "login": "yes",
+      "used": null,
+      "expected": {
+        "ok": true,
+        "discount": 30000,
+        "final": 270000
+      },
+      "api": {
+        "request": {
+          "code": "SAVE10",
+          "total_amount": 300000,
+          "user_id": 34
+        },
+        "auth": "yes",
+        "status": 400,
+        "response": {
+          "error": "Đơn hàng chưa đủ giá trị tối thiểu 300,000 ₫ để áp dụng mã này"
+        },
+        "pass": false
+      },
+      "ui": {
+        "success": false,
+        "msg": "Đơn hàng chưa đủ giá trị tối thiểu 300,000 ₫ để áp dụng mã này",
+        "notes": [
+          "ô tổng tiền = 300000"
+        ],
+        "shot": "BVA-03_ui.png",
+        "pass": false
+      }
+    },
+    {
+      "id": "BVA-04",
+      "code": "SAVE10",
+      "total": 300001,
+      "login": "yes",
+      "used": null,
+      "expected": {
+        "ok": true,
+        "discount": 30000,
+        "final": 270001
+      },
+      "api": {
+        "request": {
+          "code": "SAVE10",
+          "total_amount": 300001,
+          "user_id": 36
+        },
+        "auth": "yes",
+        "status": 200,
+        "response": {
+          "success": true,
+          "coupon_id": 1,
+          "discount_amount": -2700009,
+          "final_amount": 3000010,
+          "message": "Áp dụng thành công! Giảm 10%"
+        },
+        "pass": false
+      },
+      "ui": {
+        "success": true,
+        "msg": "✅ Áp dụng thành công! Giảm 10%",
+        "discount": -2700009,
+        "final": 3000010,
+        "notes": [
+          "ô tổng tiền = 300001"
+        ],
+        "shot": "BVA-04_ui.png",
+        "pass": false
+      }
+    },
+    {
+      "id": "BVA-05",
+      "code": "BIGBUY",
+      "total": 499999,
+      "login": "yes",
+      "used": null,
+      "expected": {
+        "ok": false,
+        "kind": "min"
+      },
+      "api": {
+        "request": {
+          "code": "BIGBUY",
+          "total_amount": 499999,
+          "user_id": 38
+        },
+        "auth": "yes",
+        "status": 400,
+        "response": {
+          "error": "Đơn hàng chưa đủ giá trị tối thiểu 500,000 ₫ để áp dụng mã này"
+        },
+        "pass": true
+      },
+      "ui": {
+        "success": false,
+        "msg": "Đơn hàng chưa đủ giá trị tối thiểu 500,000 ₫ để áp dụng mã này",
+        "notes": [
+          "ô tổng tiền = 499999"
+        ],
+        "shot": "BVA-05_ui.png",
+        "pass": true
+      }
+    },
+    {
+      "id": "BVA-06",
+      "code": "BIGBUY",
+      "total": 500000,
+      "login": "yes",
+      "used": null,
+      "expected": {
+        "ok": true,
+        "discount": 50000,
+        "final": 450000
+      },
+      "api": {
+        "request": {
+          "code": "BIGBUY",
+          "total_amount": 500000,
+          "user_id": 40
+        },
+        "auth": "yes",
+        "status": 400,
+        "response": {
+          "error": "Đơn hàng chưa đủ giá trị tối thiểu 500,000 ₫ để áp dụng mã này"
+        },
+        "pass": false
+      },
+      "ui": {
+        "success": false,
+        "msg": "Đơn hàng chưa đủ giá trị tối thiểu 500,000 ₫ để áp dụng mã này",
+        "notes": [
+          "ô tổng tiền = 500000"
+        ],
+        "shot": "BVA-06_ui.png",
+        "pass": false
+      }
+    },
+    {
+      "id": "BVA-07",
+      "code": "BIGBUY",
+      "total": 500001,
+      "login": "yes",
+      "used": null,
+      "expected": {
+        "ok": true,
+        "discount": 50000,
+        "final": 450001
+      },
+      "api": {
+        "request": {
+          "code": "BIGBUY",
+          "total_amount": 500001,
+          "user_id": 42
+        },
+        "auth": "yes",
+        "status": 200,
+        "response": {
+          "success": true,
+          "coupon_id": 2,
+          "discount_amount": 50000,
+          "final_amount": 450001,
+          "message": "Áp dụng thành công! Giảm 50,000 ₫"
+        },
+        "pass": true
+      },
+      "ui": {
+        "success": true,
+        "msg": "✅ Áp dụng thành công! Giảm 50,000 ₫",
+        "discount": 50000,
+        "final": 450001,
+        "notes": [
+          "ô tổng tiền = 500001"
+        ],
+        "shot": "BVA-07_ui.png",
+        "pass": true
+      }
+    },
+    {
+      "id": "BVA-08",
+      "code": "EXP0D",
+      "total": 1000000,
+      "login": "yes",
+      "used": null,
+      "expected": {
+        "ok": false,
+        "kind": "expired"
+      },
+      "api": {
+        "request": {
+          "code": "EXP0D",
+          "total_amount": 1000000,
+          "user_id": 44
+        },
+        "auth": "yes",
+        "status": 400,
+        "response": {
+          "error": "Mã giảm giá đã hết hạn"
+        },
+        "pass": true
+      },
+      "ui": {
+        "success": false,
+        "msg": "Mã giảm giá đã hết hạn",
+        "notes": [
+          "ô tổng tiền = 1000000"
+        ],
+        "shot": "BVA-08_ui.png",
+        "pass": true
+      }
+    },
+    {
+      "id": "BVA-09",
+      "code": "EXP1D",
+      "total": 1000000,
+      "login": "yes",
+      "used": null,
+      "expected": {
+        "ok": true,
+        "discount": 100000,
+        "final": 900000
+      },
+      "api": {
+        "request": {
+          "code": "EXP1D",
+          "total_amount": 1000000,
+          "user_id": 46
+        },
+        "auth": "yes",
+        "status": 200,
+        "response": {
+          "success": true,
+          "coupon_id": 7,
+          "discount_amount": -9000000,
+          "final_amount": 10000000,
+          "message": "Áp dụng thành công! Giảm 10%"
+        },
+        "pass": false
+      },
+      "ui": {
+        "success": true,
+        "msg": "✅ Áp dụng thành công! Giảm 10%",
+        "discount": -9000000,
+        "final": 10000000,
+        "notes": [
+          "ô tổng tiền = 1000000"
+        ],
+        "shot": "BVA-09_ui.png",
+        "pass": false
+      }
+    },
+    {
+      "id": "BVA-10",
+      "code": "EXP2D",
+      "total": 1000000,
+      "login": "yes",
+      "used": null,
+      "expected": {
+        "ok": true,
+        "discount": 100000,
+        "final": 900000
+      },
+      "api": {
+        "request": {
+          "code": "EXP2D",
+          "total_amount": 1000000,
+          "user_id": 48
+        },
+        "auth": "yes",
+        "status": 200,
+        "response": {
+          "success": true,
+          "coupon_id": 8,
+          "discount_amount": -9000000,
+          "final_amount": 10000000,
+          "message": "Áp dụng thành công! Giảm 10%"
+        },
+        "pass": false
+      },
+      "ui": {
+        "success": true,
+        "msg": "✅ Áp dụng thành công! Giảm 10%",
+        "discount": -9000000,
+        "final": 10000000,
+        "notes": [
+          "ô tổng tiền = 1000000"
+        ],
+        "shot": "BVA-10_ui.png",
+        "pass": false
+      }
+    },
+    {
+      "id": "BVA-11",
+      "code": "VIP100",
+      "total": 1000000,
+      "login": "yes",
+      "used": [
+        "VIP100",
+        0
+      ],
+      "expected": {
+        "ok": true,
+        "discount": 100000,
+        "final": 900000
+      },
+      "api": {
+        "request": {
+          "code": "VIP100",
+          "total_amount": 1000000,
+          "user_id": 50
+        },
+        "auth": "yes",
+        "status": 200,
+        "response": {
+          "success": true,
+          "coupon_id": 3,
+          "discount_amount": 100000,
+          "final_amount": 900000,
+          "message": "Áp dụng thành công! Giảm 100,000 ₫"
+        },
+        "pass": true
+      },
+      "ui": {
+        "success": true,
+        "msg": "✅ Áp dụng thành công! Giảm 100,000 ₫",
+        "discount": 100000,
+        "final": 900000,
+        "notes": [
+          "chuẩn bị used=0 qua POST /api/coupon-usage",
+          "ô tổng tiền = 1000000"
+        ],
+        "shot": "BVA-11_ui.png",
+        "pass": true
+      }
+    },
+    {
+      "id": "BVA-12",
+      "code": "VIP100",
+      "total": 1000000,
+      "login": "yes",
+      "used": [
+        "VIP100",
+        1
+      ],
+      "expected": {
+        "ok": true,
+        "discount": 100000,
+        "final": 900000
+      },
+      "api": {
+        "request": {
+          "code": "VIP100",
+          "total_amount": 1000000,
+          "user_id": 52
+        },
+        "auth": "yes",
+        "status": 200,
+        "response": {
+          "success": true,
+          "coupon_id": 3,
+          "discount_amount": 100000,
+          "final_amount": 900000,
+          "message": "Áp dụng thành công! Giảm 100,000 ₫"
+        },
+        "pass": true
+      },
+      "ui": {
+        "success": true,
+        "msg": "✅ Áp dụng thành công! Giảm 100,000 ₫",
+        "discount": 100000,
+        "final": 900000,
+        "notes": [
+          "chuẩn bị used=1 qua POST /api/coupon-usage",
+          "ô tổng tiền = 1000000"
+        ],
+        "shot": "BVA-12_ui.png",
+        "pass": true
+      }
+    },
+    {
+      "id": "BVA-13",
+      "code": "VIP100",
+      "total": 1000000,
+      "login": "yes",
+      "used": [
+        "VIP100",
+        2
+      ],
+      "expected": {
+        "ok": false,
+        "kind": "used"
+      },
+      "api": {
+        "request": {
+          "code": "VIP100",
+          "total_amount": 1000000,
+          "user_id": 54
+        },
+        "auth": "yes",
+        "status": 400,
+        "response": {
+          "error": "Bạn đã sử dụng mã này 2 lần (đã đạt giới hạn)"
+        },
+        "pass": true
+      },
+      "ui": {
+        "success": false,
+        "msg": "Bạn đã sử dụng mã này 2 lần (đã đạt giới hạn)",
+        "notes": [
+          "chuẩn bị used=2 qua POST /api/coupon-usage",
+          "ô tổng tiền = 1000000"
+        ],
+        "shot": "BVA-13_ui.png",
+        "pass": true
+      }
+    }
+  ]
+}
