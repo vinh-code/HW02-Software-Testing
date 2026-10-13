@@ -10,6 +10,7 @@
 | BUG-FR01-04 | Không kiểm tra định dạng email (API và UI) | Major | P2 | EP-05…EP-07, EP-05R…EP-07R |
 | BUG-FR01-05 | Thiếu trường "Xác nhận mật khẩu" (UI và API) | Major | P2 | EP-18, EP-19 |
 | BUG-FR01-06 | API chấp nhận trường bắt buộc rỗng; họ tên chỉ có khoảng trắng được chấp nhận ở cả UI | Major | P2 | EP-03, EP-04, EP-04R, EP-08, EP-12, BVA-02 |
+| BUG-FR01-07 | Stored XSS: Họ tên chứa HTML được thực thi trên header sau khi đăng nhập | **Critical** | P1 | EP-21 (TC bổ sung sau gap analysis) |
 
 ---
 
@@ -133,6 +134,24 @@ curl -X POST http://localhost:3000/api/register -H "Content-Type: application/js
 2. UI chấp nhận họ tên chỉ có khoảng trắng và chuyển sang `/login`. UI chỉ chặn được trường **rỗng hoàn toàn** nhờ thuộc tính HTML5 `required`.
 
 **Minh chứng:** [BUG-FR01-06_api_all_empty.png](screenshots/BUG-FR01-06_api_all_empty.png), [EP-04R_ui.png](screenshots/EP-04R_ui.png), [BUG-FR01-03_admin_users_duplicates.png](screenshots/BUG-FR01-03_admin_users_duplicates.png) (id 10)
+
+---
+
+## BUG-FR01-07: Stored XSS, Họ tên chứa HTML được thực thi trên header sau khi đăng nhập
+
+- **Tính năng & kỹ thuật:** FR-01, EP với lớp bổ sung EC27 "Họ tên chứa ký tự/thẻ HTML" (xem [07_ai_gap_analysis.md](07_ai_gap_analysis.md))
+- **Severity:** Critical (bảo mật, vi phạm SEC-04). Kẻ tấn công đăng ký với họ tên chứa mã độc. Mã chạy trên trình duyệt của **bất kỳ ai** đăng nhập bằng tài khoản đó, và có thể đánh cắp token trong `localStorage`.
+
+**Các bước tái hiện**
+1. Gọi `POST /api/register` với `{"name":"<img src=x onerror=\"window.__xss=1;this.style.border='3px solid red'\">Hacker","email":"xss@gmail.com","password":"Abcdef1@"}`.
+2. Mở `http://localhost:5173/login`, đăng nhập bằng `xss@gmail.com` / `Abcdef1@`.
+3. Quan sát header (góc phải, phần "Chào, …"). Mở Console và gõ `window.__xss`.
+
+**Kết quả mong đợi:** Header hiển thị nguyên văn chuỗi `Chào, <img src=x …>Hacker` dưới dạng văn bản (đã escape). Không có script nào được thực thi.
+
+**Kết quả thực tế:** Thẻ `<img>` được render thật, `onerror` chạy (`window.__xss === 1`), ảnh hỏng có viền đỏ. DOM của header chứa `Chào, <img src="x" onerror="…">`.
+
+**Minh chứng:** [EP-21_ui_header_xss.png](screenshots/EP-21_ui_header_xss.png)
 
 ---
 

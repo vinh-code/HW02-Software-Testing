@@ -92,6 +92,13 @@ Chú thích:
 
 Screenshot UI của từng TC: `screenshots/<TC>_ui.png`.
 
+## 5.4b TC bổ sung sau AI gap analysis (chạy 2026-10-13, script [`scripts/fr01_supplementary.js`](../../scripts/fr01_supplementary.js))
+
+| TC | Lớp mới | Dữ liệu | Mong đợi | Thực tế | KQ |
+|---|---|---|---|---|---|
+| EP-20 | EC26 Họ tên tiếng Việt có dấu (hợp lệ) | `Phạm Quang Vinh` (qua API) | Đăng ký thành công, header hiển thị đúng dấu | 200, header hiển thị `Chào, Phạm Quang Vinh` | ✅ |
+| EP-21 | EC27 Họ tên chứa thẻ HTML | `<img src=x onerror=…>Hacker` | Đăng ký được, nhưng hiển thị dạng văn bản (SEC-04) | **Script được thực thi** trên header | ❌ [ảnh](screenshots/EP-21_ui_header_xss.png) |
+
 ## 5.5 Tổng hợp
 
 | Kênh | Số TC | ✅ PASS | ⚠️ PASS\* | ❌ FAIL |
@@ -99,7 +106,7 @@ Screenshot UI của từng TC: `screenshots/<TC>_ui.png`.
 | API | 40 | 17 (toàn bộ TC hợp lệ) | 0 | **23 (toàn bộ TC không hợp lệ)** |
 | UI | 40 | 4 (EP-03, EP-08, EP-12, BVA-02) | 11 | **25** |
 
-**Kết luận theo TC** (một TC chỉ Pass khi Pass trên **cả hai** kênh): **0/40 Pass**. Tính năng FR-01 không đáp ứng spec ở cả hai tầng:
+**Kết luận theo TC** (một TC chỉ Pass khi Pass trên **cả hai** kênh): **0/40 Pass**. Có thêm 2 TC bổ sung: EP-20 Pass, EP-21 Fail. **Tổng FR-01: 42 TC thiết kế, 42 TC thực thi, 1 Pass, 41 Fail.** Tính năng FR-01 không đáp ứng spec ở cả hai tầng:
 - **Tầng API không có validation nào.** Mọi input đều được chấp nhận, kể cả họ tên/email/mật khẩu rỗng.
 - **Tầng UI** chỉ kiểm tra "bắt buộc" (HTML5 `required`) và một quy tắc mật khẩu **sai**. UI không kiểm tra định dạng email, email trùng, họ tên toàn khoảng trắng, và không có trường Xác nhận MK.
 
