@@ -1,0 +1,11 @@
+{
+  "outDir": "screenshots",
+  "cards": [
+    { "file": "BUG-FR01-02_api_weak_password.png", "title": "BUG-FR01-02 (EP-11): API chấp nhận mật khẩu 7 ký tự", "method": "POST", "path": "/api/register", "body": { "name": "Nguyen Van A", "email": "vinh.evd.weak7@gmail.com", "password": "Abcd1@x", "confirmPassword": "Abcd1@x" } },
+    { "file": "BUG-FR01-02_api_no_special.png", "title": "BUG-FR01-02 (EP-16): API chấp nhận mật khẩu không có ký tự đặc biệt", "method": "POST", "path": "/api/register", "body": { "name": "Nguyen Van A", "email": "vinh.evd.nospecial@gmail.com", "password": "Abcdefg1", "confirmPassword": "Abcdefg1" } },
+    { "file": "BUG-FR01-03_api_duplicate_email.png", "title": "BUG-FR01-03 (EP-09): API cho đăng ký lại email đã tồn tại test@eshop.com", "method": "POST", "path": "/api/register", "body": { "name": "Nguyen Van A", "email": "test@eshop.com", "password": "Abcdef1@", "confirmPassword": "Abcdef1@" } },
+    { "file": "BUG-FR01-04_api_invalid_email.png", "title": "BUG-FR01-04 (EP-05): API chấp nhận email sai định dạng (thiếu @)", "method": "POST", "path": "/api/register", "body": { "name": "Nguyen Van A", "email": "vinh.evd.gmail.com", "password": "Abcdef1@", "confirmPassword": "Abcdef1@" } },
+    { "file": "BUG-FR01-05_api_confirm_mismatch.png", "title": "BUG-FR01-05 (EP-18): API bỏ qua confirmPassword không khớp", "method": "POST", "path": "/api/register", "body": { "name": "Nguyen Van A", "email": "vinh.evd.mismatch@gmail.com", "password": "Abcdef1@", "confirmPassword": "Abcdef1!" } },
+    { "file": "BUG-FR01-06_api_all_empty.png", "title": "BUG-FR01-06 (EP-03/08/12): API chấp nhận họ tên, email, mật khẩu đều rỗng", "method": "POST", "path": "/api/register", "body": { "name": "", "email": "", "password": "" } }
+  ]
+}
