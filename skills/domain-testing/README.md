@@ -6,7 +6,7 @@ Skill cho **Claude Code** giúp áp dụng Phân hoạch tương đương và Ph
 
 ```
 domain-testing/
-├── SKILL.md                    # quy trình B0–B7, điểm dừng ✋, tham số
+├── SKILL.md                    # quy trình B0–B7, điểm dừng, tham số
 ├── reference/
 │   ├── ep_rules.md             # quy tắc EP (bảng tạo lớp, 1 lớp không hợp lệ/TC, bảng rút gọn)
 │   ├── bva_rules.md            # 4n+1 / 6n+1 / 5^n / 7^n, điều chỉnh 3n+1, điểm độ bền

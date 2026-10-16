@@ -39,11 +39,11 @@ Thiết lập (chỉ làm nếu thiếu, báo cho người dùng biết):
 2. **Quét toàn bộ SRS** để tìm yêu cầu liên quan: bảo mật (`SEC-*`), giao diện (`FR-21/22/23`), phân quyền, các FR mà tính năng này dùng hoặc ảnh hưởng tới. Liệt kê cả những yêu cầu đã xem nhưng loại khỏi phạm vi, kèm lý do.
 3. Xác định kênh thực thi thực tế (URL UI, endpoint API) bằng cách *quan sát* app đang chạy (mở trang, gọi API), không bằng đọc code.
 
-## B1. Xác định Input & Output → `01_input_output.md`  ✋
+## B1. Xác định Input & Output → `01_input_output.md` (điểm dừng)
 
 Theo [`templates/01_input_output.md`](templates/01_input_output.md): bảng yêu cầu R1…Rn (có cột Nguồn), bảng Input (gồm cả **trạng thái hệ thống** ảnh hưởng tới kết quả), bảng Output (tách lớp đầu ra khi có nhiều công thức/loại kết quả), bảng điều kiện C1…Cn kèm **loại điều kiện** (value / range / set / boolean), bảng giả định A1…An, kênh thực thi và quan sát ban đầu.
 
-✋ **Dừng lại**, trình bày các giả định A1…An và hỏi người dùng chấp nhận / sửa. Chỉ commit `FR-xx [EP-B1]` sau khi được duyệt.
+**Dừng lại**, trình bày các giả định A1…An và hỏi người dùng chấp nhận / sửa. Chỉ commit `FR-xx [EP-B1]` sau khi được duyệt.
 
 ## B2. Lớp tương đương → `02_equivalence_classes.md`
 
@@ -59,17 +59,17 @@ Theo [`templates/01_input_output.md`](templates/01_input_output.md): bảng yêu
 - Ma trận độ phủ EC → TC (phải đủ 100%), cột Kênh, lý do khi một TC chỉ chạy một kênh.
 - Commit `FR-xx [EP-B3]`.
 
-## B4. Phân tích giá trị biên → `04_bva_test_cases.md`  ✋
+## B4. Phân tích giá trị biên → `04_bva_test_cases.md` (điểm dừng)
 
 - Bảng "điều kiện nào có miền có thứ tự" → chọn biến V1…Vn; bảng biên (miền hợp lệ, LB, UB, bước nhảy).
 - **Chọn biến thể và giải thích** theo `bva_rules.md` (Standard 4n+1, Robustness 6n+1, Worst-case 5ⁿ, Robust worst-case 7ⁿ; điều chỉnh 3n+1 cho biến chỉ có biên dưới; thêm điểm độ bền phía "∞" khi spec không có biên trên).
 - **Mỗi giả định ở B1 phải có ít nhất 1 TC chạm vào nó** (không né giả định bằng cách chọn giá trị "an toàn").
 - Bảng TC BVA với giá trị đã được **kiểm tra bằng script** (độ dài chuỗi, số ký tự từng loại…).
-- ✋ Trình bày tổng số TC (EP + BVA) và kênh chạy; chờ người dùng xác nhận trước khi thực thi. Commit `FR-xx [BVA]`.
+- **Điểm dừng:** Trình bày tổng số TC (EP + BVA) và kênh chạy; chờ người dùng xác nhận trước khi thực thi. Commit `FR-xx [BVA]`.
 
-## B5. Thực thi → `05_test_execution.md` + `results_<fr>.json` + `screenshots/`  ✋
+## B5. Thực thi → `05_test_execution.md` + `results_<fr>.json` + `screenshots/` (điểm dừng)
 
-1. ✋ Xác nhận môi trường với người dùng: SUT đang chạy ở đâu, có cần reset DB không (EShop: khởi động lại backend sẽ seed lại DB), dữ liệu chuẩn bị sẽ tạo những gì. Mọi thay đổi môi trường (sửa IP, cài dependency) phải được ghi lại.
+1. **Điểm dừng:** Xác nhận môi trường với người dùng: SUT đang chạy ở đâu, có cần reset DB không (EShop: khởi động lại backend sẽ seed lại DB), dữ liệu chuẩn bị sẽ tạo những gì. Mọi thay đổi môi trường (sửa IP, cài dependency) phải được ghi lại.
 2. Sinh `scripts/<fr>_<ten>.js` từ [`scripts/runner_template.js`](scripts/runner_template.js): mảng TC dạng dữ liệu, mỗi TC chạy trên từng kênh, **hậu kiểm trạng thái hệ thống** (đọc lại qua API) trước/sau, chụp ảnh mỗi TC UI, ghi JSON kết quả.
 3. **Chạy TC hợp lệ trước** (lọc bằng regex tham số dòng lệnh). Nếu TC hợp lệ Fail → phân tích **masking** trước khi chạy tiếp (`pitfalls_checklist.md` §B).
    - Kênh `mobile` (React Native/Expo, không có thiết bị): `npx expo install react-native-web react-dom @expo/metro-runtime`, `npx expo start --web --port 8081`, Playwright với `devices["Pixel 5"]`; đổi `API_URL` sang IP LAN; ghi rõ giới hạn (Alert không hiện trên web, bàn phím số không chặn chữ) và kết luận dựa trên hiệu ứng (`pitfalls_checklist.md` B7).
@@ -77,14 +77,14 @@ Theo [`templates/01_input_output.md`](templates/01_input_output.md): bảng yêu
 5. Xem lại vài ảnh chụp bằng công cụ đọc ảnh để chắc ảnh thể hiện đúng kết quả.
 6. Viết `05_test_execution.md`: môi trường, tiêu chí Pass/Fail, mục masking/pass giả, bảng kết quả EP và BVA (thực tế từng kênh + link ảnh), phân tích theo từng biến BVA, bảng tổng hợp (đếm lại từ JSON). Commit `FR-xx [EXEC]`.
 
-## B6. Báo cáo lỗi → `06_bug_report.md` (+ GitHub Issues hoặc `issues_preview.md`)  ✋
+## B6. Báo cáo lỗi → `06_bug_report.md` (+ GitHub Issues hoặc `issues_preview.md`) (điểm dừng)
 
 - Gom các TC Fail theo **nguyên nhân gốc** thành bug `BUG-<FRxx>-NN`; bảng tổng hợp (ID, Tiêu đề, Severity, Priority, TC phát hiện).
 - Mỗi bug: Tính năng & kỹ thuật, Severity + lý do, Các bước tái hiện, Kết quả mong đợi (trích SRS), Kết quả thực tế, Minh chứng (ảnh UI; ảnh request/response tạo bằng `scripts/api_evidence.js` cho lỗi tầng API).
 - **Đánh giá severity theo chuỗi thao tác tiếp theo** của người dùng thật: thử thêm 1 kịch bản thăm dò xem lỗi hiển thị có dẫn tới hỏng dữ liệu thật không.
 - Mục "Quan sát ngoài phạm vi" cho vấn đề thuộc FR khác.
 - Commit `FR-xx [BUG]`.
-- ✋ **Issues:** tạo Issue là thao tác ra bên ngoài.
+- **Điểm dừng, Issues:** tạo Issue là thao tác ra bên ngoài.
   - Nếu có `--no-issues`: chạy `python3 scripts/create_issues.py <thư mục FR> <FR-xx> --preview` → sinh `issues_preview.md` (tiêu đề `[FR-xx] [TC] …`, nội dung, nhãn) — **không gọi GitHub**.
   - Ngược lại: hỏi người dùng xác nhận, `git push` để ảnh có URL, rồi `python3 scripts/create_issues.py <thư mục FR> <FR-xx> --repo <owner/name>`; script tự thêm cột Issue vào bảng bug. Commit `FR-xx [BUG]: đồng bộ Issues`.
 
