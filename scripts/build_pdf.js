@@ -54,6 +54,7 @@ const css = `
   h1 { font-size: 19pt; border-bottom: 2px solid #2563eb; padding-bottom: 4px; margin-top: 0; }
   h2 { font-size: 14pt; border-bottom: 1px solid #d0d7de; padding-bottom: 3px; margin-top: 20px; break-after: avoid; }
   h3 { font-size: 11.5pt; margin-top: 14px; break-after: avoid; }
+  h4 { font-size: 10pt; margin: 10px 0 4px; break-after: avoid; }
   table { border-collapse: collapse; width: 100%; margin: 8px 0; font-size: 8pt; break-inside: auto; }
   tr { break-inside: avoid; }
   th, td { border: 1px solid #d0d7de; padding: 3px 5px; vertical-align: top; overflow-wrap: normal; }
@@ -67,6 +68,7 @@ const css = `
   hr { border: 0; border-top: 1px solid #d0d7de; margin: 14px 0; }
   .fig { display: block; margin: 6px 0 10px; break-inside: avoid; }
   .fig img { max-width: 100%; max-height: 120mm; border: 1px solid #d0d7de; }
+  p > img { max-width: 100%; max-height: 225mm; border: 1px solid #d0d7de; display: block; margin: 4px auto; }
   .fig .cap { display: block; font-size: 7.5pt; color: #57606a; }
   .appendix { break-before: page; }
   .appendix-title { break-before: page; font-size: 20pt; text-align: center; margin-top: 80mm; border: 0; }

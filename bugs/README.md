@@ -37,4 +37,30 @@ Báo cáo chi tiết từng bug (bước tái hiện, mong đợi/thực tế, �
 
 ## Ảnh chụp trang GitHub Issues
 
-*(Sinh viên chụp màn hình trang Issues của repo và đặt vào `bugs/github_issues_*.png`.)*
+Repo: https://github.com/vinh-code/HW02-Software-Testing/issues. Có 28 Issue, mỗi Issue gắn nhãn `bug`, `severity:<mức>` và mã tính năng. Ảnh chụp ngày 16/10/2026 bằng `scripts/shot_issues.js`.
+
+### Danh sách tất cả Issue (trang 1/2)
+
+![Tất cả Issue, trang 1](github_issues_all_p1.png)
+
+### Danh sách tất cả Issue (trang 2/2)
+
+![Tất cả Issue, trang 2](github_issues_all_p2.png)
+
+### Lọc theo tính năng
+
+#### FR-01 Đăng ký (7 Issue)
+
+![Issue FR-01](github_issues_FR-01.png)
+
+#### FR-09 Coupon (8 Issue)
+
+![Issue FR-09](github_issues_FR-09.png)
+
+#### FR-15 Product CRUD (7 Issue)
+
+![Issue FR-15](github_issues_FR-15.png)
+
+#### FR-20 Mobile Giỏ hàng (6 Issue)
+
+![Issue FR-20](github_issues_FR-20.png)
