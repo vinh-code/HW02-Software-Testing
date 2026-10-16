@@ -89,7 +89,7 @@ Toàn bộ prompt và output được ghi trong AI Audit Report.
 ### 2.4 Quy ước
 
 - Lớp `EC1…`, TC `EP-01…` / `BVA-01…`. TC bổ sung sau gap analysis được đánh số tiếp. Lượt chạy lại có hậu tố `R`.
-- Ký hiệu ✅ Pass, ❌ Fail, ⚠️ Pass giả (đúng kết quả nhưng sai lý do).
+- Kết quả ghi bằng chữ: Pass, Fail, Pass giả (đúng kết quả nhưng sai lý do).
 - Một TC chỉ Pass khi Pass trên **mọi kênh** đã chạy.
 
 ---
@@ -143,7 +143,7 @@ Mấu chốt là nhận ra điều kiện "có ít nhất 1 chữ hoa/thường/
 
 ### 3.3 Thực thi và phát hiện chính
 
-- **Masking trên UI:** UI từ chối **mọi** mật khẩu đúng spec, kể cả TC hợp lệ EP-01. Vì vậy các TC không hợp lệ về họ tên/email trên UI ban đầu là ⚠️ Pass giả.
+- **Masking trên UI:** UI từ chối **mọi** mật khẩu đúng spec, kể cả TC hợp lệ EP-01. Vì vậy các TC không hợp lệ về họ tên/email trên UI ban đầu là Pass giả.
   - Lượt thăm dò cho thấy UI coi **khoảng trắng** là "ký tự đặc biệt" và **cấm** `@$!%*?&`.
   - Chạy lại 9 TC (hậu tố `R`) với mật khẩu `Abcdef1 ` mà UI chấp nhận, để mỗi TC chỉ còn một lớp không hợp lệ.
 - **API:** không có validation nào. Họ tên, email, mật khẩu rỗng đều đăng ký được.

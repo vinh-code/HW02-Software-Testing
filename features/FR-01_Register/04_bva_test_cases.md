@@ -9,15 +9,15 @@ BVA chỉ dùng được khi lớp tương đương **có thứ tự** (slide tr
 
 | Điều kiện | Có thứ tự? | Áp dụng BVA? | Biến BVA |
 |---|---|---|---|
-| C1 Họ tên khác rỗng | Có. "Khác rỗng" nghĩa là **len(name) ≥ 1** | ✅ | V1 = len(Họ tên) |
-| C2 Email đúng định dạng | Không, là mẫu cú pháp | ❌ (đã phủ bằng EP) | — |
-| C3 Email duy nhất | Không, là thuộc tính tập hợp | ❌ (đã phủ bằng EP) | — |
-| C4 len(MK) ≥ 8 | Có | ✅ | V2 = len(Mật khẩu) |
-| C5 Có chữ hoa | Có. "Ít nhất 1" nghĩa là **số chữ hoa ≥ 1** | ✅ | V3 = #chữ hoa |
-| C6 Có chữ thường | Có, **số chữ thường ≥ 1** | ✅ | V4 = #chữ thường |
-| C7 Có chữ số | Có, **số chữ số ≥ 1** | ✅ | V5 = #chữ số |
-| C8 Có ký tự đặc biệt thuộc tập | Có, **số ký tự thuộc `{@$!%*?&}` ≥ 1** | ✅ | V6 = #ký tự đặc biệt |
-| C9 Xác nhận MK khớp | Không | ❌ (đã phủ bằng EP) | — |
+| C1 Họ tên khác rỗng | Có. "Khác rỗng" nghĩa là **len(name) ≥ 1** | Có | V1 = len(Họ tên) |
+| C2 Email đúng định dạng | Không, là mẫu cú pháp | Không (đã phủ bằng EP) | — |
+| C3 Email duy nhất | Không, là thuộc tính tập hợp | Không (đã phủ bằng EP) | — |
+| C4 len(MK) ≥ 8 | Có | Có | V2 = len(Mật khẩu) |
+| C5 Có chữ hoa | Có. "Ít nhất 1" nghĩa là **số chữ hoa ≥ 1** | Có | V3 = #chữ hoa |
+| C6 Có chữ thường | Có, **số chữ thường ≥ 1** | Có | V4 = #chữ thường |
+| C7 Có chữ số | Có, **số chữ số ≥ 1** | Có | V5 = #chữ số |
+| C8 Có ký tự đặc biệt thuộc tập | Có, **số ký tự thuộc `{@$!%*?&}` ≥ 1** | Có | V6 = #ký tự đặc biệt |
+| C9 Xác nhận MK khớp | Không | Không (đã phủ bằng EP) | — |
 
 > **Phân tích:** điều kiện "có ít nhất 1 X" thoạt nhìn là boolean. Thực chất nó là điều kiện trên một **biến đếm có thứ tự** (`count ≥ 1`), nên có biên dưới LB = 1. Vì vậy ta có thể áp dụng BVA cho cả 4 điều kiện thành phần của mật khẩu.
 

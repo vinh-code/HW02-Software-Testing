@@ -28,46 +28,46 @@ Bộ giá trị nền được chấp nhận, nên các TC không hợp lệ ph�
 
 | TC | Thao tác | Dữ liệu (khác nền) | Mong đợi | API: thực tế | API | UI: thực tế | UI | KQ |
 |---|---|---|---|---|---|---|---|---|
-| EP-01 | Thêm | – | O1a | 200, tạo SP đúng dữ liệu | ✅ | tạo SP đúng dữ liệu | ✅ | ✅ [ảnh](screenshots/EP-01_ui.png) |
-| EP-02 | Sửa | tên `…(đã sửa)`, giá 1.600.000 | O1b | 200, SP đích đổi đúng, 0 SP khác đổi | ✅ | CSDL đúng, nhưng **bảng UI hiển thị cả 7 SP khác mang tên mới** | ❌ | ❌ [ảnh](screenshots/EP-02_ui.png) |
-| EP-03 | Xóa | – | O1c | 200, SP bị xóa, 0 SP khác đổi | ✅ | như API (không có hộp thoại xác nhận) | ✅ | ✅ [ảnh](screenshots/EP-03_ui.png) |
-| EP-04 | Thêm | tên chứa HTML/tiếng Việt | O1a + O1d | 200, tên lưu nguyên văn (71 ký tự) | ✅ | Tên hiển thị dạng chữ ở Admin, trang chủ, trang chi tiết; `window.__xss15` không được gán | ✅ | ✅ [admin](screenshots/EP-04_ui.png), [web](screenshots/EP-04_web_detail.png) |
-| EP-05 | Thêm | giá 1500.5 | O1a | 200, giá 1500.5 | ✅ | như API | ✅ | ✅ [ảnh](screenshots/EP-05_ui.png) |
-| EP-06 | Thêm | tên `""` | O2 | **200, tạo SP tên rỗng** | ❌ | HTML5 chặn "Please fill out this field." | ✅ | ❌ [ảnh](screenshots/EP-06_ui.png) |
-| EP-07 | Thêm | tên `"   "` | O2 | **200, tạo SP** | ❌ | **tạo SP** | ❌ | ❌ [ảnh](screenshots/EP-07_ui.png) |
-| EP-08 | Thêm | tên 300 ký tự | O2 | **200, tạo SP tên 300 ký tự** | ❌ | **tạo SP** | ❌ | ❌ [ảnh](screenshots/EP-08_ui.png) |
-| EP-09 | Thêm | giá `""` | O2 | **200, tạo SP, giá `""`** | ❌ | **tạo SP, giá `""`** | ❌ | ❌ [ảnh](screenshots/EP-09_ui.png) |
-| EP-10 | Thêm | giá 0 | O2 | **200, tạo SP giá 0** | ❌ | **tạo SP giá 0** | ❌ | ❌ [ảnh](screenshots/EP-10_ui.png) |
-| EP-11 | Thêm | giá -1000 | O2 | **200, tạo SP giá -1.000** | ❌ | **tạo SP giá -1.000** | ❌ | ❌ [ảnh](screenshots/EP-11_ui.png) |
-| EP-12 | Thêm | giá `"abc"` | O2 | **200, tạo SP, giá `"abc"`** | ❌ | Ô Giá không nhận chữ (giá trị = `""`), nhưng form vẫn lưu SP với giá rỗng | ❌ | ❌ [ảnh](screenshots/EP-12_ui.png) |
-| EP-13 | Thêm | DM `null` | O2 | **200, tạo SP không có danh mục** | ❌ | không áp dụng | – | ❌ |
-| EP-14 | Thêm | DM 999 | O2 | **200, tạo SP thuộc DM 999 (không tồn tại)** | ❌ | không áp dụng | – | ❌ |
-| EP-15 | Sửa | id 99999 | O2: 404 | **200 `"Product updated"`** dù SP không tồn tại | ❌ | không áp dụng | – | ❌ |
-| EP-16 | Xóa | id 99999 | O2: 404 | **200 `"Product deleted"`** dù SP không tồn tại | ❌ | không áp dụng | – | ❌ |
-| EP-17 | Thêm | **không token** | O2: 401 | **200, tạo SP** | ❌ | không áp dụng | – | ❌ |
-| EP-18 | Thêm | **token user thường** | O2: 403 | **200, tạo SP** | ❌ | không áp dụng | – | ❌ |
-| EP-19 | Sửa | **không token** | O2: 401 | **200, SP bị đổi tên** thành "Bị sửa khi không có token" | ❌ | không áp dụng | – | ❌ |
-| EP-20 | Xóa | **không token** | O2: 401 | **200, SP bị xóa** | ❌ | không áp dụng | – | ❌ |
-| EP-21 | Sửa | tên `""` | O2 | **200, SP đổi thành tên rỗng** | ❌ | HTML5 chặn, SP giữ nguyên | ✅ | ❌ [ảnh](screenshots/EP-21_ui.png) |
-| EP-22 | Sửa | giá 0 | O2 | **200, SP đổi giá thành 0** | ❌ | **SP đổi giá thành 0**, bảng UI còn đổi tên 17 SP khác | ❌ | ❌ [ảnh](screenshots/EP-22_ui.png) |
+| EP-01 | Thêm | – | O1a | 200, tạo SP đúng dữ liệu | Pass | tạo SP đúng dữ liệu | Pass | Pass [ảnh](screenshots/EP-01_ui.png) |
+| EP-02 | Sửa | tên `…(đã sửa)`, giá 1.600.000 | O1b | 200, SP đích đổi đúng, 0 SP khác đổi | Pass | CSDL đúng, nhưng **bảng UI hiển thị cả 7 SP khác mang tên mới** | Fail | Fail [ảnh](screenshots/EP-02_ui.png) |
+| EP-03 | Xóa | – | O1c | 200, SP bị xóa, 0 SP khác đổi | Pass | như API (không có hộp thoại xác nhận) | Pass | Pass [ảnh](screenshots/EP-03_ui.png) |
+| EP-04 | Thêm | tên chứa HTML/tiếng Việt | O1a + O1d | 200, tên lưu nguyên văn (71 ký tự) | Pass | Tên hiển thị dạng chữ ở Admin, trang chủ, trang chi tiết; `window.__xss15` không được gán | Pass | Pass [admin](screenshots/EP-04_ui.png), [web](screenshots/EP-04_web_detail.png) |
+| EP-05 | Thêm | giá 1500.5 | O1a | 200, giá 1500.5 | Pass | như API | Pass | Pass [ảnh](screenshots/EP-05_ui.png) |
+| EP-06 | Thêm | tên `""` | O2 | **200, tạo SP tên rỗng** | Fail | HTML5 chặn "Please fill out this field." | Pass | Fail [ảnh](screenshots/EP-06_ui.png) |
+| EP-07 | Thêm | tên `"   "` | O2 | **200, tạo SP** | Fail | **tạo SP** | Fail | Fail [ảnh](screenshots/EP-07_ui.png) |
+| EP-08 | Thêm | tên 300 ký tự | O2 | **200, tạo SP tên 300 ký tự** | Fail | **tạo SP** | Fail | Fail [ảnh](screenshots/EP-08_ui.png) |
+| EP-09 | Thêm | giá `""` | O2 | **200, tạo SP, giá `""`** | Fail | **tạo SP, giá `""`** | Fail | Fail [ảnh](screenshots/EP-09_ui.png) |
+| EP-10 | Thêm | giá 0 | O2 | **200, tạo SP giá 0** | Fail | **tạo SP giá 0** | Fail | Fail [ảnh](screenshots/EP-10_ui.png) |
+| EP-11 | Thêm | giá -1000 | O2 | **200, tạo SP giá -1.000** | Fail | **tạo SP giá -1.000** | Fail | Fail [ảnh](screenshots/EP-11_ui.png) |
+| EP-12 | Thêm | giá `"abc"` | O2 | **200, tạo SP, giá `"abc"`** | Fail | Ô Giá không nhận chữ (giá trị = `""`), nhưng form vẫn lưu SP với giá rỗng | Fail | Fail [ảnh](screenshots/EP-12_ui.png) |
+| EP-13 | Thêm | DM `null` | O2 | **200, tạo SP không có danh mục** | Fail | không áp dụng | – | Fail |
+| EP-14 | Thêm | DM 999 | O2 | **200, tạo SP thuộc DM 999 (không tồn tại)** | Fail | không áp dụng | – | Fail |
+| EP-15 | Sửa | id 99999 | O2: 404 | **200 `"Product updated"`** dù SP không tồn tại | Fail | không áp dụng | – | Fail |
+| EP-16 | Xóa | id 99999 | O2: 404 | **200 `"Product deleted"`** dù SP không tồn tại | Fail | không áp dụng | – | Fail |
+| EP-17 | Thêm | **không token** | O2: 401 | **200, tạo SP** | Fail | không áp dụng | – | Fail |
+| EP-18 | Thêm | **token user thường** | O2: 403 | **200, tạo SP** | Fail | không áp dụng | – | Fail |
+| EP-19 | Sửa | **không token** | O2: 401 | **200, SP bị đổi tên** thành "Bị sửa khi không có token" | Fail | không áp dụng | – | Fail |
+| EP-20 | Xóa | **không token** | O2: 401 | **200, SP bị xóa** | Fail | không áp dụng | – | Fail |
+| EP-21 | Sửa | tên `""` | O2 | **200, SP đổi thành tên rỗng** | Fail | HTML5 chặn, SP giữ nguyên | Pass | Fail [ảnh](screenshots/EP-21_ui.png) |
+| EP-22 | Sửa | giá 0 | O2 | **200, SP đổi giá thành 0** | Fail | **SP đổi giá thành 0**, bảng UI còn đổi tên 17 SP khác | Fail | Fail [ảnh](screenshots/EP-22_ui.png) |
 
 ## 5.4 Kết quả: Phân tích giá trị biên (13 TC)
 
 | TC | Thao tác | Biến, điểm | Giá trị | Mong đợi | API | UI | Ghi chú | KQ |
 |---|---|---|---|---|---|---|---|---|
-| BVA-01 | Thêm | nominal | len 24, giá 1.500.000 | O1a | ✅ | ✅ | | ✅ [ảnh](screenshots/BVA-01_ui.png) |
-| BVA-02 | Thêm | V1 LB−1 | **len 0** | O2 | ❌ 200, tạo SP | ✅ HTML5 chặn | Validation chỉ có ở client | ❌ [ảnh](screenshots/BVA-02_ui.png) |
-| BVA-03 | Thêm | V1 **LB** | **len 1** | O1a | ✅ | ✅ | | ✅ [ảnh](screenshots/BVA-03_ui.png) |
-| BVA-04 | Thêm | V1 LB+1 | len 2 | O1a | ✅ | ✅ | | ✅ [ảnh](screenshots/BVA-04_ui.png) |
-| BVA-05 | Thêm | V1 UB−1 | len 254 | O1a | ✅ | ✅ | | ✅ [ảnh](screenshots/BVA-05_ui.png) |
-| BVA-06 | Thêm | V1 **UB** | **len 255** | O1a, đủ 255 ký tự | ✅ | ✅ | Lưu đủ 255 ký tự | ✅ [ảnh](screenshots/BVA-06_ui.png) |
-| BVA-07 | Thêm | V1 UB+1 | **len 256** | O2 | ❌ 200, tạo SP 256 ký tự | ❌ tạo SP | Không có giới hạn trên | ❌ [ảnh](screenshots/BVA-07_ui.png) |
-| BVA-08 | Thêm | V2 LB−1 | **giá 0** | O2 | ❌ 200, tạo SP | ❌ tạo SP | | ❌ [ảnh](screenshots/BVA-08_ui.png) |
-| BVA-09 | Thêm | V2 **LB** | **giá 1** | O1a | ✅ | ✅ | | ✅ [ảnh](screenshots/BVA-09_ui.png) |
-| BVA-10 | Thêm | V2 LB+1 | giá 2 | O1a | ✅ | ✅ | | ✅ [ảnh](screenshots/BVA-10_ui.png) |
-| BVA-11 | Thêm | V2 độ bền | **giá 2.147.483.648** | O1a, không tràn số | ✅ | ✅ | Lưu đúng 2147483648. Bảng Admin hiển thị `2147483648 ₫`, không có phân cách hàng nghìn (FR-21, ngoài phạm vi) | ✅ [ảnh](screenshots/BVA-11_ui.png) |
-| BVA-12 | Sửa | V1 **UB** | **len 255** | O1b | ✅ | ❌ bảng UI đổi tên 54 SP khác | CSDL đúng, hiển thị sai | ❌ [ảnh](screenshots/BVA-12_ui.png) |
-| BVA-13 | Sửa | V1 UB+1 | **len 256** | O2 | ❌ 200, SP đổi tên 256 ký tự | ❌ | | ❌ [ảnh](screenshots/BVA-13_ui.png) |
+| BVA-01 | Thêm | nominal | len 24, giá 1.500.000 | O1a | Pass | Pass | | Pass [ảnh](screenshots/BVA-01_ui.png) |
+| BVA-02 | Thêm | V1 LB−1 | **len 0** | O2 | Fail: 200, tạo SP | Pass: HTML5 chặn | Validation chỉ có ở client | Fail [ảnh](screenshots/BVA-02_ui.png) |
+| BVA-03 | Thêm | V1 **LB** | **len 1** | O1a | Pass | Pass | | Pass [ảnh](screenshots/BVA-03_ui.png) |
+| BVA-04 | Thêm | V1 LB+1 | len 2 | O1a | Pass | Pass | | Pass [ảnh](screenshots/BVA-04_ui.png) |
+| BVA-05 | Thêm | V1 UB−1 | len 254 | O1a | Pass | Pass | | Pass [ảnh](screenshots/BVA-05_ui.png) |
+| BVA-06 | Thêm | V1 **UB** | **len 255** | O1a, đủ 255 ký tự | Pass | Pass | Lưu đủ 255 ký tự | Pass [ảnh](screenshots/BVA-06_ui.png) |
+| BVA-07 | Thêm | V1 UB+1 | **len 256** | O2 | Fail: 200, tạo SP 256 ký tự | Fail: tạo SP | Không có giới hạn trên | Fail [ảnh](screenshots/BVA-07_ui.png) |
+| BVA-08 | Thêm | V2 LB−1 | **giá 0** | O2 | Fail: 200, tạo SP | Fail: tạo SP | | Fail [ảnh](screenshots/BVA-08_ui.png) |
+| BVA-09 | Thêm | V2 **LB** | **giá 1** | O1a | Pass | Pass | | Pass [ảnh](screenshots/BVA-09_ui.png) |
+| BVA-10 | Thêm | V2 LB+1 | giá 2 | O1a | Pass | Pass | | Pass [ảnh](screenshots/BVA-10_ui.png) |
+| BVA-11 | Thêm | V2 độ bền | **giá 2.147.483.648** | O1a, không tràn số | Pass | Pass | Lưu đúng 2147483648. Bảng Admin hiển thị `2147483648 ₫`, không có phân cách hàng nghìn (FR-21, ngoài phạm vi) | Pass [ảnh](screenshots/BVA-11_ui.png) |
+| BVA-12 | Sửa | V1 **UB** | **len 255** | O1b | Pass | Fail: bảng UI đổi tên 54 SP khác | CSDL đúng, hiển thị sai | Fail [ảnh](screenshots/BVA-12_ui.png) |
+| BVA-13 | Sửa | V1 UB+1 | **len 256** | O2 | Fail: 200, SP đổi tên 256 ký tự | Fail | | Fail [ảnh](screenshots/BVA-13_ui.png) |
 
 **Phân tích theo biến:**
 - **V1 (độ dài tên):** chỉ có **biên dưới** được kiểm soát, và chỉ ở **client** (HTML5 `required`). Biên trên 255 không được kiểm soát ở đâu cả: 256 và 300 ký tự đều được lưu.
@@ -89,8 +89,8 @@ Hai lớp/điểm mới được thêm ở [Bước 7](07_ai_gap_analysis.md). D
 
 | TC | Lớp / điểm mới | Dữ liệu | Mong đợi | Thực tế | KQ |
 |---|---|---|---|---|---|
-| EP-23 | EC22: Sửa **thiếu trường** (trường vắng mặt, khác với chuỗi rỗng) | `PUT /api/products/<id>` body `{"price":1700000}` | O2 (thiếu tên/danh mục bắt buộc), hoặc chỉ đổi giá và giữ nguyên các trường khác | HTTP 200. Giá đổi, nhưng **tên, mô tả, ảnh, danh mục đều thành `null`** | ❌ [ảnh](screenshots/BUG-FR15-07_api_after.png) |
-| BVA-14 | V1 UB với **ký tự tiếng Việt có dấu** (kiểm tra giả định A2) | Tên 255 ký tự `Tai nghe chống ồn – …` (329 byte UTF-8), UI + API | O1a, lưu đủ 255 ký tự | Lưu đủ 255 ký tự trên cả hai kênh | ✅ [ảnh](screenshots/BVA-14_ui.png) |
+| EP-23 | EC22: Sửa **thiếu trường** (trường vắng mặt, khác với chuỗi rỗng) | `PUT /api/products/<id>` body `{"price":1700000}` | O2 (thiếu tên/danh mục bắt buộc), hoặc chỉ đổi giá và giữ nguyên các trường khác | HTTP 200. Giá đổi, nhưng **tên, mô tả, ảnh, danh mục đều thành `null`** | Fail [ảnh](screenshots/BUG-FR15-07_api_after.png) |
+| BVA-14 | V1 UB với **ký tự tiếng Việt có dấu** (kiểm tra giả định A2) | Tên 255 ký tự `Tai nghe chống ồn – …` (329 byte UTF-8), UI + API | O1a, lưu đủ 255 ký tự | Lưu đủ 255 ký tự trên cả hai kênh | Pass [ảnh](screenshots/BVA-14_ui.png) |
 
 ## 5.6 Tổng hợp
 

@@ -24,12 +24,12 @@
 
 | Mật khẩu thử | Đúng spec? | UI xử lý |
 |---|---|---|
-| `Abcdef1@` | ✅ hợp lệ | ❌ Từ chối "Mật khẩu quá yếu" |
-| `Abcdef1@ ` (có thêm khoảng trắng) | ✅ hợp lệ | ❌ Từ chối |
-| `Abc def1@` | ✅ hợp lệ | ❌ Từ chối |
-| `Abcdef1 ` (khoảng trắng, không có ký tự đặc biệt) | ❌ không hợp lệ | ✅ **Chấp nhận**, chuyển `/login` |
-| `Abcdef 1` | ❌ không hợp lệ | ✅ **Chấp nhận** |
-| `Abcdefg 1` | ❌ không hợp lệ | ✅ **Chấp nhận** |
+| `Abcdef1@` | Hợp lệ | Từ chối "Mật khẩu quá yếu" |
+| `Abcdef1@ ` (có thêm khoảng trắng) | Hợp lệ | Từ chối |
+| `Abc def1@` | Hợp lệ | Từ chối |
+| `Abcdef1 ` (khoảng trắng, không có ký tự đặc biệt) | Không hợp lệ | **Chấp nhận**, chuyển `/login` |
+| `Abcdef 1` | Không hợp lệ | **Chấp nhận** |
+| `Abcdefg 1` | Không hợp lệ | **Chấp nhận** |
 
 **Kết luận:** UI hiểu "ký tự đặc biệt" là **khoảng trắng**, và **cấm** mọi ký tự thuộc tập `@$!%*?&`. Quy tắc này ngược hẳn với spec.
 
@@ -38,57 +38,56 @@
 ## 5.3 Kết quả: Phân hoạch tương đương (19 TC)
 
 Chú thích:
-- ✅ PASS
-- ❌ FAIL
-- ⚠️ PASS\*: kết quả đúng (bị từ chối), nhưng **lý do từ chối sai**. UI chặn vì quy tắc mật khẩu sai (mục 5.2), nên không xác nhận được rằng UI kiểm tra đúng lớp đang test.
+- PASS / FAIL: đạt / không đạt so với mong đợi.
+- PASS\*: kết quả đúng (bị từ chối), nhưng **lý do từ chối sai**. UI chặn vì quy tắc mật khẩu sai (mục 5.2), nên không xác nhận được rằng UI kiểm tra đúng lớp đang test.
 
 | TC | Lớp | Mong đợi | API: thực tế | API | UI: thực tế | UI | Screenshot |
 |---|---|---|---|---|---|---|---|
-| EP-01 | EC1,4,11,14,21,24 | O1 | 200, tạo TK | ✅ | Báo "Mật khẩu quá yếu", không tạo TK | ❌ | [EP-01](screenshots/EP-01_ui.png) |
-| EP-02 | EC20 | O1 | 200, tạo TK | ✅ | Báo "Mật khẩu quá yếu", không tạo TK | ❌ | [EP-02](screenshots/EP-02_ui.png) |
-| EP-03 | EC2 Họ tên rỗng | O2 | 200, **tạo TK** | ❌ | Bị chặn bởi HTML5 `required` (lượt chạy lại cũng vậy) | ✅ | [EP-03R](screenshots/EP-03R_ui.png) |
-| EP-04 | EC3 Họ tên toàn khoảng trắng | O2 | 200, **tạo TK** | ❌ | Lượt chạy lại: **chấp nhận**, chuyển `/login`, tạo TK | ❌ | [EP-04R](screenshots/EP-04R_ui.png) |
-| EP-05 | EC5 Email thiếu `@` | O2 | 200, **tạo TK** | ❌ | Lượt chạy lại: **chấp nhận**, tạo TK | ❌ | [EP-05R](screenshots/EP-05R_ui.png) |
-| EP-06 | EC6 Email thiếu phần local | O2 | 200, **tạo TK** | ❌ | Lượt chạy lại: **chấp nhận**, tạo TK | ❌ | [EP-06R](screenshots/EP-06R_ui.png) |
-| EP-07 | EC7 Domain không có `.` | O2 | 200, **tạo TK** | ❌ | Lượt chạy lại: **chấp nhận**, tạo TK | ❌ | [EP-07R](screenshots/EP-07R_ui.png) |
-| EP-08 | EC8 Email rỗng | O2 | 200, **tạo TK** | ❌ | Bị chặn bởi HTML5 `required` | ✅ | [EP-08R](screenshots/EP-08R_ui.png) |
-| EP-09 | EC9 Email đã tồn tại | O2 | 200, **tạo TK trùng** `test@eshop.com` | ❌ | Lượt chạy lại: **chấp nhận**, tạo TK trùng | ❌ | [EP-09R](screenshots/EP-09R_ui.png) |
-| EP-10 | EC10 Trùng, khác hoa/thường | O2 | 200, **tạo TK** `TEST@eshop.com` | ❌ | Lượt chạy lại: **chấp nhận**, tạo TK | ❌ | [EP-10R](screenshots/EP-10R_ui.png) |
-| EP-11 | EC12 MK 7 ký tự | O2 | 200, **tạo TK** | ❌ | Báo "Mật khẩu quá yếu" | ⚠️ | [EP-11](screenshots/EP-11_ui.png) |
-| EP-12 | EC13 MK rỗng | O2 | 200, **tạo TK** | ❌ | Bị chặn bởi HTML5 `required` | ✅ | [EP-12](screenshots/EP-12_ui.png) |
-| EP-13 | EC15 Thiếu chữ hoa | O2 | 200, **tạo TK** | ❌ | Báo "Mật khẩu quá yếu" | ⚠️ | [EP-13](screenshots/EP-13_ui.png) |
-| EP-14 | EC16 Thiếu chữ thường | O2 | 200, **tạo TK** | ❌ | Báo "Mật khẩu quá yếu" | ⚠️ | [EP-14](screenshots/EP-14_ui.png) |
-| EP-15 | EC17 Thiếu chữ số | O2 | 200, **tạo TK** | ❌ | Báo "Mật khẩu quá yếu" | ⚠️ | [EP-15](screenshots/EP-15_ui.png) |
-| EP-16 | EC18 Không có ký tự đặc biệt | O2 | 200, **tạo TK** | ❌ | Báo "Mật khẩu quá yếu" | ⚠️ | [EP-16](screenshots/EP-16_ui.png) |
-| EP-17 | EC19 Ký tự đặc biệt ngoài tập | O2 | 200, **tạo TK** | ❌ | Báo "Mật khẩu quá yếu" | ⚠️ | [EP-17](screenshots/EP-17_ui.png) |
-| EP-18 | EC22 Xác nhận MK không khớp | O2 | 200, **tạo TK** (bỏ qua `confirmPassword`) | ❌ | **Không có ô Xác nhận MK** | ❌ | [EP-18](screenshots/EP-18_ui.png) |
-| EP-19 | EC23 Xác nhận MK rỗng | O2 | 200, **tạo TK** | ❌ | **Không có ô Xác nhận MK** | ❌ | [EP-19](screenshots/EP-19_ui.png) |
+| EP-01 | EC1,4,11,14,21,24 | O1 | 200, tạo TK | Pass | Báo "Mật khẩu quá yếu", không tạo TK | Fail | [EP-01](screenshots/EP-01_ui.png) |
+| EP-02 | EC20 | O1 | 200, tạo TK | Pass | Báo "Mật khẩu quá yếu", không tạo TK | Fail | [EP-02](screenshots/EP-02_ui.png) |
+| EP-03 | EC2 Họ tên rỗng | O2 | 200, **tạo TK** | Fail | Bị chặn bởi HTML5 `required` (lượt chạy lại cũng vậy) | Pass | [EP-03R](screenshots/EP-03R_ui.png) |
+| EP-04 | EC3 Họ tên toàn khoảng trắng | O2 | 200, **tạo TK** | Fail | Lượt chạy lại: **chấp nhận**, chuyển `/login`, tạo TK | Fail | [EP-04R](screenshots/EP-04R_ui.png) |
+| EP-05 | EC5 Email thiếu `@` | O2 | 200, **tạo TK** | Fail | Lượt chạy lại: **chấp nhận**, tạo TK | Fail | [EP-05R](screenshots/EP-05R_ui.png) |
+| EP-06 | EC6 Email thiếu phần local | O2 | 200, **tạo TK** | Fail | Lượt chạy lại: **chấp nhận**, tạo TK | Fail | [EP-06R](screenshots/EP-06R_ui.png) |
+| EP-07 | EC7 Domain không có `.` | O2 | 200, **tạo TK** | Fail | Lượt chạy lại: **chấp nhận**, tạo TK | Fail | [EP-07R](screenshots/EP-07R_ui.png) |
+| EP-08 | EC8 Email rỗng | O2 | 200, **tạo TK** | Fail | Bị chặn bởi HTML5 `required` | Pass | [EP-08R](screenshots/EP-08R_ui.png) |
+| EP-09 | EC9 Email đã tồn tại | O2 | 200, **tạo TK trùng** `test@eshop.com` | Fail | Lượt chạy lại: **chấp nhận**, tạo TK trùng | Fail | [EP-09R](screenshots/EP-09R_ui.png) |
+| EP-10 | EC10 Trùng, khác hoa/thường | O2 | 200, **tạo TK** `TEST@eshop.com` | Fail | Lượt chạy lại: **chấp nhận**, tạo TK | Fail | [EP-10R](screenshots/EP-10R_ui.png) |
+| EP-11 | EC12 MK 7 ký tự | O2 | 200, **tạo TK** | Fail | Báo "Mật khẩu quá yếu" | PASS\* | [EP-11](screenshots/EP-11_ui.png) |
+| EP-12 | EC13 MK rỗng | O2 | 200, **tạo TK** | Fail | Bị chặn bởi HTML5 `required` | Pass | [EP-12](screenshots/EP-12_ui.png) |
+| EP-13 | EC15 Thiếu chữ hoa | O2 | 200, **tạo TK** | Fail | Báo "Mật khẩu quá yếu" | PASS\* | [EP-13](screenshots/EP-13_ui.png) |
+| EP-14 | EC16 Thiếu chữ thường | O2 | 200, **tạo TK** | Fail | Báo "Mật khẩu quá yếu" | PASS\* | [EP-14](screenshots/EP-14_ui.png) |
+| EP-15 | EC17 Thiếu chữ số | O2 | 200, **tạo TK** | Fail | Báo "Mật khẩu quá yếu" | PASS\* | [EP-15](screenshots/EP-15_ui.png) |
+| EP-16 | EC18 Không có ký tự đặc biệt | O2 | 200, **tạo TK** | Fail | Báo "Mật khẩu quá yếu" | PASS\* | [EP-16](screenshots/EP-16_ui.png) |
+| EP-17 | EC19 Ký tự đặc biệt ngoài tập | O2 | 200, **tạo TK** | Fail | Báo "Mật khẩu quá yếu" | PASS\* | [EP-17](screenshots/EP-17_ui.png) |
+| EP-18 | EC22 Xác nhận MK không khớp | O2 | 200, **tạo TK** (bỏ qua `confirmPassword`) | Fail | **Không có ô Xác nhận MK** | Fail | [EP-18](screenshots/EP-18_ui.png) |
+| EP-19 | EC23 Xác nhận MK rỗng | O2 | 200, **tạo TK** | Fail | **Không có ô Xác nhận MK** | Fail | [EP-19](screenshots/EP-19_ui.png) |
 
 ## 5.4 Kết quả: Phân tích giá trị biên (21 TC)
 
 | TC | Biến, điểm biên | Mong đợi | API | UI | Ghi chú |
 |---|---|---|---|---|---|
-| BVA-01 | Nominal | O1 | ✅ 200 | ❌ báo MK yếu | UI từ chối MK hợp lệ |
-| BVA-02 | len(Họ tên) = 0 | O2 | ❌ 200, tạo TK | ✅ HTML5 `required` | Lượt chạy lại BVA-02R cũng ✅ |
-| BVA-03 | len(Họ tên) = 1 | O1 | ✅ | ❌ | UI: lỗi mật khẩu |
-| BVA-04 | len(Họ tên) = 2 | O1 | ✅ | ❌ | UI: lỗi mật khẩu |
-| BVA-05 | len(MK) = 7 | O2 | ❌ 200, tạo TK | ⚠️ | **API không có biên dưới 8** |
-| BVA-06 | len(MK) = 8 | O1 | ✅ | ❌ | UI: lỗi mật khẩu |
-| BVA-07 | len(MK) = 9 | O1 | ✅ | ❌ | UI: lỗi mật khẩu |
-| BVA-08 | #chữ hoa = 0 | O2 | ❌ tạo TK | ⚠️ | |
-| BVA-09 | #chữ hoa = 1 | O1 | ✅ | ❌ | |
-| BVA-10 | #chữ hoa = 2 | O1 | ✅ | ❌ | |
-| BVA-11 | #chữ thường = 0 | O2 | ❌ tạo TK | ⚠️ | |
-| BVA-12 | #chữ thường = 1 | O1 | ✅ | ❌ | |
-| BVA-13 | #chữ thường = 2 | O1 | ✅ | ❌ | |
-| BVA-14 | #chữ số = 0 | O2 | ❌ tạo TK | ⚠️ | |
-| BVA-15 | #chữ số = 1 | O1 | ✅ | ❌ | |
-| BVA-16 | #chữ số = 2 | O1 | ✅ | ❌ | |
-| BVA-17 | #ký tự đặc biệt = 0 | O2 | ❌ tạo TK | ⚠️ | |
-| BVA-18 | #ký tự đặc biệt = 1 | O1 | ✅ | ❌ | |
-| BVA-19 | #ký tự đặc biệt = 2 | O1 | ✅ | ❌ | |
-| BVA-20 | len(Họ tên) = 256 | O1 | ✅ | ❌ | UI: lỗi mật khẩu |
-| BVA-21 | len(MK) = 256 | O1 | ✅ | ❌ | UI: lỗi mật khẩu |
+| BVA-01 | Nominal | O1 | Pass: 200 | Fail: báo MK yếu | UI từ chối MK hợp lệ |
+| BVA-02 | len(Họ tên) = 0 | O2 | Fail: 200, tạo TK | Pass: HTML5 `required` | Lượt chạy lại BVA-02R cũng Pass |
+| BVA-03 | len(Họ tên) = 1 | O1 | Pass | Fail | UI: lỗi mật khẩu |
+| BVA-04 | len(Họ tên) = 2 | O1 | Pass | Fail | UI: lỗi mật khẩu |
+| BVA-05 | len(MK) = 7 | O2 | Fail: 200, tạo TK | PASS\* | **API không có biên dưới 8** |
+| BVA-06 | len(MK) = 8 | O1 | Pass | Fail | UI: lỗi mật khẩu |
+| BVA-07 | len(MK) = 9 | O1 | Pass | Fail | UI: lỗi mật khẩu |
+| BVA-08 | #chữ hoa = 0 | O2 | Fail: tạo TK | PASS\* | |
+| BVA-09 | #chữ hoa = 1 | O1 | Pass | Fail | |
+| BVA-10 | #chữ hoa = 2 | O1 | Pass | Fail | |
+| BVA-11 | #chữ thường = 0 | O2 | Fail: tạo TK | PASS\* | |
+| BVA-12 | #chữ thường = 1 | O1 | Pass | Fail | |
+| BVA-13 | #chữ thường = 2 | O1 | Pass | Fail | |
+| BVA-14 | #chữ số = 0 | O2 | Fail: tạo TK | PASS\* | |
+| BVA-15 | #chữ số = 1 | O1 | Pass | Fail | |
+| BVA-16 | #chữ số = 2 | O1 | Pass | Fail | |
+| BVA-17 | #ký tự đặc biệt = 0 | O2 | Fail: tạo TK | PASS\* | |
+| BVA-18 | #ký tự đặc biệt = 1 | O1 | Pass | Fail | |
+| BVA-19 | #ký tự đặc biệt = 2 | O1 | Pass | Fail | |
+| BVA-20 | len(Họ tên) = 256 | O1 | Pass | Fail | UI: lỗi mật khẩu |
+| BVA-21 | len(MK) = 256 | O1 | Pass | Fail | UI: lỗi mật khẩu |
 
 Screenshot UI của từng TC: `screenshots/<TC>_ui.png`.
 
@@ -96,12 +95,12 @@ Screenshot UI của từng TC: `screenshots/<TC>_ui.png`.
 
 | TC | Lớp mới | Dữ liệu | Mong đợi | Thực tế | KQ |
 |---|---|---|---|---|---|
-| EP-20 | EC26 Họ tên tiếng Việt có dấu (hợp lệ) | `Phạm Quang Vinh` (qua API) | Đăng ký thành công, header hiển thị đúng dấu | 200, header hiển thị `Chào, Phạm Quang Vinh` | ✅ |
-| EP-21 | EC27 Họ tên chứa thẻ HTML | `<img src=x onerror=…>Hacker` | Đăng ký được, nhưng hiển thị dạng văn bản (SEC-04) | **Script được thực thi** trên header | ❌ [ảnh](screenshots/EP-21_ui_header_xss.png) |
+| EP-20 | EC26 Họ tên tiếng Việt có dấu (hợp lệ) | `Phạm Quang Vinh` (qua API) | Đăng ký thành công, header hiển thị đúng dấu | 200, header hiển thị `Chào, Phạm Quang Vinh` | Pass |
+| EP-21 | EC27 Họ tên chứa thẻ HTML | `<img src=x onerror=…>Hacker` | Đăng ký được, nhưng hiển thị dạng văn bản (SEC-04) | **Script được thực thi** trên header | Fail [ảnh](screenshots/EP-21_ui_header_xss.png) |
 
 ## 5.5 Tổng hợp
 
-| Kênh | Số TC | ✅ PASS | ⚠️ PASS\* | ❌ FAIL |
+| Kênh | Số TC | PASS | PASS\* | FAIL |
 |---|---|---|---|---|
 | API | 40 | 17 (toàn bộ TC hợp lệ) | 0 | **23 (toàn bộ TC không hợp lệ)** |
 | UI | 40 | 4 (EP-03, EP-08, EP-12, BVA-02) | 11 | **25** |

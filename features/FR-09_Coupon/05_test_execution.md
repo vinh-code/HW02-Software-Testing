@@ -33,25 +33,25 @@ Kết luận: **không có masking** đối với quyết định chấp nhận/
 
 ## 5.3 Kết quả: Phân hoạch tương đương (15 TC)
 
-Ký hiệu: "−a → b" nghĩa là giảm a, thành tiền b. ✅ đúng, ❌ sai so với mong đợi.
+Ký hiệu: "−a → b" nghĩa là giảm a, thành tiền b. Pass là đúng, Fail là sai so với mong đợi.
 
 | TC | Mã | Giỏ | Mong đợi | API: thực tế | API | UI: thực tế | UI | KQ |
 |---|---|---|---|---|---|---|---|---|
-| EP-01 | `SAVE10` | 1.000.000 | O1: −100.000 → 900.000 | 200, **−(−9.000.000) → 10.000.000** | ❌ | Thành công, −(−9.000.000) → 10.000.000 | ❌ | ❌ [ảnh](screenshots/EP-01_ui.png) |
-| EP-02 | `BIGBUY` | 1.000.000 | O1: −50.000 → 950.000 | 200, −50.000 → 950.000 | ✅ | Thành công, −50.000 → 950.000 | ✅ | ✅ [ảnh](screenshots/EP-02_ui.png) |
-| EP-03 | `save10` | 1.000.000 | O1: −100.000 → 900.000 | **404** "Mã giảm giá không tồn tại…" | ❌ | Thành công (UI tự chuyển chữ hoa), nhưng −(−9.000.000) → 10.000.000 | ❌ | ❌ [ảnh](screenshots/EP-03_ui.png) |
-| EP-04 | `" VIP100 "` | 1.000.000 | O1: −100.000 → 900.000 | **404** "Mã giảm giá không tồn tại…" | ❌ | Thành công (UI tự `trim`), −100.000 → 900.000 | ✅ | ❌ [ảnh](screenshots/EP-04_ui.png) |
-| EP-05 | `ABC123` | 1.000.000 | O2 | 404 "Mã giảm giá không tồn tại hoặc đã bị vô hiệu hóa" | ✅ | Thông báo như API | ✅ | ✅ [ảnh](screenshots/EP-05_ui.png) |
-| EP-06 | `""` | 1.000.000 | O2 | 400 "Vui lòng nhập mã giảm giá" | ✅ | Nút **Áp dụng** bị vô hiệu hóa | ✅ | ✅ [ảnh](screenshots/EP-06_ui.png) |
-| EP-07 | `OFF10` | 1.000.000 | O2 | 404 "…hoặc đã bị vô hiệu hóa" | ✅ | Thông báo như API | ✅ | ✅ [ảnh](screenshots/EP-07_ui.png) |
-| EP-08 | `EXPIRED` | 1.000.000 | O2 | 400 "Mã giảm giá đã hết hạn" | ✅ | Thông báo như API | ✅ | ✅ [ảnh](screenshots/EP-08_ui.png) |
-| EP-09 | `EXP0D` | 1.000.000 | O2 | 400 "Mã giảm giá đã hết hạn" | ✅ | Thông báo như API | ✅ | ✅ [ảnh](screenshots/EP-09_ui.png) |
-| EP-10 | `SAVE10` | 200.000 | O2 | 400 "Đơn hàng chưa đủ giá trị tối thiểu 300,000 ₫…" | ✅ | Thông báo như API | ✅ | ✅ [ảnh](screenshots/EP-10_ui.png) |
-| EP-11 | `SAVE10` | 1.000.000 | O2: yêu cầu đăng nhập | **200**, áp dụng thành công khi **không có token, `user_id = null`** | ❌ | Trang Giỏ hàng chặn (alert "Bạn cần đăng nhập để thanh toán!"), **nhưng** mở thẳng `/checkout` vẫn hiển thị và **áp mã thành công** | ❌ | ❌ [ảnh](screenshots/EP-11_ui.png) |
-| EP-12 | `SAVE10` | 1.000.000 | O2: 401/403 | **200**, áp dụng thành công với `Authorization: Bearer abc.def.ghi` | ❌ | không áp dụng | – | ❌ |
-| EP-13 | `SAVE10` | 1.000.000 | O2: hết lượt | 400 "Bạn đã sử dụng mã này 1 lần (đã đạt giới hạn)" | ✅ | Lần 1 thanh toán thành công ([ảnh lần 1](screenshots/EP-13_ui_lan1.png)); lần 2 bị từ chối, cùng thông báo | ✅ | ✅ [ảnh](screenshots/EP-13_ui.png) |
-| EP-14 | `SAVE10` | 1.000.000 | O2: hết lượt | **200**, áp dụng thành công khi body **không có `user_id`** (token hợp lệ của user đã dùng hết lượt) | ❌ | không áp dụng | – | ❌ |
-| EP-15 | `SAVE10` | 200.000 → **sửa 1.000.000** | O2 | không áp dụng | – | Ô tổng tiền **sửa được**; mã được **chấp nhận** dù giỏ thật chỉ 200.000 | ❌ | ❌ [ảnh](screenshots/EP-15_ui.png) |
+| EP-01 | `SAVE10` | 1.000.000 | O1: −100.000 → 900.000 | 200, **−(−9.000.000) → 10.000.000** | Fail | Thành công, −(−9.000.000) → 10.000.000 | Fail | Fail [ảnh](screenshots/EP-01_ui.png) |
+| EP-02 | `BIGBUY` | 1.000.000 | O1: −50.000 → 950.000 | 200, −50.000 → 950.000 | Pass | Thành công, −50.000 → 950.000 | Pass | Pass [ảnh](screenshots/EP-02_ui.png) |
+| EP-03 | `save10` | 1.000.000 | O1: −100.000 → 900.000 | **404** "Mã giảm giá không tồn tại…" | Fail | Thành công (UI tự chuyển chữ hoa), nhưng −(−9.000.000) → 10.000.000 | Fail | Fail [ảnh](screenshots/EP-03_ui.png) |
+| EP-04 | `" VIP100 "` | 1.000.000 | O1: −100.000 → 900.000 | **404** "Mã giảm giá không tồn tại…" | Fail | Thành công (UI tự `trim`), −100.000 → 900.000 | Pass | Fail [ảnh](screenshots/EP-04_ui.png) |
+| EP-05 | `ABC123` | 1.000.000 | O2 | 404 "Mã giảm giá không tồn tại hoặc đã bị vô hiệu hóa" | Pass | Thông báo như API | Pass | Pass [ảnh](screenshots/EP-05_ui.png) |
+| EP-06 | `""` | 1.000.000 | O2 | 400 "Vui lòng nhập mã giảm giá" | Pass | Nút **Áp dụng** bị vô hiệu hóa | Pass | Pass [ảnh](screenshots/EP-06_ui.png) |
+| EP-07 | `OFF10` | 1.000.000 | O2 | 404 "…hoặc đã bị vô hiệu hóa" | Pass | Thông báo như API | Pass | Pass [ảnh](screenshots/EP-07_ui.png) |
+| EP-08 | `EXPIRED` | 1.000.000 | O2 | 400 "Mã giảm giá đã hết hạn" | Pass | Thông báo như API | Pass | Pass [ảnh](screenshots/EP-08_ui.png) |
+| EP-09 | `EXP0D` | 1.000.000 | O2 | 400 "Mã giảm giá đã hết hạn" | Pass | Thông báo như API | Pass | Pass [ảnh](screenshots/EP-09_ui.png) |
+| EP-10 | `SAVE10` | 200.000 | O2 | 400 "Đơn hàng chưa đủ giá trị tối thiểu 300,000 ₫…" | Pass | Thông báo như API | Pass | Pass [ảnh](screenshots/EP-10_ui.png) |
+| EP-11 | `SAVE10` | 1.000.000 | O2: yêu cầu đăng nhập | **200**, áp dụng thành công khi **không có token, `user_id = null`** | Fail | Trang Giỏ hàng chặn (alert "Bạn cần đăng nhập để thanh toán!"), **nhưng** mở thẳng `/checkout` vẫn hiển thị và **áp mã thành công** | Fail | Fail [ảnh](screenshots/EP-11_ui.png) |
+| EP-12 | `SAVE10` | 1.000.000 | O2: 401/403 | **200**, áp dụng thành công với `Authorization: Bearer abc.def.ghi` | Fail | không áp dụng | – | Fail |
+| EP-13 | `SAVE10` | 1.000.000 | O2: hết lượt | 400 "Bạn đã sử dụng mã này 1 lần (đã đạt giới hạn)" | Pass | Lần 1 thanh toán thành công ([ảnh lần 1](screenshots/EP-13_ui_lan1.png)); lần 2 bị từ chối, cùng thông báo | Pass | Pass [ảnh](screenshots/EP-13_ui.png) |
+| EP-14 | `SAVE10` | 1.000.000 | O2: hết lượt | **200**, áp dụng thành công khi body **không có `user_id`** (token hợp lệ của user đã dùng hết lượt) | Fail | không áp dụng | – | Fail |
+| EP-15 | `SAVE10` | 200.000 → **sửa 1.000.000** | O2 | không áp dụng | – | Ô tổng tiền **sửa được**; mã được **chấp nhận** dù giỏ thật chỉ 200.000 | Fail | Fail [ảnh](screenshots/EP-15_ui.png) |
 
 **Hậu kiểm EP-13:** sau lần thanh toán thứ nhất, `GET /api/admin/orders` cho thấy đơn #1 của user `F09 ui EP-13` có `total_amount = 10.000.000` cho giỏ 1.000.000 ₫. **Lỗi công thức không chỉ hiển thị sai mà còn ghi vào đơn hàng thật**, nên khách bị tính gấp 10 lần.
 
@@ -59,19 +59,19 @@ Ký hiệu: "−a → b" nghĩa là giảm a, thành tiền b. ✅ đúng, ❌ s
 
 | TC | Biến, điểm | Giá trị | Mong đợi | Quyết định (API / UI) | Số tiền (API = UI) | KQ |
 |---|---|---|---|---|---|---|
-| BVA-01 | nominal | SAVE10, 1.000.000 | O1: −100.000 → 900.000 | chấp nhận ✅ / ✅ | −(−9.000.000) → 10.000.000 ❌ | ❌ [ảnh](screenshots/BVA-01_ui.png) |
-| BVA-02 | V1 LB−1 | SAVE10, **299.999** | O2 | từ chối ✅ / ✅ | – | ✅ [ảnh](screenshots/BVA-02_ui.png) |
-| BVA-03 | V1 **LB** | SAVE10, **300.000** | O1: −30.000 → 270.000 | **từ chối** ❌ / ❌ "chưa đủ giá trị tối thiểu 300,000 ₫" | – | ❌ [ảnh](screenshots/BVA-03_ui.png) |
-| BVA-04 | V1 LB+1 | SAVE10, **300.001** | O1: −30.000 → 270.001 | chấp nhận ✅ / ✅ | −(−2.700.009) → 3.000.010 ❌ | ❌ [ảnh](screenshots/BVA-04_ui.png) |
-| BVA-05 | V2 LB−1 | BIGBUY, **499.999** | O2 | từ chối ✅ / ✅ | – | ✅ [ảnh](screenshots/BVA-05_ui.png) |
-| BVA-06 | V2 **LB** | BIGBUY, **500.000** | O1: −50.000 → 450.000 | **từ chối** ❌ / ❌ "chưa đủ giá trị tối thiểu 500,000 ₫" | – | ❌ [ảnh](screenshots/BVA-06_ui.png) |
-| BVA-07 | V2 LB+1 | BIGBUY, **500.001** | O1: −50.000 → 450.001 | chấp nhận ✅ / ✅ | −50.000 → 450.001 ✅ | ✅ [ảnh](screenshots/BVA-07_ui.png) |
-| BVA-08 | V3 LB−1 | `EXP0D` (hôm nay) | O2 | từ chối ✅ / ✅ "đã hết hạn" | – | ✅ [ảnh](screenshots/BVA-08_ui.png) |
-| BVA-09 | V3 **LB** | `EXP1D` (ngày mai) | O1: −100.000 → 900.000 | chấp nhận ✅ / ✅ | −(−9.000.000) → 10.000.000 ❌ | ❌ [ảnh](screenshots/BVA-09_ui.png) |
-| BVA-10 | V3 LB+1 | `EXP2D` (ngày kia) | O1: −100.000 → 900.000 | chấp nhận ✅ / ✅ | −(−9.000.000) → 10.000.000 ❌ | ❌ [ảnh](screenshots/BVA-10_ui.png) |
-| BVA-11 | V4 LB | VIP100, `used = 0` | O1: −100.000 → 900.000 | chấp nhận ✅ / ✅ | −100.000 → 900.000 ✅ | ✅ [ảnh](screenshots/BVA-11_ui.png) |
-| BVA-12 | V4 **UB** | VIP100, `used = 1` | O1: −100.000 → 900.000 | chấp nhận ✅ / ✅ | −100.000 → 900.000 ✅ | ✅ [ảnh](screenshots/BVA-12_ui.png) |
-| BVA-13 | V4 UB+1 | VIP100, `used = 2` | O2 | từ chối ✅ / ✅ "đã sử dụng mã này 2 lần" | – | ✅ [ảnh](screenshots/BVA-13_ui.png) |
+| BVA-01 | nominal | SAVE10, 1.000.000 | O1: −100.000 → 900.000 | chấp nhận (Pass / Pass) | −(−9.000.000) → 10.000.000 (Fail) | Fail [ảnh](screenshots/BVA-01_ui.png) |
+| BVA-02 | V1 LB−1 | SAVE10, **299.999** | O2 | từ chối (Pass / Pass) | – | Pass [ảnh](screenshots/BVA-02_ui.png) |
+| BVA-03 | V1 **LB** | SAVE10, **300.000** | O1: −30.000 → 270.000 | **từ chối** (Fail / Fail): "chưa đủ giá trị tối thiểu 300,000 ₫" | – | Fail [ảnh](screenshots/BVA-03_ui.png) |
+| BVA-04 | V1 LB+1 | SAVE10, **300.001** | O1: −30.000 → 270.001 | chấp nhận (Pass / Pass) | −(−2.700.009) → 3.000.010 (Fail) | Fail [ảnh](screenshots/BVA-04_ui.png) |
+| BVA-05 | V2 LB−1 | BIGBUY, **499.999** | O2 | từ chối (Pass / Pass) | – | Pass [ảnh](screenshots/BVA-05_ui.png) |
+| BVA-06 | V2 **LB** | BIGBUY, **500.000** | O1: −50.000 → 450.000 | **từ chối** (Fail / Fail): "chưa đủ giá trị tối thiểu 500,000 ₫" | – | Fail [ảnh](screenshots/BVA-06_ui.png) |
+| BVA-07 | V2 LB+1 | BIGBUY, **500.001** | O1: −50.000 → 450.001 | chấp nhận (Pass / Pass) | −50.000 → 450.001 (Pass) | Pass [ảnh](screenshots/BVA-07_ui.png) |
+| BVA-08 | V3 LB−1 | `EXP0D` (hôm nay) | O2 | từ chối (Pass / Pass): "đã hết hạn" | – | Pass [ảnh](screenshots/BVA-08_ui.png) |
+| BVA-09 | V3 **LB** | `EXP1D` (ngày mai) | O1: −100.000 → 900.000 | chấp nhận (Pass / Pass) | −(−9.000.000) → 10.000.000 (Fail) | Fail [ảnh](screenshots/BVA-09_ui.png) |
+| BVA-10 | V3 LB+1 | `EXP2D` (ngày kia) | O1: −100.000 → 900.000 | chấp nhận (Pass / Pass) | −(−9.000.000) → 10.000.000 (Fail) | Fail [ảnh](screenshots/BVA-10_ui.png) |
+| BVA-11 | V4 LB | VIP100, `used = 0` | O1: −100.000 → 900.000 | chấp nhận (Pass / Pass) | −100.000 → 900.000 (Pass) | Pass [ảnh](screenshots/BVA-11_ui.png) |
+| BVA-12 | V4 **UB** | VIP100, `used = 1` | O1: −100.000 → 900.000 | chấp nhận (Pass / Pass) | −100.000 → 900.000 (Pass) | Pass [ảnh](screenshots/BVA-12_ui.png) |
+| BVA-13 | V4 UB+1 | VIP100, `used = 2` | O2 | từ chối (Pass / Pass): "đã sử dụng mã này 2 lần" | – | Pass [ảnh](screenshots/BVA-13_ui.png) |
 
 **Phân tích theo biến:**
 - **V1, V2 (ngưỡng tổng tiền):** cả hai mã đều từ chối **đúng tại LB**, nhưng chấp nhận tại LB+1. Như vậy hệ thống đang dùng phép so sánh `total > min` thay vì `total >= min`. Đây là lỗi off-by-one điển hình mà chỉ BVA phát hiện được. EP-10 (200.000) và EP-01 (1.000.000) đều Pass về quyết định, không lộ lỗi này.
@@ -85,8 +85,8 @@ Hai lớp mới được thêm ở [Bước 7](07_ai_gap_analysis.md). Dữ li�
 
 | TC | Lớp mới | Dữ liệu | Mong đợi | Thực tế (API = UI) | KQ |
 |---|---|---|---|---|---|
-| EP-16 | EC22: `expired_at` là hôm nay **kèm giờ** muộn hơn hiện tại | Coupon `EXPLATE` (như SAVE10), `expired_at = 2026-10-13 23:59:00`, giỏ 1.000.000 | O2: hết hạn (A2: so sánh theo ngày) | HTTP 200, **áp dụng thành công**. Trong khi `EXP0D` (`2026-10-13`, không có giờ) bị từ chối ở EP-09 | ❌ [ảnh](screenshots/EP-16_ui.png) |
-| EP-17 | EC23: mức giảm `fixed` **lớn hơn** tổng đơn | Coupon `BIG200K` (fixed 200.000, min 0), giỏ 100.000 | O1 với thành tiền ≥ 0 | Thành tiền **−100.000 ₫**; bấm thanh toán thì tạo **đơn #3 có `total_amount = −100000`** | ❌ [ảnh](screenshots/EP-17_ui.png), [đơn hàng](screenshots/BUG-FR09-08_admin_negative_order.png) |
+| EP-16 | EC22: `expired_at` là hôm nay **kèm giờ** muộn hơn hiện tại | Coupon `EXPLATE` (như SAVE10), `expired_at = 2026-10-13 23:59:00`, giỏ 1.000.000 | O2: hết hạn (A2: so sánh theo ngày) | HTTP 200, **áp dụng thành công**. Trong khi `EXP0D` (`2026-10-13`, không có giờ) bị từ chối ở EP-09 | Fail [ảnh](screenshots/EP-16_ui.png) |
+| EP-17 | EC23: mức giảm `fixed` **lớn hơn** tổng đơn | Coupon `BIG200K` (fixed 200.000, min 0), giỏ 100.000 | O1 với thành tiền ≥ 0 | Thành tiền **−100.000 ₫**; bấm thanh toán thì tạo **đơn #3 có `total_amount = −100000`** | Fail [ảnh](screenshots/EP-17_ui.png), [đơn hàng](screenshots/BUG-FR09-08_admin_negative_order.png) |
 
 Ghi chú: EP-17 được chạy lại với user mới (hậu tố `r`). Ở lần chạy đầu, email của TC trùng với lần thử trước. Vì FR-01 cho phép email trùng (BUG-FR01-03), lệnh đăng nhập lấy về tài khoản cũ đã dùng hết lượt mã.
 

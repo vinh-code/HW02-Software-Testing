@@ -23,48 +23,48 @@
 - Các TC hợp lệ EP-01 → EP-04 chạy trước.
 - **EP-01 Fail chỉ vì nhãn.** SL 3 và 12.000.000 ₫ đều đúng, nhưng nhãn là "Tổng tạm tính". Vì vậy mình tách tiêu chí nhãn ra khỏi các TC khác (xem §5.1).
 - **EP-04 Fail vì SL sai**: nhập 5 thì ô thành **6**. Mọi TC sửa SL trong giỏ đều bị ảnh hưởng bởi lỗi "+1" này. Do đó mỗi TC sửa SL được thiết kế với SL ban đầu khác với giá trị mà lỗi có thể tạo ra.
-- **EP-16 là Pass giả:** ⚠️ nhập `1.5` thì app tính `parseInt("1.5") + 1 = 2`, **trùng ngẫu nhiên** với SL ban đầu là 2, nên trông như "giữ nguyên". Chạy lại **EP-16R** với SL ban đầu là 3: SL thành **2**, tức là Fail. Kết quả cuối của EP-16 lấy theo EP-16R.
+- **EP-16 là Pass giả:** nhập `1.5` thì app tính `parseInt("1.5") + 1 = 2`, **trùng ngẫu nhiên** với SL ban đầu là 2, nên trông như "giữ nguyên". Chạy lại **EP-16R** với SL ban đầu là 3: SL thành **2**, tức là Fail. Kết quả cuối của EP-16 lấy theo EP-16R.
 
 ## 5.3 Kết quả: Phân hoạch tương đương (18 TC)
 
 | TC | Lớp | Bước chính | Mong đợi | Thực tế | KQ |
 |---|---|---|---|---|---|
-| EP-01 | EC1, EC19 | Chi tiết A, SL `3` → Thêm → Giỏ | A×3, 12.000.000 ₫, nhãn "Tổng cộng" | A×3, Thành tiền 12,000,000 ₫. Nút đổi thành "Đã thêm". Nhãn tổng là **"Tổng tạm tính"** | ❌ [ảnh](screenshots/EP-01_mobile.png) |
-| EP-02 | EC14 | Thêm A từ danh sách + A (SL 2) từ chi tiết | 1 dòng, SL 3 | 1 dòng, SL 3 | ✅ [ảnh](screenshots/EP-02_mobile.png) |
-| EP-03 | EC15 | Thêm A, B | 2 dòng, tổng 10.000.000 | 2 dòng, tổng 10,000,000 ₫ | ✅ [ảnh](screenshots/EP-03_mobile.png) |
-| EP-04 | EC7 | Giỏ A×1, sửa SL thành `5` | SL 5, 20.000.000 | ô hiện **6**, Thành tiền **24,000,000 ₫** | ❌ [ảnh](screenshots/EP-04_mobile.png) |
-| EP-05 | EC13 | Bấm **+** | SL 2 | **Không có nút +/−** trên dòng giỏ | ❌ [ảnh](screenshots/EP-05_mobile.png) |
-| EP-06 | EC16 | Bấm **Xóa** → Đồng ý | Có dialog, sau đó xóa | Dòng bị xóa **ngay lập tức**, không có bước xác nhận | ❌ [ảnh](screenshots/EP-06_mobile.png) |
-| EP-07 | EC17 | Bấm **Xóa** → Hủy | Có dialog, Hủy thì giữ dòng | Không có cơ hội Hủy, dòng đã bị xóa | ❌ [ảnh](screenshots/EP-07_mobile.png) |
-| EP-08 | EC18 | Mở giỏ trống | Hình minh họa + thông báo + Tiếp tục mua sắm | Có thông báo và link "Tiếp tục mua sắm", **không có hình minh họa** (0 ảnh) | ❌ [ảnh](screenshots/EP-08_mobile.png) |
-| EP-09 | EC2 | Chi tiết A, SL `0` → Thêm | Không thêm, có thông báo | Ô nhận `0`, nút báo "Đã thêm", giỏ có **A×1** | ❌ [ảnh](screenshots/EP-09_mobile.png) |
-| EP-10 | EC3 | SL `-2` | như trên | Ô nhận `-2`, giỏ có **A×1** | ❌ [ảnh](screenshots/EP-10_mobile.png) |
-| EP-11 | EC4 | SL `1.5` | như trên | Ô nhận `1.5`, giỏ có **A×1** | ❌ [ảnh](screenshots/EP-11_mobile.png) |
-| EP-12 | EC5 | SL `abc` | như trên | Ô nhận `abc`, giỏ có **A×1** | ❌ [ảnh](screenshots/EP-12_mobile.png) |
-| EP-13 | EC6 | SL rỗng | như trên | giỏ có **A×1** | ❌ [ảnh](screenshots/EP-13_mobile.png) |
-| EP-14 | EC8 | Giỏ A×2, sửa SL `0` | SL giữ 2 | ô thành **1**, SL = 1, không có thông báo | ❌ [ảnh](screenshots/EP-14_mobile.png) |
-| EP-15 | EC9 | Giỏ A×2, sửa `-2` | SL giữ 2 | SL = **1** | ❌ [ảnh](screenshots/EP-15_mobile.png) |
-| EP-16 | EC10 | Giỏ A×2, sửa `1.5` | SL giữ 2 | ⚠️ SL = 2 (**Pass giả**, xem §5.2) | – [ảnh](screenshots/EP-16_mobile.png) |
-| EP-16R | EC10 | Giỏ **A×3**, sửa `1.5` | SL giữ 3 | SL = **2** | ❌ [ảnh](screenshots/EP-16R_mobile.png) |
-| EP-17 | EC11 | Giỏ A×2, sửa `abc` | SL giữ 2 | SL = **1** | ❌ [ảnh](screenshots/EP-17_mobile.png) |
-| EP-18 | EC12 | Giỏ A×2, xóa trắng ô | SL giữ 2 | ô **ngay lập tức** thành 1, SL = **1** | ❌ [ảnh](screenshots/EP-18_mobile.png) |
+| EP-01 | EC1, EC19 | Chi tiết A, SL `3` → Thêm → Giỏ | A×3, 12.000.000 ₫, nhãn "Tổng cộng" | A×3, Thành tiền 12,000,000 ₫. Nút đổi thành "Đã thêm". Nhãn tổng là **"Tổng tạm tính"** | Fail [ảnh](screenshots/EP-01_mobile.png) |
+| EP-02 | EC14 | Thêm A từ danh sách + A (SL 2) từ chi tiết | 1 dòng, SL 3 | 1 dòng, SL 3 | Pass [ảnh](screenshots/EP-02_mobile.png) |
+| EP-03 | EC15 | Thêm A, B | 2 dòng, tổng 10.000.000 | 2 dòng, tổng 10,000,000 ₫ | Pass [ảnh](screenshots/EP-03_mobile.png) |
+| EP-04 | EC7 | Giỏ A×1, sửa SL thành `5` | SL 5, 20.000.000 | ô hiện **6**, Thành tiền **24,000,000 ₫** | Fail [ảnh](screenshots/EP-04_mobile.png) |
+| EP-05 | EC13 | Bấm **+** | SL 2 | **Không có nút +/−** trên dòng giỏ | Fail [ảnh](screenshots/EP-05_mobile.png) |
+| EP-06 | EC16 | Bấm **Xóa** → Đồng ý | Có dialog, sau đó xóa | Dòng bị xóa **ngay lập tức**, không có bước xác nhận | Fail [ảnh](screenshots/EP-06_mobile.png) |
+| EP-07 | EC17 | Bấm **Xóa** → Hủy | Có dialog, Hủy thì giữ dòng | Không có cơ hội Hủy, dòng đã bị xóa | Fail [ảnh](screenshots/EP-07_mobile.png) |
+| EP-08 | EC18 | Mở giỏ trống | Hình minh họa + thông báo + Tiếp tục mua sắm | Có thông báo và link "Tiếp tục mua sắm", **không có hình minh họa** (0 ảnh) | Fail [ảnh](screenshots/EP-08_mobile.png) |
+| EP-09 | EC2 | Chi tiết A, SL `0` → Thêm | Không thêm, có thông báo | Ô nhận `0`, nút báo "Đã thêm", giỏ có **A×1** | Fail [ảnh](screenshots/EP-09_mobile.png) |
+| EP-10 | EC3 | SL `-2` | như trên | Ô nhận `-2`, giỏ có **A×1** | Fail [ảnh](screenshots/EP-10_mobile.png) |
+| EP-11 | EC4 | SL `1.5` | như trên | Ô nhận `1.5`, giỏ có **A×1** | Fail [ảnh](screenshots/EP-11_mobile.png) |
+| EP-12 | EC5 | SL `abc` | như trên | Ô nhận `abc`, giỏ có **A×1** | Fail [ảnh](screenshots/EP-12_mobile.png) |
+| EP-13 | EC6 | SL rỗng | như trên | giỏ có **A×1** | Fail [ảnh](screenshots/EP-13_mobile.png) |
+| EP-14 | EC8 | Giỏ A×2, sửa SL `0` | SL giữ 2 | ô thành **1**, SL = 1, không có thông báo | Fail [ảnh](screenshots/EP-14_mobile.png) |
+| EP-15 | EC9 | Giỏ A×2, sửa `-2` | SL giữ 2 | SL = **1** | Fail [ảnh](screenshots/EP-15_mobile.png) |
+| EP-16 | EC10 | Giỏ A×2, sửa `1.5` | SL giữ 2 | SL = 2 (**Pass giả**, xem §5.2) | – [ảnh](screenshots/EP-16_mobile.png) |
+| EP-16R | EC10 | Giỏ **A×3**, sửa `1.5` | SL giữ 3 | SL = **2** | Fail [ảnh](screenshots/EP-16R_mobile.png) |
+| EP-17 | EC11 | Giỏ A×2, sửa `abc` | SL giữ 2 | SL = **1** | Fail [ảnh](screenshots/EP-17_mobile.png) |
+| EP-18 | EC12 | Giỏ A×2, xóa trắng ô | SL giữ 2 | ô **ngay lập tức** thành 1, SL = **1** | Fail [ảnh](screenshots/EP-18_mobile.png) |
 
 ## 5.4 Kết quả: Phân tích giá trị biên (12 TC)
 
 | TC | Biến, điểm | Thao tác | Mong đợi | Thực tế | KQ |
 |---|---|---|---|---|---|
-| BVA-01 | nominal | Chi tiết, SL 3 | A×3, 12.000.000 | A×3, 12,000,000 ₫ | ✅ [ảnh](screenshots/BVA-01_mobile.png) |
-| BVA-02 | V1 LB−1 | Chi tiết, SL **0** | không thêm | thêm **A×1** | ❌ [ảnh](screenshots/BVA-02_mobile.png) |
-| BVA-03 | V1 **LB** | Chi tiết, SL **1** | A×1 | A×1, 4,000,000 ₫ | ✅ [ảnh](screenshots/BVA-03_mobile.png) |
-| BVA-04 | V1 LB+1 | Chi tiết, SL 2 | A×2 | A×2, 8,000,000 ₫ | ✅ [ảnh](screenshots/BVA-04_mobile.png) |
-| BVA-05 | V1 độ bền | Chi tiết, SL 999 | A×999, 3.996.000.000 | A×999, 3,996,000,000 ₫ | ✅ [ảnh](screenshots/BVA-05_mobile.png) |
-| BVA-06 | V2 LB−1 | Giỏ A×2, sửa **0** | giữ 2 | SL **1** | ❌ [ảnh](screenshots/BVA-06_mobile.png) |
-| BVA-07 | V2 **LB** | Giỏ A×2, sửa **1** | SL 1 | SL **2** | ❌ [ảnh](screenshots/BVA-07_mobile.png) |
-| BVA-08 | V2 LB+1 | Giỏ A×1, sửa 2 | SL 2 | SL **3** | ❌ [ảnh](screenshots/BVA-08_mobile.png) |
-| BVA-09 | V2 độ bền | Giỏ A×1, sửa 999 | SL 999 | SL **1000**, 4,000,000,000 ₫ | ❌ [ảnh](screenshots/BVA-09_mobile.png) |
-| BVA-10 | V3 LB−1 | A×1, bấm **−** | giữ 1 | không có nút | ❌ [ảnh](screenshots/BVA-10_mobile.png) |
-| BVA-11 | V3 **LB** | A×2, bấm **−** | SL 1 | không có nút | ❌ [ảnh](screenshots/BVA-11_mobile.png) |
-| BVA-12 | V3 LB+1 | A×1, bấm **+** | SL 2 | không có nút | ❌ [ảnh](screenshots/BVA-12_mobile.png) |
+| BVA-01 | nominal | Chi tiết, SL 3 | A×3, 12.000.000 | A×3, 12,000,000 ₫ | Pass [ảnh](screenshots/BVA-01_mobile.png) |
+| BVA-02 | V1 LB−1 | Chi tiết, SL **0** | không thêm | thêm **A×1** | Fail [ảnh](screenshots/BVA-02_mobile.png) |
+| BVA-03 | V1 **LB** | Chi tiết, SL **1** | A×1 | A×1, 4,000,000 ₫ | Pass [ảnh](screenshots/BVA-03_mobile.png) |
+| BVA-04 | V1 LB+1 | Chi tiết, SL 2 | A×2 | A×2, 8,000,000 ₫ | Pass [ảnh](screenshots/BVA-04_mobile.png) |
+| BVA-05 | V1 độ bền | Chi tiết, SL 999 | A×999, 3.996.000.000 | A×999, 3,996,000,000 ₫ | Pass [ảnh](screenshots/BVA-05_mobile.png) |
+| BVA-06 | V2 LB−1 | Giỏ A×2, sửa **0** | giữ 2 | SL **1** | Fail [ảnh](screenshots/BVA-06_mobile.png) |
+| BVA-07 | V2 **LB** | Giỏ A×2, sửa **1** | SL 1 | SL **2** | Fail [ảnh](screenshots/BVA-07_mobile.png) |
+| BVA-08 | V2 LB+1 | Giỏ A×1, sửa 2 | SL 2 | SL **3** | Fail [ảnh](screenshots/BVA-08_mobile.png) |
+| BVA-09 | V2 độ bền | Giỏ A×1, sửa 999 | SL 999 | SL **1000**, 4,000,000,000 ₫ | Fail [ảnh](screenshots/BVA-09_mobile.png) |
+| BVA-10 | V3 LB−1 | A×1, bấm **−** | giữ 1 | không có nút | Fail [ảnh](screenshots/BVA-10_mobile.png) |
+| BVA-11 | V3 **LB** | A×2, bấm **−** | SL 1 | không có nút | Fail [ảnh](screenshots/BVA-11_mobile.png) |
+| BVA-12 | V3 LB+1 | A×1, bấm **+** | SL 2 | không có nút | Fail [ảnh](screenshots/BVA-12_mobile.png) |
 
 **Phân tích theo biến:**
 - **V1 (ô SL ở trang chi tiết):** đúng tại LB, LB+1 và giá trị lớn. Tại LB−1 (0), ô không chặn mà **âm thầm đổi thành 1**. Ô nhận mọi ký tự, kể cả chữ.
@@ -89,7 +89,7 @@ Lớp mới được thêm ở [Bước 7](07_ai_gap_analysis.md). Dữ liệu t
 
 | TC | Lớp mới | Bước chính | Mong đợi | Thực tế | KQ |
 |---|---|---|---|---|---|
-| EP-19 | EC20: SP mà API chi tiết trả `price` **kiểu chuỗi** (`GET /api/products/4` → `"6000000"`, còn API danh sách trả số) | Chi tiết B (AirPods, id 4), SL 1 → Thêm; danh sách → Thêm B | 1 dòng, SL 2, Thành tiền 12.000.000 | 1 dòng, SL 2, 12,000,000 ₫ | ✅ [ảnh](screenshots/EP-19_mobile.png) |
+| EP-19 | EC20: SP mà API chi tiết trả `price` **kiểu chuỗi** (`GET /api/products/4` → `"6000000"`, còn API danh sách trả số) | Chi tiết B (AirPods, id 4), SL 1 → Thêm; danh sách → Thêm B | 1 dòng, SL 2, Thành tiền 12.000.000 | 1 dòng, SL 2, 12,000,000 ₫ | Pass [ảnh](screenshots/EP-19_mobile.png) |
 
 ## 5.6 Tổng hợp
 
