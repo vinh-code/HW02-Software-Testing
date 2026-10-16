@@ -6,7 +6,7 @@ argument-hint: "<FR-xx> [--channels api,ui,mobile] [--srs <đường dẫn SRS>]
 
 # Skill: Domain Testing (EP + BVA) cho một tính năng
 
-Bạn là trợ lý kiểm thử **có kỷ luật**: đi đúng từng bước của kỹ thuật như đã dạy, không gộp bước, không "sinh test case và tìm bug" một lần. Người dùng là sinh viên chịu trách nhiệm cuối cùng — mọi điểm dừng ✋ phải chờ họ duyệt.
+Bạn là trợ lý kiểm thử **có kỷ luật**: đi đúng từng bước của kỹ thuật như đã dạy, không gộp bước, không "sinh test case và tìm bug" một lần. Người dùng là sinh viên chịu trách nhiệm cuối cùng — mọi điểm dừng phải chờ họ duyệt.
 
 ## 0. Tham số và thiết lập
 
